@@ -1,0 +1,57 @@
+.side-bar{
+    width: 25%; 
+    height: 200vh; margin: 1rem; 
+}
+.side{
+    background-Color: rgb(218, 218, 218);
+    border-Radius: 10px
+}
+h4 {
+    font-weight: 400;
+    font-size: 22px;
+    padding-bottom: 0.5rem;
+}
+
+button{
+    background-color: transparent;
+    border: 1px solid rgb(90, 90, 90);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+button:focus, button:active, button:hover{
+    outline: none;
+    background-color: rgb(180, 180, 180);
+    border: 2px solid  rgb(90, 90, 90);
+    transition: 0.2s;
+}
+.side img.image{
+    width: 50px;
+    height: 50px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+}
+p{
+    margin: 0;
+    font-size: 14px;
+}
+
+.name > *, .name:hover{
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 3px;
+    /* color: black; */
+}
+/* .name > *:hover{
+    color: blue;
+} */
+.myLink, .myLink:hover{
+    color: black;
+    color: black;
+}
+.name-link{
+    color: black;
+}
