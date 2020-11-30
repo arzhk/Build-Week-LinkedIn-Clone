@@ -35,6 +35,7 @@ export default class Main extends Component {
     return (
       <div>
         <Experience name={this.state.profile.name} />
+
         <Education />
         <Skills />
         <Interests />

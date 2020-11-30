@@ -5,8 +5,11 @@ export default class Education extends Component {
   render() {
     return (
       <Container>
-        <div className="education-contain ">
-          <h3>Education</h3>
+        <div className="education-contain mb-3">
+          <div className="d-flex align-items-center justify-content-between">
+            <h3>Exducation</h3>
+            <i className="fas fa-plus mr-3 "></i>
+          </div>
           <ListGroup>
             <ListGroup.Item
               variant="light"

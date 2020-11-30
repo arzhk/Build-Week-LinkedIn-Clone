@@ -5,7 +5,7 @@ export default class Interests extends Component {
   render() {
     return (
       <Container>
-        <div className="skills-contain ">
+        <div className="interests-contain mb-3">
           <h3>Interests</h3>
           <Row className="striped">
             <Col className="d-flex align-items-center">
