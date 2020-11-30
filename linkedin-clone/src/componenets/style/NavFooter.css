@@ -1,0 +1,124 @@
+/********************NAV BAR*****************************/
+body {
+  background-color: rgb(230, 230, 245);
+  min-height: 100vh;
+}
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+div.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  margin: 0px 15px;
+}
+.bg-light {
+  background-color: #ffffff !important;
+}
+.navbar {
+  padding: 0;
+}
+@media (max-width: 992px) {
+  div.nav-link small {
+    display: none;
+  }
+}
+.navbar-nav > a div.nav-link.active {
+  border-bottom: 3px solid black;
+}
+.nav-link {
+  color: #535353 !important;
+}
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  color: #141414 !important;
+}
+a:hover {
+  text-decoration: none;
+}
+
+#learning {
+  padding: 0px 10px;
+  border: 2px solid gray;
+  background-image: url(https://us.123rf.com/450wm/rastudio/rastudio1603/rastudio160304668/53723820-open-book-line-icon-for-web-mobile-and-infographics-vector-dark-grey-icon-isolated-on-white-backgrou.jpg?ver=6);
+  background-size: 80px;
+  background-position: center;
+}
+.dropdown-item img {
+  height: 60px;
+  width: 60px;
+}
+nav div img {
+  margin-bottom: -10px;
+  margin-left: 10px;
+  height: 24px;
+}
+#logo {
+  height: 34px;
+  margin: 10px;
+}
+.dropdown-item div {
+  padding: 0;
+  text-align: left;
+}
+.dropdown-item:active {
+  background-color: initial;
+}
+p {
+  margin: 0px;
+}
+#dropdown {
+  border-right: 1px solid #d4d4d4;
+  padding-right: 10px;
+}
+/**********************END NAV BAR**********************/
+/*********************MODAL******************************/
+.modal {
+  overflow-y: hidden;
+  left: unset !important;
+  right: 0 !important;
+  top: 6%;
+  height: 100vh;
+  width: 25rem;
+  border-color: transparent;
+  padding-bottom: 30px;
+}
+.modal-open .modal {
+  overflow: hidden;
+}
+.modal-body {
+  padding-bottom: 30px;
+}
+
+/*********************  FOOTER  ***********************/
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(80, 78, 102);
+}
+#footer a {
+  color: gray;
+}
+
+#footer a:hover {
+  color: #6a5eff;
+  text-decoration: underline;
+}
+button.dropdown-toggle {
+  font-size: 12px;
+  font-weight: 600;
+}
+.custom-select {
+  font-size: 12px;
+  font-weight: 600;
+  border-color: #535353;
+}
