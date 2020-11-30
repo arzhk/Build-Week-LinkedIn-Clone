@@ -67,7 +67,7 @@ function MainProfileBlock() {
               <h3 className="d-inline-block mr-2">
                 {userData.name} {userData.surname}
               </h3>
-              <h4 className="d-inline-block mb-0 font-weight-light"> - @{userData.username}</h4>
+              <h4 className="d-inline-block mb-0 font-weight-light"> - 1st</h4>
               <h4 className="font-weight-light">{userData.title}</h4>
               <Card.Text>
                 {userData.area} - 500+ connections -{" "}
