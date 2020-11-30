@@ -30,7 +30,14 @@ div.nav-link {
 .navbar-nav > a div.nav-link.active {
   border-bottom: 3px solid black;
 }
-
+.nav-link {
+  color: #535353 !important;
+}
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  color: #141414 !important;
+}
 a:hover {
   text-decoration: none;
 }
@@ -64,22 +71,33 @@ nav div img {
 p {
   margin: 0px;
 }
+#dropdown {
+  border-right: 1px solid #d4d4d4;
+}
 /**********************END NAV BAR**********************/
 /*********************  FOOTER  ***********************/
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  font-size: small;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(80, 78, 102);
 }
 #footer a {
   color: gray;
 }
-#footer a:active,
-#footer a:focus {
-  color: rgb(0, 14, 207);
+
+#footer a:hover {
+  color: #6a5eff;
   text-decoration: underline;
 }
-#footer a:hover {
-  color: rgb(75, 75, 75);
+button.dropdown-toggle {
+  font-size: 12px;
+  font-weight: 600;
+}
+.custom-select {
+  font-size: 12px;
+  font-weight: 600;
+  border-color: #535353;
 }

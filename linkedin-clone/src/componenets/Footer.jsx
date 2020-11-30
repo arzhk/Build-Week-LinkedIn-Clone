@@ -2,6 +2,8 @@ import React from 'react';
 import { Col, Container, Row, Image, Dropdown, Button, InputGroup } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import "./style/NavFooter.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faBriefcase, faCommentDots, faHome, faPlay, faQuestionCircle, faTh, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 class Footer extends React.Component {
 
     render() {
@@ -10,7 +12,7 @@ class Footer extends React.Component {
 
                 <Container>
                     <hr />
-                    <Image></Image>
+                    <Image src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Logo.wine.svg" height="60" />
                     <Row md={5} sm={2}>
                         <Col>
                             <ul>
@@ -95,8 +97,9 @@ class Footer extends React.Component {
                         </Col>
                         <Col>
                             <ul>
+                                <FontAwesomeIcon icon={faQuestionCircle} size="2x" />
                                 <Link to="/">
-                                    <div>Questions?</div>
+                                    <div> Questions?</div>
                                 </Link>
                                 <small>Visit our Help Center</small>
                             </ul>
@@ -121,6 +124,7 @@ class Footer extends React.Component {
                         </Col>
                         <Col></Col>
                     </Row>
+                    <p className="text-muted">LinkedIn Corporation © 2020</p>
                 </Container>
 
             </footer>

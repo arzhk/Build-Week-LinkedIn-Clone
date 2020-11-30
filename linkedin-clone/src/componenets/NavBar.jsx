@@ -31,7 +31,7 @@ class NavBar extends React.Component {
                             <Link to="/network">
                                 <div className={pathname === '/network' ? 'nav-link active' : 'nav-link'}>
                                     <FontAwesomeIcon icon={faUserFriends} size="lg" />
-                                    <small>My Newtwork</small></div>
+                                    <small>My Network</small></div>
                             </Link>
                             <Link to="/jobs">
                                 <div className={pathname === '/jobs' ? 'nav-link active' : 'nav-link'}>
@@ -48,7 +48,7 @@ class NavBar extends React.Component {
                                     <FontAwesomeIcon icon={faBell} size="lg" />
                                     <small>Notifications</small></div>
                             </Link>
-                            <div>
+                            <div id="dropdown" >
                                 <Image src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg" roundedCircle />
                                 <NavDropdown title="Me" id="basic-nav-dropdown" className="p-0">
                                     <div class="dropdown-item">
