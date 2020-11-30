@@ -4,6 +4,10 @@ Body {
   background-color: rgb(243, 242, 239);
 }
 
+.container {
+  min-width: 800px;
+}
+
 /* Main Profile Block Styling */
 
 #profile-main.card {
