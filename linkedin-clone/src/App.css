@@ -1,0 +1,100 @@
+Body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Main Profile Block Styling */
+
+#profile-main.card {
+  border-radius: 0.6rem;
+}
+
+#profile-main .profile-background-container {
+  height: 250px;
+  overflow: hidden;
+  border-radius: 0.6rem 0.6rem 0rem 0rem;
+}
+
+#profile-main .profile-background-picture {
+  height: 250px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+#profile-main .profile-photo {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  background-color: #000;
+  margin-top: -160px;
+  margin-bottom: 20px;
+  border: 5px solid #fff;
+}
+
+#profile-main .profile-right {
+  padding-top: 1px;
+}
+
+#profile-main .profile-button-container {
+  height: 40px;
+}
+
+#profile-main button {
+  width: 120px;
+}
+
+#profile-main .btn-primary {
+  background-color: rgb(10, 102, 194);
+}
+
+#profile-main .btn-primary:hover {
+  background-color: rgb(7, 91, 175);
+  border: 2px solid rgb(7, 91, 175);
+}
+
+#profile-main .btn-outline-primary {
+  border: 1px solid rgb(10, 102, 194);
+  color: rgb(7, 91, 175);
+}
+
+#profile-main .btn-outline-primary:hover {
+  background-color: rgba(10, 102, 194, 0.13);
+  color: #007bff;
+  border: 2px solid rgb(10, 102, 194);
+}
+
+#profile-main .btn-outline-secondary {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+#profile-main .btn-outline-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+#profile-main #latest-experience,
+#profile-main #latest-education {
+  width: 50%;
+}
+
+#profile-main .latest-experience-image,
+#profile-main .latest-education-image {
+  height: 32px;
+  width: 32px;
+  background-color: #000;
+}
+
+#profile-main #latest-experience a,
+#profile-main #latest-education a {
+  color: #000;
+  word-break: break-all;
+}
+
+#profile-main #latest-experience a:hover,
+#profile-main #latest-education a:hover {
+  color: rgb(10, 102, 194);
+}
