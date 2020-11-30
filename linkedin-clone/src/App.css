@@ -1,0 +1,38 @@
+.imgPlace {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(15, 86, 192);
+}
+.imgPlace2 {
+  height: 50px;
+  width: 50px;
+  background-color: green;
+}
+.App {
+  text-align: start;
+  background-color: #f0f0f0;
+}
+.experience-contain {
+  background-color: white;
+}
+.education-contain {
+  background-color: white;
+}
+.skills-contain {
+  background-color: white;
+}
+.interests-contain {
+  background-color: white;
+}
+.list-group-item-light {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.list-group-item {
+  border: none !important;
+  background-color: transparent !important;
+}
+.fa-pen:hover {
+  color: gray;
+}
