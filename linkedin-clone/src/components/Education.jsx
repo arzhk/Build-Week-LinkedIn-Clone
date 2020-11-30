@@ -5,29 +5,39 @@ export default class Education extends Component {
   render() {
     return (
       <Container>
-        <div className="education-contain mb-3">
+        <div id="education-main-container" className="education-contain mb-3">
           <div className="d-flex align-items-center justify-content-between">
-            <h3>Exducation</h3>
+            <h4 className="font-weight-normal">Education</h4>
             <i className="fas fa-plus mr-3 "></i>
           </div>
           <ListGroup>
             <ListGroup.Item
               variant="light"
-              className="d-flex align-items-center justify-content-between"
+              className="d-flex no-border align-items-center justify-content-between mb-0"
             >
-              <div className="d-flex align-items-center">
-                <div className="imgPlace mr-2"></div>Education 1
+              <div className="d-flex align-items-start">
+                <div className="imgPlace mr-4"></div>
+                <div className="d-flex flex-column">
+                  <h5 className="mb-0 font-weight-normal">Experience 1</h5>
+                  <p className="mb-0 ">Subtext</p>
+                  <p className="mb-0 font-weight-light">Subtext 2</p>
+                </div>
               </div>
-              <i className="fas fa-pen"></i>
+              <i className="fas fa-pen "></i>
             </ListGroup.Item>
             <ListGroup.Item
               variant="light"
-              className="d-flex align-items-center justify-content-between"
+              className="d-flex no-border align-items-center justify-content-between mb-0"
             >
-              <div className="d-flex align-items-center">
-                <div className="imgPlace mr-2"></div>Education 2
+              <div className="d-flex align-items-start">
+                <div className="imgPlace mr-4"></div>
+                <div className="d-flex flex-column">
+                  <h5 className="mb-0 font-weight-normal">Education 2</h5>
+                  <p className="mb-0 ">Subtext</p>
+                  <p className="mb-0 font-weight-light">Subtext 2</p>
+                </div>
               </div>
-              <i className="fas fa-pen"></i>
+              <i className="fas fa-pen "></i>
             </ListGroup.Item>
           </ListGroup>
         </div>

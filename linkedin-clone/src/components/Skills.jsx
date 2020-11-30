@@ -4,12 +4,42 @@ export default class Skills extends Component {
   render() {
     return (
       <Container>
-        <div className="skills-contain mb-3">
-          <h3>Skills & Endorsments</h3>
-          <ListGroup>
-            <ListGroup.Item variant="light">Skills 1</ListGroup.Item>
-            <ListGroup.Item variant="light">Skills 2</ListGroup.Item>
-          </ListGroup>
+        <div id="skills-main-container" className="skills-contain mb-3">
+          <div className="py-3 px-4">
+            <h4 className="font-weight-normal">Skills & endorsments</h4>
+            <ListGroup>
+              <ListGroup.Item variant="light">
+                <h6>Skill 1</h6>
+                <div className="d-flex align-items-center">
+                  <div className="skills-img-placeholder mr-3"></div>
+                  <small className="mb-0">
+                    Endorsed by <span className="font-weight-bold">Name, who is highly skilled at this.</span>
+                  </small>
+                </div>
+              </ListGroup.Item>
+              <ListGroup.Item variant="light">
+                <h6>Skill 2</h6>
+                <div className="d-flex align-items-center">
+                  <small className="mb-0">
+                    <span className="font-weight-bold">Name and x connections</span> have given endorsements for this
+                    skill.
+                  </small>
+                </div>
+              </ListGroup.Item>
+              <ListGroup.Item variant="light">
+                <h6>Skill 3</h6>
+                <div className="d-flex align-items-center">
+                  <small className="mb-0">
+                    <span className="font-weight-bold">Name and x connections</span> have given endorsements for this
+                    skill.
+                  </small>
+                </div>
+              </ListGroup.Item>
+            </ListGroup>
+          </div>
+          <a href="#!" className="see-all-btn py-2 font-weight-bold text-center brdr-top">
+            Show more
+          </a>
         </div>
       </Container>
     );

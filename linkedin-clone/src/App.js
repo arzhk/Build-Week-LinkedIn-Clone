@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Route path="/" component={NavBar} />
       <Route path="/" component={MainProfileBlock} />
-      <Main />
+      <Route path="/" component={Main} />
       <Route path="/" component={Footer} />
     </Router>
   );

@@ -9,17 +9,13 @@ export default class Main extends Component {
 
   fetcher = async () => {
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/me",
-        {
-          headers: new Headers({
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
-          }),
-        }
-      );
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/me", {
+        headers: new Headers({
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+        }),
+      });
       const result = await response.json();
-      //console.log(result);
       if (response.ok) {
         this.setState({ profile: result });
         console.log(this.state.profile);
@@ -35,7 +31,6 @@ export default class Main extends Component {
     return (
       <div>
         <Experience name={this.state.profile.name} />
-
         <Education />
         <Skills />
         <Interests />
