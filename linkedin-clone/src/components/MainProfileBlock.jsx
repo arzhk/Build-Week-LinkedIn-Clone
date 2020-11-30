@@ -21,7 +21,6 @@ function MainProfileBlock() {
         },
       });
       let data = await response.json();
-      console.log(data);
       setUserData(data);
     } catch (er) {
       console.log(er);
@@ -44,7 +43,7 @@ function MainProfileBlock() {
     <>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
       <Container
-        className="py-5"
+        className="pt-5 pb-3"
         onClick={() => {
           isMoreClicked && setIsMoreClicked(false);
         }}

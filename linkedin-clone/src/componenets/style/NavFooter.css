@@ -97,13 +97,13 @@ p {
 
 /*********************  FOOTER  ***********************/
 #footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   font-size: 12px;
   font-weight: 600;
   color: rgb(80, 78, 102);
   padding-bottom: 26px;
+  margin-top: 2rem;
+  min-width: 800px;
 }
 #footer a {
   color: rgb(86, 104, 122);

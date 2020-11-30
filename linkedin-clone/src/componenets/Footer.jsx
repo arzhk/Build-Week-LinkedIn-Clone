@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row, Image, Dropdown, Button, InputGroup } from "react-bootstrap";
+import { Col, Container, Row, Image, Dropdown } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./style/NavFooter.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

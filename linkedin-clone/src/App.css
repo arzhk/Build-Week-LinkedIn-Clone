@@ -257,3 +257,99 @@ Body {
   background-color: #fff;
   padding: 24px;
 }
+
+/* Yazid piece styling */
+
+.imgPlace {
+  height: 56px;
+  width: 56px;
+  background-color: rgb(243, 242, 239);
+  border-radius: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.068);
+}
+
+.experience-contain {
+  background-color: white;
+  border-radius: 0.6rem 0.6rem 0rem 0rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.education-contain {
+  background-color: white;
+  border-radius: 0rem 0rem 0.6rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.skills-contain {
+  background-color: #fff;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.interests-contain {
+  background-color: #fff;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.list-group-item-light {
+  border: none !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+  margin-bottom: 10px;
+  padding: 20px 10px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.list-group-item {
+  border: none !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+.fa-pen:hover {
+  color: gray;
+}
+
+.fa-pen {
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.15s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.list-group-item-light:hover .fa-pen {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+#experience-main-container {
+  padding: 20px 20px 0px 20px;
+}
+
+.no-border {
+  border: none !important;
+}
+
+#education-main-container {
+  padding: 20px;
+}
+
+#interests-main-container .skills-img-placeholder {
+  height: 32px;
+  width: 32px;
+  background-color: rgb(243, 242, 239);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.068);
+}
+
+.brdr-top {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.see-all-btn {
+  width: 100%;
+  display: block;
+  background-color: #fff;
+  color: rgb(10, 102, 194);
+  border-radius: 0rem 0rem 0.6rem 0.6rem;
+}
+
+.see-all-btn:hover {
+  background-color: rgba(112, 181, 249, 0.15);
+  color: rgb(10, 102, 194);
+}
