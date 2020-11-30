@@ -43,7 +43,11 @@ function MainProfileBlock() {
   return (
     <>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
-      <Container>
+      <Container
+        onClick={() => {
+          isMoreClicked && setIsMoreClicked(false);
+        }}
+      >
         <Card id="profile-main" className="mt-5">
           <div className="profile-background-container">
             <div
