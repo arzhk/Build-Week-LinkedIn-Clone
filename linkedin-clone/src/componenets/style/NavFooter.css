@@ -15,6 +15,7 @@ div.nav-link {
   align-items: center;
   width: fit-content;
   height: 100%;
+  margin: 0px 15px;
 }
 .bg-light {
   background-color: #ffffff !important;
@@ -41,6 +42,7 @@ div.nav-link {
 a:hover {
   text-decoration: none;
 }
+
 #learning {
   padding: 0px 10px;
   border: 2px solid gray;
@@ -73,8 +75,27 @@ p {
 }
 #dropdown {
   border-right: 1px solid #d4d4d4;
+  padding-right: 10px;
 }
 /**********************END NAV BAR**********************/
+/*********************MODAL******************************/
+.modal {
+  overflow-y: hidden;
+  left: unset !important;
+  right: 0 !important;
+  top: 6%;
+  height: 100vh;
+  width: 25rem;
+  border-color: transparent;
+  padding-bottom: 30px;
+}
+.modal-open .modal {
+  overflow: hidden;
+}
+.modal-body {
+  padding-bottom: 30px;
+}
+
 /*********************  FOOTER  ***********************/
 #footer {
   position: absolute;

@@ -1,12 +1,17 @@
 import React from 'react';
-import { Navbar, Nav, Image, NavDropdown, Row, Button, Container, FormControl, Col } from "react-bootstrap";
+import { Navbar, Nav, Image, NavDropdown, Row, Button, Container, FormControl, Col, Modal, Card, ListGroup } from "react-bootstrap";
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faBriefcase, faCommentDots, faHome, faPlay, faTh, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faBriefcase, faCertificate, faChartBar, faChevronCircleDown, faCommentDots, faCompress, faHome, faInfo, faMoneyBill, faPlay, faTh, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import "./style/NavFooter.css"
 
 
 class NavBar extends React.Component {
+    state = {
+        show: false,
+    }
+    handleClose = () => this.setState({ show: false });
+    handleShow = () => this.setState({ show: true });
     render() {
         console.log(this.props)
         const { pathname } = this.props.location
@@ -91,12 +96,12 @@ class NavBar extends React.Component {
                                 </NavDropdown>
                             </div>
                             <Link>
-                                <div className={pathname === '/signOut' ? 'nav-link active' : 'nav-link'} id="work-modal">
+                                <div className={pathname === '/signOut' ? 'nav-link active' : 'nav-link'} id="work-modal" onClick={this.handleShow}>
                                     <FontAwesomeIcon icon={faTh} size="lg" />
                                     <small>Work</small></div>
                             </Link>
                             <Link to="/learning">
-                                <div className={pathname === '/learning' ? 'nav-link active' : 'nav-link'}>
+                                <div className={pathname === '/learning' ? 'nav-link active p-2' : 'nav-link p-2'}>
                                     <div id="learning" ><FontAwesomeIcon icon={faPlay} size="sm" /></div>
                                     <small>Learning</small></div>
                             </Link>
@@ -104,6 +109,50 @@ class NavBar extends React.Component {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            <Modal show={this.state.show} onHide={this.handleClose} className="modal-dialog-scrollable">
+                <Modal.Body>
+                    <Card style={{ width: '20rem' }}>
+                        <Card.Header>Visit More LinkedIn Products</Card.Header>
+                        <Card.Body>
+                            <Row sm={4}>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faChartBar} size="2x" /></Button>
+                                </Col>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faCertificate} size="2x" /></Button>
+                                </Col>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faChevronCircleDown} size="2x" /></Button>
+                                </Col>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faCompress} size="2x" /></Button>
+                                </Col>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faUserFriends} size="2x" /></Button>
+                                </Col>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faInfo} size="2x" /></Button>
+                                </Col>
+                                <Col>
+                                    <Button className="mt-2 btn-light"><FontAwesomeIcon icon={faMoneyBill} size="2x" /></Button>
+                                </Col>
+                            </Row>
+                        </Card.Body>
+                    </Card>
+                    <Card style={{ width: '20rem', marginTop: '20px' }}>
+                        <Card.Header>LinkedIn Business Services</Card.Header>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item>Talent Solutions</ListGroup.Item>
+                            <ListGroup.Item>Sales Solution</ListGroup.Item>
+                            <ListGroup.Item>Post a job fro free</ListGroup.Item>
+                            <ListGroup.Item>Marketing Solutions</ListGroup.Item>
+                            <ListGroup.Item>Learning Solutions</ListGroup.Item>
+                        </ListGroup>
+                        <Card.Footer> Create a Company Page +</Card.Footer>
+                    </Card>
+                </Modal.Body>
+            </Modal>
         </div>;
     }
 }

@@ -3,7 +3,7 @@ import { Col, Container, Row, Image, Dropdown, Button, InputGroup } from 'react-
 import { Link, withRouter } from 'react-router-dom';
 import "./style/NavFooter.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faBriefcase, faCommentDots, faHome, faPlay, faQuestionCircle, faTh, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 class Footer extends React.Component {
 
     render() {
@@ -13,7 +13,7 @@ class Footer extends React.Component {
                 <Container>
                     <hr />
                     <Image src="https://www.logo.wine/a/logo/LinkedIn/LinkedIn-Logo.wine.svg" height="60" />
-                    <Row md={5} sm={2}>
+                    <Row md={5} sm={2} className="justify-content-between">
                         <Col>
                             <ul>
                                 <Link to="/">
@@ -50,7 +50,7 @@ class Footer extends React.Component {
                                 </Link>
                             </ul>
                         </Col>
-                        <Col>
+                        <Col md={2}>
                             <ul>
                                 <Link to="/">
                                     <div>Accessibility</div>
@@ -73,7 +73,7 @@ class Footer extends React.Component {
                             </ul>
 
                         </Col>
-                        <Col>
+                        <Col md={2}>
                             <ul>
                                 <Link to="/">
                                     <div>Talent Solutions</div>
@@ -95,19 +95,27 @@ class Footer extends React.Component {
                                 </Link>
                             </ul>
                         </Col>
-                        <Col>
+                        <Col md={3}>
                             <ul>
-                                <FontAwesomeIcon icon={faQuestionCircle} size="2x" />
-                                <Link to="/">
-                                    <div> Questions?</div>
-                                </Link>
-                                <small>Visit our Help Center</small>
+                                <Row>
+                                    <FontAwesomeIcon icon={faQuestionCircle} size="2x" />
+                                    <div className="ml-3">
+                                        <Link to="/">
+                                            <div> Questions?</div>
+                                        </Link>
+                                        <small>Visit our Help Center</small>
+                                    </div>
+                                </Row>
                             </ul>
                             <ul>
-                                <Link to="/">
-                                    <div>Manage your account and privacy</div>
-                                </Link>
-                                <small>Go to your Settings</small>
+                                <Row>
+                                    <FontAwesomeIcon icon={faCog} size="2x" />
+                                    <div className="ml-3">
+                                        <Link to="/">
+                                            <div>Manage your account and privacy</div>
+                                        </Link>
+                                        <small>Go to your Settings</small></div>
+                                </Row>
                             </ul>
                         </Col>
                         <Col>
