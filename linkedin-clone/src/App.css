@@ -329,7 +329,7 @@ Body {
   padding: 20px;
 }
 
-#interests-main-container .skills-img-placeholder {
+.skills-img-placeholder {
   height: 32px;
   width: 32px;
   background-color: rgb(243, 242, 239);
