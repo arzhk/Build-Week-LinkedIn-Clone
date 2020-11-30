@@ -1,0 +1,85 @@
+/********************NAV BAR*****************************/
+body {
+  background-color: rgb(230, 230, 245);
+  min-height: 100vh;
+}
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+div.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+}
+.bg-light {
+  background-color: #ffffff !important;
+}
+.navbar {
+  padding: 0;
+}
+@media (max-width: 992px) {
+  div.nav-link small {
+    display: none;
+  }
+}
+.navbar-nav > a div.nav-link.active {
+  border-bottom: 3px solid black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+#learning {
+  padding: 0px 10px;
+  border: 2px solid gray;
+  background-image: url(https://us.123rf.com/450wm/rastudio/rastudio1603/rastudio160304668/53723820-open-book-line-icon-for-web-mobile-and-infographics-vector-dark-grey-icon-isolated-on-white-backgrou.jpg?ver=6);
+  background-size: 80px;
+  background-position: center;
+}
+.dropdown-item img {
+  height: 60px;
+  width: 60px;
+}
+nav div img {
+  margin-bottom: -10px;
+  margin-left: 10px;
+  height: 24px;
+}
+#logo {
+  height: 34px;
+  margin: 10px;
+}
+.dropdown-item div {
+  padding: 0;
+  text-align: left;
+}
+.dropdown-item:active {
+  background-color: initial;
+}
+p {
+  margin: 0px;
+}
+/**********************END NAV BAR**********************/
+/*********************  FOOTER  ***********************/
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: small;
+}
+#footer a {
+  color: gray;
+}
+#footer a:active,
+#footer a:focus {
+  color: rgb(0, 14, 207);
+  text-decoration: underline;
+}
+#footer a:hover {
+  color: rgb(75, 75, 75);
+}
