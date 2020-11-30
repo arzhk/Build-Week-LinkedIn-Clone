@@ -44,6 +44,7 @@ function MainProfileBlock() {
     <>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
       <Container
+        className="py-5"
         onClick={() => {
           isMoreClicked && setIsMoreClicked(false);
         }}
