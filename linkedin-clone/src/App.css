@@ -257,3 +257,63 @@ Body {
   background-color: #fff;
   padding: 24px;
 }
+
+/* Yazid piece styling */
+
+.imgPlace {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(15, 86, 192);
+}
+.imgPlace2 {
+  height: 50px;
+  width: 50px;
+  background-color: green;
+}
+.App {
+  text-align: start;
+  background-color: #f0f0f0;
+}
+.experience-contain {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0.5px 0.5px #888888;
+}
+.education-contain {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0.5px 0.5px #888888;
+}
+.skills-contain {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0.5px 0.5px #888888;
+}
+.interests-contain {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0.5px 0.5px #888888;
+}
+.list-group-item-light {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.list-group-item {
+  border: none !important;
+  background-color: transparent !important;
+}
+.fa-pen:hover {
+  color: gray;
+}
+
+.fa-pen {
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 0.15s ease-in-out, transform 0.25s ease-in-out;
+}
+
+.list-group-item-light:hover .fa-pen {
+  opacity: 1;
+  transform: scale(1.1);
+}
