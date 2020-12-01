@@ -34,7 +34,7 @@ class SideBar extends React.Component {
   };
 
   componentDidUpdate = () => {
-    if (this.state.connectionsArray.length < 8) {
+    if (this.state.connectionsArray.length < 9) {
       this.getData();
     }
   };

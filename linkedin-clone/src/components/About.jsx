@@ -1,10 +1,11 @@
 import React from "react";
-import { Alert, Spinner } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
+import AboutLoader from "./AboutLoader";
 
 function About({ aboutData, isFinishedLoading }) {
   return (
     <div id="about-container">
-      <h4 className="font-weight-normal">About</h4>
+      <h4 className="font-weight-normal d-block">About</h4>
       {isFinishedLoading ? (
         aboutData.length !== 0 ? (
           <p className="mb-0">{aboutData}</p>
@@ -14,12 +15,7 @@ function About({ aboutData, isFinishedLoading }) {
           </Alert>
         )
       ) : (
-        <div className="pt-3">
-          <h5 className="d-inline-block mr-2">Loading...</h5>
-          <Spinner animation="border" variant="primary">
-            <span className="sr-only">Loading...</span>
-          </Spinner>
-        </div>
+        <AboutLoader />
       )}
     </div>
   );

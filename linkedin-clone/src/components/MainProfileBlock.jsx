@@ -6,6 +6,7 @@ import Highlights from "./Highlights";
 import LatestEducation from "./LatestEducation";
 import LatestExperience from "./LatestExperience";
 import About from "./About";
+import MyLoader from "./ContentLoader";
 
 function MainProfileBlock(props) {
   const [isMoreClicked, setIsMoreClicked] = React.useState(false);
@@ -29,7 +30,7 @@ function MainProfileBlock(props) {
       setUserData(data);
       setTimeout(() => {
         setIsFinishedLoading(true);
-      }, 300);
+      }, 1000);
     } catch (er) {
       console.log(er);
     }
@@ -49,17 +50,16 @@ function MainProfileBlock(props) {
     fetchUserDataHandler(currentUserID);
 
     setIsFinishedLoading(true);
-
-    if (fetchIsComplete) {
+    /*     if (fetchIsComplete) {
       userNameHandler(userData);
-    }
+    } */
   }, []);
-
+  /*
   React.useEffect(() => {
     if (fetchIsComplete) {
       userNameHandler(userData);
     }
-  }, [fetchIsComplete]);
+  }, [fetchIsComplete]); */
 
   React.useEffect(() => {
     setIsFinishedLoading(false);
@@ -157,12 +157,7 @@ function MainProfileBlock(props) {
                 </div>
               </>
             ) : (
-              <div className="pt-3">
-                <h5 className="d-inline-block mr-2">Loading...</h5>
-                <Spinner animation="border" variant="primary">
-                  <span className="sr-only">Loading...</span>
-                </Spinner>
-              </div>
+              <MyLoader />
             )}
           </Card.Body>
         </Card>

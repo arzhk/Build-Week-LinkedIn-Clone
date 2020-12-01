@@ -35,9 +35,9 @@ import "./style/NavFooter.css";
 class NavBar extends React.Component {
   state = {
     show: false,
-    name: this.props.name,
-    jobTitle: this.props.jobtitle,
-    userID: this.props.userID,
+    name: "Aaron Rizhik",
+    jobTitle: "React Developer",
+    userID: "5fc4c48fed266800170ea3d8",
   };
   handleClose = () => this.setState({ show: false });
   handleShow = () => this.setState({ show: true });
