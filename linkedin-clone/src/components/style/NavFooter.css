@@ -1,3 +1,13 @@
+/************************EXERIENCE******************************/
+#editModal .modal-content {
+  padding: 20px;
+}
+#editModal .modal-body {
+  height: 50vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 /********************NAV BAR*****************************/
 
 #navbar {
@@ -118,7 +128,7 @@
 }
 /**********************END NAV BAR**********************/
 /*********************MODAL******************************/
-.modal {
+.modal-dialog-scrollable {
   overflow-y: hidden;
   left: unset !important;
   right: 0 !important;
@@ -128,10 +138,10 @@
   border-color: transparent;
   padding-bottom: 30px;
 }
-.modal-open .modal {
+#navmodal .modal-open .modal {
   overflow: hidden;
 }
-.modal-body {
+#navmodal .modal-body {
   padding-bottom: 30px;
   height: 100%;
 }

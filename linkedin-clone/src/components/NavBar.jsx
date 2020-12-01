@@ -112,7 +112,7 @@ class NavBar extends React.Component {
                 </Container>
             </Navbar>
 
-            <Modal show={this.state.show} onHide={this.handleClose} className="modal-dialog-scrollable">
+            <Modal show={this.state.show} onHide={this.handleClose} id="navmodal" className="modal-dialog-scrollable">
                 <Modal.Body>
                     <Card style={{ width: '20rem' }}>
                         <Card.Header>Visit More LinkedIn Products</Card.Header>
