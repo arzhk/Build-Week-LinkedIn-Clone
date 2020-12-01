@@ -34,7 +34,7 @@ class SideBar extends React.Component {
   };
 
   componentDidUpdate = () => {
-    if (this.state.connectionsArray.length < 9) {
+    if (this.state.connectionsArray.length < 8) {
       this.getData();
     }
   };
@@ -49,7 +49,7 @@ class SideBar extends React.Component {
               {this.state.connectionsArray.splice(0, 6).map((people, index) => (
                 <div key={index} className="d-flex justify-content-between mb-2 py-3 brdr-bottom">
                   <div className="d-flex">
-                    <Link to="/" className="d-flex myLink">
+                    <Link to={"/" + `${people._id}`} className="d-flex myLink">
                       <img className="image mr-3" src={people.image} alt="user-img" />
                       <div className="d-flex flex-column">
                         <div className="name">
@@ -81,7 +81,7 @@ class SideBar extends React.Component {
               {this.state.connectionsArray.splice(11, 5).map((people, index) => (
                 <div key={index} className="d-flex justify-content-between mb-2 pb-3 brdr-bottom">
                   <div className="d-flex">
-                    <Link to="/" className="d-flex myLink">
+                    <Link to={"/" + `${people._id}`} className="d-flex myLink">
                       <img className="image mr-3" src={people.image} alt="user-img" />
                       <div className="d-flex flex-column">
                         <div className="name">

@@ -28,6 +28,9 @@ function App() {
       <Route path="/:id">
         <MainContent currentUserNameHandler={currentUserNameHandler} />
       </Route>
+      <Route path="/" exact>
+        <MainContent currentUserNameHandler={currentUserNameHandler} />
+      </Route>
       <Route path="/" component={Footer} />
     </Router>
   );

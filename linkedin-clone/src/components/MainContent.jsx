@@ -9,6 +9,10 @@ function MainContent(props) {
   let { id } = useParams();
   const [currentUserID, setCurrentUserID] = React.useState(id);
 
+  React.useEffect(() => {
+    setCurrentUserID(id);
+  }, [id]);
+
   return (
     <>
       <Container>
