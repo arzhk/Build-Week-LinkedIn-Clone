@@ -57,11 +57,11 @@ export default class Interests extends Component {
               </Col>
             </Row>
           </div>
-          <Row className="mt-4">
+          <Row className="mt-2">
             <Col xs={12} className="text-center">
-              <a href="#!" className="see-all-btn py-2 font-weight-bold text-center brdr-top">
+              <div className="see-all-btn py-2 font-weight-bold text-center brdr-top" style={{ cursor: "pointer" }}>
                 See All
-              </a>
+              </div>
             </Col>
           </Row>
         </div>

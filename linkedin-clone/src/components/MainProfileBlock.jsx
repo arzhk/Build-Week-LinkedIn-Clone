@@ -10,7 +10,6 @@ import MyLoader from "./ContentLoader";
 
 function MainProfileBlock(props) {
   const [isMoreClicked, setIsMoreClicked] = React.useState(false);
-  const [isContactInfoOpen, setIsContactInfoOpen] = React.useState(false);
   const [userData, setUserData] = React.useState({});
   const [currentUserID, setCurrentUserID] = React.useState(props.userID);
   const { userNameHandler } = props;
@@ -40,26 +39,13 @@ function MainProfileBlock(props) {
     setIsMoreClicked(!isMoreClicked);
   };
 
-  const contactInfoHandler = () => {
-    setIsContactInfoOpen(!isContactInfoOpen);
-  };
-
   React.useEffect(() => {
     setCurrentUserID(props.userID);
 
     fetchUserDataHandler(currentUserID);
 
     setIsFinishedLoading(true);
-    /*     if (fetchIsComplete) {
-      userNameHandler(userData);
-    } */
   }, []);
-  /*
-  React.useEffect(() => {
-    if (fetchIsComplete) {
-      userNameHandler(userData);
-    }
-  }, [fetchIsComplete]); */
 
   React.useEffect(() => {
     setIsFinishedLoading(false);
@@ -69,7 +55,6 @@ function MainProfileBlock(props) {
 
   return (
     <>
-      {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
       <div
         className="pt-5 pb-3"
         onClick={() => {
@@ -101,7 +86,7 @@ function MainProfileBlock(props) {
                   <h4 className="font-weight-light">{userData.title}</h4>
                   <Card.Text>
                     {userData.area} - 500+ connections -{" "}
-                    <a href="#!" className="font-weight-bold" onClick={contactInfoHandler}>
+                    <a href="#!" className="font-weight-bold" onClick={props.contactInfoHandler}>
                       Contact info
                     </a>
                   </Card.Text>

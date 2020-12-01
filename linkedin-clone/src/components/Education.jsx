@@ -16,7 +16,7 @@ export default class Education extends Component {
           <ListGroup>
             <ListGroup.Item
               variant="light"
-              className="d-flex no-border align-items-center justify-content-between mb-0"
+              className="d-flex no-border align-items-center justify-content-between mb-0 brdr-bottom"
             >
               <div className="d-flex align-items-start">
                 <div className="imgPlace mr-4"></div>
@@ -30,7 +30,7 @@ export default class Education extends Component {
             </ListGroup.Item>
             <ListGroup.Item
               variant="light"
-              className="d-flex no-border align-items-center justify-content-between mb-0"
+              className="d-flex no-border align-items-center justify-content-between mb-0 brdr-bottom"
             >
               <div className="d-flex align-items-start">
                 <div className="imgPlace mr-4"></div>

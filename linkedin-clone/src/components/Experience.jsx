@@ -124,11 +124,11 @@ class Experience extends Component {
     return (
       <div>
         <div id="experience-main-container" className="experience-contain mb-0">
-          <div className="d-flex align-items-center justify-content-between">
+          <div className="d-flex align-items-center justify-content-between mr-2">
             <h3 className="font-weight-normal">Experience</h3>
-            <p onClick={() => this.addModalToggleHandler()}>
-              <i className="fas fa-plus mr-3 "></i>
-            </p>
+            <div onClick={() => this.addModalToggleHandler()} style={{ cursor: "pointer" }}>
+              <i className="fas fa-plus"></i>
+            </div>
           </div>
           <ListGroup>
             {this.state.experiences.length > 0 &&

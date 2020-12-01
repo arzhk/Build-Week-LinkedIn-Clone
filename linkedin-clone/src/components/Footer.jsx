@@ -122,7 +122,7 @@ class Footer extends React.Component {
               <Col>
                 <ul>
                   <small>Select Language</small>
-                  <select class="custom-select" defaultValue="0">
+                  <select className="custom-select" defaultValue="0">
                     <option value="0">English (English)</option>
                     <option value="1">Italian</option>
                     <option value="2">French</option>

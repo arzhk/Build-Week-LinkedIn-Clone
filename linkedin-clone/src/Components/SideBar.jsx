@@ -5,9 +5,14 @@ import "./SideBar.css";
 class SideBar extends React.Component {
   state = {
     connectionsArray: [],
+    connectionsArraySpliced: [],
+    fetchConnectionsIndex: 0,
+    peopleYouMayKnow: [],
+    peopleYouMayKnowSpliced: [],
+    fetchPeopleYouKnowIndex: 0,
   };
 
-  getData = () => {
+  getData = (nameofarray, nameofsplicedarray) => {
     fetch("https://striveschool-api.herokuapp.com/api/profile/ ", {
       method: "GET",
       headers: new Headers({
@@ -21,7 +26,8 @@ class SideBar extends React.Component {
       })
       .then((data) => {
         this.setState({
-          connectionsArray: data,
+          [nameofarray]: data,
+          [nameofsplicedarray]: data.splice(0, 6),
         });
       })
       .catch((err) => {
@@ -30,13 +36,36 @@ class SideBar extends React.Component {
   };
 
   componentDidMount = () => {
-    this.getData();
+    this.getData("connectionsArray", "connectionsArraySpliced");
+    this.getData("peopleYouMayKnow", "peopleYouMayKnowSpliced");
   };
 
-  componentDidUpdate = () => {
-    if (this.state.connectionsArray.length < 9) {
-      this.getData();
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.state.fetchConnectionsIndex !== prevState.fetchConnectionsIndex) {
+      if (this.state.fetchConnectionsIndex > this.state.connectionsArray.length) {
+        this.setState({ fetchConnectionsIndex: 0 });
+      }
     }
+
+    if (this.state.fetchPeopleYouKnowIndex !== prevState.fetchPeopleYouKnowIndex) {
+      if (this.state.fetchPeopleYouKnowIndex > this.state.peopleYouMayKnow.length) {
+        this.setState({ fetchPeopleYouKnowIndex: 0 });
+      }
+    }
+  };
+
+  showMoreConnectionsHandler = (valueA) => {
+    this.setState({ fetchConnectionsIndex: valueA + 6 });
+    this.setState({
+      connectionsArraySpliced: [...this.state.connectionsArray].splice(this.state.fetchConnectionsIndex, 6),
+    });
+  };
+
+  showMorePeopleYouKnowHandler = (valueA) => {
+    this.setState({ fetchPeopleYouKnowIndex: valueA + 6 });
+    this.setState({
+      peopleYouMayKnowSpliced: [...this.state.peopleYouMayKnow].splice(this.state.fetchPeopleYouKnowIndex, 6),
+    });
   };
 
   render() {
@@ -46,10 +75,10 @@ class SideBar extends React.Component {
           <div className="side mb-3">
             <div className="pt-3 pb-1 px-4">
               <h4 className="font-weight-normal mb-2">People also viewed</h4>
-              {this.state.connectionsArray.splice(0, 6).map((people, index) => (
+              {this.state.connectionsArraySpliced.map((people, index) => (
                 <div key={index} className="d-flex justify-content-between mb-2 py-3 brdr-bottom">
                   <div className="d-flex">
-                    <Link to={"/" + `${people._id}`} className="d-flex myLink">
+                    <Link to={`/${people._id}`} className="d-flex myLink">
                       <img className="image mr-3" src={people.image} alt="user-img" />
                       <div className="d-flex flex-column">
                         <div className="name">
@@ -69,19 +98,23 @@ class SideBar extends React.Component {
               ))}
             </div>
             <div className="text-center">
-              <Link to="/" className="see-all-btn font-weight-bold d-block py-2 brdr-top">
+              <div
+                className="see-all-btn font-weight-bold d-block py-2 brdr-top"
+                onClick={() => this.showMoreConnectionsHandler(this.state.fetchConnectionsIndex)}
+                style={{ cursor: "pointer" }}
+              >
                 Show More
-              </Link>
+              </div>
             </div>
           </div>
 
           <div className="side w-100 mb-3">
             <div className="pt-3 pb-1 px-4">
               <h4 className="font-weight-normal mb-4">People you may know</h4>
-              {this.state.connectionsArray.splice(11, 5).map((people, index) => (
+              {this.state.peopleYouMayKnowSpliced.map((people, index) => (
                 <div key={index} className="d-flex justify-content-between mb-2 pb-3 brdr-bottom">
                   <div className="d-flex">
-                    <Link to={"/" + `${people._id}`} className="d-flex myLink">
+                    <Link to={`/${people._id}`} className="d-flex myLink">
                       <img className="image mr-3" src={people.image} alt="user-img" />
                       <div className="d-flex flex-column">
                         <div className="name">
@@ -101,9 +134,14 @@ class SideBar extends React.Component {
               ))}
             </div>
             <div className="text-center">
-              <Link to="/" className="see-all-btn font-weight-bold d-block py-2 brdr-top">
+              <div
+                to="/"
+                className="see-all-btn font-weight-bold d-block py-2 brdr-top"
+                onClick={() => this.showMorePeopleYouKnowHandler(this.state.fetchPeopleYouKnowIndex)}
+                style={{ cursor: "pointer" }}
+              >
                 Show More
-              </Link>
+              </div>
             </div>
           </div>
 
@@ -152,9 +190,9 @@ class SideBar extends React.Component {
               </div>
             </div>
             <div className="text-center">
-              <Link to="/" className="see-all-btn font-weight-bold d-block py-2 brdr-top">
+              <div className="see-all-btn font-weight-bold d-block py-2 brdr-top" style={{ cursor: "pointer" }}>
                 Show more on LinkedIn Learning
-              </Link>
+              </div>
             </div>
           </div>
         </div>

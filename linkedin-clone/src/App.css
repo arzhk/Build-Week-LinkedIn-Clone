@@ -155,7 +155,7 @@ Body {
 }
 
 #contact-info-popup {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   top: 0;
   right: 0;
@@ -176,8 +176,9 @@ Body {
   width: 400px;
   margin-top: 10%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px 0px;
-  position: absolute;
+  position: fixed;
   z-index: 999;
+  top: 0;
 }
 
 .contact-info-wrapper i {
@@ -294,7 +295,6 @@ Body {
 .list-group-item-light {
   border: none !important;
   background-color: transparent !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
   margin-bottom: 10px;
   padding: 20px 10px;
   color: rgba(0, 0, 0, 0.9);
@@ -303,7 +303,6 @@ Body {
 .list-group-item {
   border: none !important;
   background-color: transparent !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
 }
 .fa-pen:hover {
   color: gray;
@@ -345,7 +344,12 @@ Body {
 }
 
 .brdr-bottom {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.brdr-bottom:last-of-type {
+  border: none !important;
+  margin-bottom: 0 !important;
 }
 
 .see-all-btn {
