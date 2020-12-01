@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListGroup } from 'react-bootstrap';
 
 const ExperienceItem = (props) => {
 
@@ -15,9 +16,5 @@ const ExperienceItem = (props) => {
         <a onclick={this.props.editModal}><i className="fas fa-pen "></i></a>
     </ListGroup.Item>;
 }
-
-ExperienceItem.propTypes = propTypes;
-ExperienceItem.defaultProps = defaultProps;
-
 
 export default ExperienceItem;
