@@ -5,6 +5,7 @@ import MainProfileBlock from "./components/MainProfileBlock";
 import NavBar from "./componenets/NavBar";
 import Footer from "./componenets/Footer";
 import Main from "./components/Main";
+import SideBar from "./Components/SideBar";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Route path="/" component={NavBar} />
       <Route path="/" component={MainProfileBlock} />
+      <Route path="/" component={SideBar} />
       <Route path="/" component={Main} />
       <Route path="/" component={Footer} />
     </Router>
