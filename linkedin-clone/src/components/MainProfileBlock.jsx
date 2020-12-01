@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Card, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "../assets/profilepicture.PNG";
 import ContactInfoPopup from "./ContactInfoPopup";
 import Highlights from "./Highlights";
@@ -7,14 +7,17 @@ import LatestEducation from "./LatestEducation";
 import LatestExperience from "./LatestExperience";
 import About from "./About";
 
-function MainProfileBlock() {
+function MainProfileBlock(props) {
   const [isMoreClicked, setIsMoreClicked] = React.useState(false);
   const [isContactInfoOpen, setIsContactInfoOpen] = React.useState(false);
   const [userData, setUserData] = React.useState({});
+  const currentUserID = props.userID;
+  const { userNameHandler } = props;
+  const [fetchIsComplete, setFetchIsComplete] = React.useState(false);
 
-  const fetchUserDataHandler = async () => {
+  const fetchUserDataHandler = async (id) => {
     try {
-      let response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/me/`, {
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}`, {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
@@ -22,6 +25,7 @@ function MainProfileBlock() {
       });
       let data = await response.json();
       setUserData(data);
+      setFetchIsComplete(true);
     } catch (er) {
       console.log(er);
     }
@@ -36,13 +40,22 @@ function MainProfileBlock() {
   };
 
   React.useEffect(() => {
-    fetchUserDataHandler();
+    fetchUserDataHandler(currentUserID);
+    if (fetchIsComplete) {
+      userNameHandler(userData);
+    }
   }, []);
+
+  React.useEffect(() => {
+    if (fetchIsComplete) {
+      userNameHandler(userData);
+    }
+  }, [fetchIsComplete]);
 
   return (
     <>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
-      <Container
+      <div
         className="pt-5 pb-3"
         onClick={() => {
           isMoreClicked && setIsMoreClicked(false);
@@ -96,22 +109,22 @@ function MainProfileBlock() {
                     <ul>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-paper-plane mr-4"></i>Share profile in a message
+                          <i className="fas fa-paper-plane mr-4"></i>Share profile in a message
                         </a>
                       </li>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-download mr-4"></i>Save to PDF
+                          <i className="fas fa-download mr-4"></i>Save to PDF
                         </a>
                       </li>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-plus mr-4"></i>Follow
+                          <i className="fas fa-plus mr-4"></i>Follow
                         </a>
                       </li>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-flag mr-4"></i>Report/Block
+                          <i className="fas fa-flag mr-4"></i>Report/Block
                         </a>
                       </li>
                     </ul>
@@ -129,7 +142,7 @@ function MainProfileBlock() {
         </Card>
         <Highlights />
         <About aboutData={userData.bio} />
-      </Container>
+      </div>
     </>
   );
 }

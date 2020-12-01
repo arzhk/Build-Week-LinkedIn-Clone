@@ -5,7 +5,8 @@ Body {
 }
 
 .container {
-  min-width: 800px;
+  min-width: 980px;
+  max-width: 1400px;
 }
 
 /* Main Profile Block Styling */
@@ -341,6 +342,10 @@ Body {
 
 .brdr-top {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.brdr-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .see-all-btn {

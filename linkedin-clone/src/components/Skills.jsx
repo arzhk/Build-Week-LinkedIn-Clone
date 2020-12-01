@@ -3,7 +3,7 @@ import { Container, ListGroup } from "react-bootstrap";
 export default class Skills extends Component {
   render() {
     return (
-      <Container>
+      <div>
         <div id="skills-main-container" className="skills-contain mb-3">
           <div className="py-3 px-4">
             <h4 className="font-weight-normal">Skills & endorsments</h4>
@@ -41,7 +41,7 @@ export default class Skills extends Component {
             Show more
           </a>
         </div>
-      </Container>
+      </div>
     );
   }
 }

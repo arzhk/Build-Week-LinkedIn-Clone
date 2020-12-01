@@ -4,7 +4,7 @@ import { Container, ListGroup } from "react-bootstrap";
 class Experince extends Component {
   render() {
     return (
-      <Container>
+      <div>
         <div id="experience-main-container" className="experience-contain mb-0">
           <div className="d-flex align-items-center justify-content-between">
             <h4 className="font-weight-normal">Experience</h4>
@@ -64,7 +64,7 @@ class Experince extends Component {
             </ListGroup.Item>
           </ListGroup>
         </div>
-      </Container>
+      </div>
     );
   }
 }

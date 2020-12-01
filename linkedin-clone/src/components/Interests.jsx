@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 export default class Interests extends Component {
   render() {
     return (
-      <Container>
+      <div>
         <div id="interests-main-container" className="interests-contain mb-3">
           <div className="py-3 px-4">
             <h4 className="font-weight-normal mb-3">Interests</h4>
@@ -65,7 +65,7 @@ export default class Interests extends Component {
             </Col>
           </Row>
         </div>
-      </Container>
+      </div>
     );
   }
 }
