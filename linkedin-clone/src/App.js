@@ -5,7 +5,7 @@ import MainProfileBlock from "./components/MainProfileBlock";
 import NavBar from "./componenets/NavBar";
 import Footer from "./componenets/Footer";
 import Main from "./components/Main";
-import SideBar from "./Components/SideBar";
+import SideBar from "./components/SideBar";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
 function App() {
