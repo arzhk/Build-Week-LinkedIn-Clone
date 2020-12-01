@@ -61,12 +61,14 @@ Body {
   border: 2px solid rgb(7, 91, 175);
 }
 
-#profile-main .btn-outline-primary {
+#profile-main .btn-outline-primary,
+#navbar .btn-outline-primary {
   border: 1px solid rgb(10, 102, 194);
   color: rgb(7, 91, 175);
 }
 
-#profile-main .btn-outline-primary:hover {
+#profile-main .btn-outline-primary:hover,
+#navbar .btn-outline-primary:hover {
   background-color: rgba(10, 102, 194, 0.13);
   color: #007bff;
   border: 2px solid rgb(10, 102, 194);

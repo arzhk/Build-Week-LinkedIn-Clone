@@ -6,8 +6,12 @@
   width: 100%;
   z-index: 99999;
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05);
+  font-size: smaller;
 }
-div.nav-link {
+#navbar div small {
+  white-space: nowrap;
+}
+#navbar div.nav-link {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,10 +20,10 @@ div.nav-link {
   height: 100%;
   margin: 0px 15px;
 }
-.bg-light {
+#navbar .bg-light {
   background-color: #ffffff !important;
 }
-.navbar {
+#navbar .navbar {
   padding: 0;
 }
 @media (max-width: 992px) {
@@ -27,18 +31,19 @@ div.nav-link {
     display: none;
   }
 }
-.navbar-nav > a div.nav-link.active {
+#navbar .navbar-nav > a div.nav-link.active {
   border-bottom: 3px solid black;
 }
-.nav-link {
+#navbar .nav-link {
   color: #535353 !important;
 }
-.nav-link:active,
-.nav-link:focus,
-.nav-link:hover {
-  color: #141414 !important;
+#navbar .nav-link:active,
+#navbar .nav-link:focus,
+#navbar .nav-link:hover {
+  color: #000000 !important;
 }
-a:hover {
+#navbar a:hover,
+#footer a:hover {
   text-decoration: none;
 }
 
@@ -49,32 +54,67 @@ a:hover {
   background-size: 80px;
   background-position: center;
 }
-.dropdown-item img {
-  height: 60px;
-  width: 60px;
+#navbar .dropdown-item img {
+  height: 50px;
+  padding: 3px;
 }
-nav div img {
+#navbar h6 {
+  padding: 0;
+  margin: 0;
+  font-size: smaller;
+}
+#navbar .dropdown-item p {
+  font-size: 10px;
+}
+#navbar .dropdown-item a > div > p:hover {
+  text-decoration: underline;
+}
+#navbar .dropdown-item div {
+  flex-direction: row;
+}
+#navbar nav div img {
   margin-bottom: -10px;
   margin-left: 10px;
   height: 24px;
 }
-#logo {
+#navbar #logo {
   height: 34px;
   margin: 10px;
 }
-.dropdown-item div {
-  padding: 0;
+#navbar .dropdown-item {
+  padding: 5px;
   text-align: left;
 }
-.dropdown-item:active {
+#navbar .dropdown-item .nav-link {
+  margin: 0;
+  padding: 0;
+}
+#navbar .dropdown-item:active {
   background-color: initial;
 }
-p {
+#navbar p,
+#footer p {
   margin: 0px;
 }
-#dropdown {
-  border-right: 1px solid #d4d4d4;
+#navbar .dropdown-menu {
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.125);
+  border: none;
+  padding: 3px;
+  min-width: 200px;
+}
+#navbar #dropdown {
+  border-right: 1px solid #e6e4e4;
   padding-right: 10px;
+  font-size: small;
+  margin-top: 5px;
+}
+#navbar .btn-outline-primary {
+  width: 100%;
+  padding: 0;
+  margin: 15px 0px 0px;
+  font-size: small;
+  font-weight: 600;
+  padding-bottom: 3px;
 }
 /**********************END NAV BAR**********************/
 /*********************MODAL******************************/
@@ -82,8 +122,8 @@ p {
   overflow-y: hidden;
   left: unset !important;
   right: 0 !important;
-  top: 6%;
-  height: 100vh;
+  top: 6vh;
+  max-height: 100% !important;
   width: 25rem;
   border-color: transparent;
   padding-bottom: 30px;
@@ -93,6 +133,7 @@ p {
 }
 .modal-body {
   padding-bottom: 30px;
+  height: 100%;
 }
 
 /*********************  FOOTER  ***********************/
