@@ -6,7 +6,7 @@ import "./SideBar.css"
 
 class SideBar extends React.Component {
     state={
-        connectionsArray: []
+        connectionsArray: [],
     }
 
     
@@ -36,8 +36,6 @@ class SideBar extends React.Component {
     componentDidMount=() => {
         this.getData()
     }
-      
-
     render(){
         console.log("i set data in state so", this.state.connectionsArray[0])
         return(
@@ -63,10 +61,9 @@ class SideBar extends React.Component {
                                     </Link>
                                 </div>
                                 <button>
-                                    <img src="https://img.icons8.com/material-rounded/24/000000/filled-sent.png"/>
+                                    <i class="fas fa-paper-plane"></i>
                                 </button>
                             </div>
-                                
                         ))}
                     </Container>
 
@@ -90,7 +87,7 @@ class SideBar extends React.Component {
                                         </Link>
                                     </div>
                                     <button>
-                                        <img src="https://img.icons8.com/material-rounded/24/000000/filled-sent.png"/>
+                                        <i class="fas fa-user-plus" ></i>
                                     </button>
                                 </div>
                             ))}
