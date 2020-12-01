@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Container, ListGroup } from "react-bootstrap";
+import AddModal from "./AddModal";
+import EditModal from "./EditModal";
 import ExperienceItem from "./ExperienceItem";
 
 class Experience extends Component {
@@ -7,9 +9,9 @@ class Experience extends Component {
     editShow: false,
     addShow: false,
     experiences: [],
+    currentexperience: {},
   };
-  addModal = () => {};
-  editModal = () => {};
+
 
   getExperienceFetcher = async () => {
     try {
@@ -22,66 +24,126 @@ class Experience extends Component {
           }),
         }
       );
-      const result = await response.json();
       if (response.ok) {
+        const result = await response.json();
         this.setState({ experiences: result });
-        //console.log(result);
       } else {
+        console.log(response)
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   };
   componentDidMount = () => {
     this.getExperienceFetcher();
   };
-  editExperiencePut = (e) => {
-    let experiences = { ...this.state.experiences };
-    let currentId = e.currentTarget.id;
 
-    experiences[currentId] = e.currentTarget.value;
-
-    this.setState({ experiences: experiences });
-  };
-
-  addExperiencePost = async () => {
+  editExperiencePut = async (experiences) => {
+    this.setState({ editShow: false })
     try {
       const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/5fc4c5e0ed266800170ea3dc/experiences",
+        "https://striveschool-api.herokuapp.com/api/profile/5fc4c5e0ed266800170ea3dc/experiences/" + experiences._id,
         {
-          method: "POST",
-          body: JSON.stringify(this.state.experiences),
+          method: "PUT",
+          body: JSON.stringify(experiences),
           headers: new Headers({
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+            "Content-Type": "application/json",
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
           }),
         }
       );
-      const result = await response.json();
       if (response.ok) {
-        this.setState({ experiences: result });
+        console.log("ok")
+        this.getExperienceFetcher()
       } else {
+        console.log(response)
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   };
+
+  addExperiencePost = async (exp) => {
+    this.setState({ addShow: false })
+    try {
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/profile/5fc4c5e0ed266800170ea3dc/experiences",
+        {
+          method: "POST",
+          body: JSON.stringify(exp),
+          headers: new Headers({
+            "Content-Type": "application/json",
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+          }),
+        }
+      );
+      console.log(response)
+      if (response.ok) {
+        console.log("ok", response)
+        this.getExperienceFetcher()
+      } else {
+        console.log(response)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  };
+  deleteExperience = async (id) => {
+    this.setState({ editShow: false })
+    try {
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/profile/5fc4c5e0ed266800170ea3dc/experiences/" + id,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+          },
+        }
+      );
+      if (response.ok) {
+        console.log("ok")
+        this.getExperienceFetcher()
+      } else {
+        console.log(response)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  };
+
+
+  addModalToggleHandler = () => {
+    this.state.addShow ? this.setState({ addShow: false }) : this.setState({ addShow: true });
+  }
+  editModalToggleHandler = (e) => {
+
+    this.state.editShow ? this.setState({ editShow: false }) : this.setState({ editShow: true, currentexperience: e });
+  }
+
 
   render() {
     return (
       <Container>
         <div id="experience-main-container" className="experience-contain mb-0">
           <div className="d-flex align-items-center justify-content-between">
-            <h4 className="font-weight-normal">Experience</h4>
-            <a onClick={this.addModal}>
+            <h3 className="font-weight-normal">Experience</h3>
+            <p onClick={() => this.addModalToggleHandler()}>
               <i className="fas fa-plus mr-3 "></i>
-            </a>
+            </p>
           </div>
           <ListGroup>
             {this.state.experiences.length > 0 &&
-              this.state.experiences.map((exp) => (
-                <ExperienceItem experience={exp} editModal={this.editModal} />
+              this.state.experiences.map((exp, key) => (
+                <ExperienceItem key={key} experience={exp} editModal={this.editModalToggleHandler} />
               ))}
           </ListGroup>
         </div>
+        {this.state.addShow && <AddModal show={true} addExperiencePost={this.addExperiencePost} addModalToggleHandler={() => this.addModalToggleHandler()} />}
+        {this.state.editShow && <EditModal show={true} deleteExperience={this.deleteExperience} editModalToggleHandler={() => this.editModalToggleHandler()} experience={this.state.currentexperience} editExperiencePut={this.editExperiencePut} />}
+
       </Container>
     );
   }
 }
+
+
 export default Experience;

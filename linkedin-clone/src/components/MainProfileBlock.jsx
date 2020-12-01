@@ -96,22 +96,22 @@ function MainProfileBlock() {
                     <ul>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-paper-plane mr-4"></i>Share profile in a message
+                          <i className="fas fa-paper-plane mr-4"></i>Share profile in a message
                         </a>
                       </li>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-download mr-4"></i>Save to PDF
+                          <i className="fas fa-download mr-4"></i>Save to PDF
                         </a>
                       </li>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-plus mr-4"></i>Follow
+                          <i className="fas fa-plus mr-4"></i>Follow
                         </a>
                       </li>
                       <li>
                         <a href="#!">
-                          <i class="fas fa-flag mr-4"></i>Report/Block
+                          <i className="fas fa-flag mr-4"></i>Report/Block
                         </a>
                       </li>
                     </ul>

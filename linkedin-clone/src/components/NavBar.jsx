@@ -13,7 +13,6 @@ class NavBar extends React.Component {
     handleClose = () => this.setState({ show: false });
     handleShow = () => this.setState({ show: true });
     render() {
-        console.log(this.props)
         const { pathname } = this.props.location
         return <div id="navbar">
             <Navbar collapseOnSelect expand="md" bg="light" variant="light">
@@ -97,7 +96,7 @@ class NavBar extends React.Component {
                                     </div>
                                 </NavDropdown>
                             </div>
-                            <Link>
+                            <Link to="/">
                                 <div className={pathname === '/signOut' ? 'nav-link active' : 'nav-link'} id="work-modal" onClick={this.handleShow}>
                                     <FontAwesomeIcon icon={faTh} size="lg" />
                                     <small>Work</small></div>

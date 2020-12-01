@@ -1,10 +1,17 @@
 import React from 'react';
-import { Button, Form, Modal, Row } from 'react-bootstrap';
+import moment from 'moment';
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 
 class EditModal extends React.Component {
     state = {
-        show: true,
-        experience: {},
+        experience: {
+            role: '',
+            company: '',
+            area: '',
+            startDate: '',
+            endDate: '',
+            description: ''
+        },
     }
     componentDidMount = () => {
         this.setState({ experience: this.props.experience, show: this.props.show })
@@ -18,19 +25,22 @@ class EditModal extends React.Component {
     handelSave = () => {
         this.props.editExperiencePut(this.state.experience)
     }
-    handleClose = () => this.setState({ show: false })
+    componentDidUpdate = (prevProps) => {
+        (this.props.show !== prevProps.show) && this.setState({ show: this.props.show })
+    }
+
     render() {
-        return <Modal show={this.state.show} id="editModal" onHide={this.handleClose}>
-            <Modal.Header closeButton>
+        return <Modal show={this.props.show} id="editModal" onHide={() => this.props.editModalToggleHandler()}>
+            <Modal.Header closeButton onClick={() => this.props.editModalToggleHandler()}>
                 <Modal.Title>Edit Experience</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <Form.Group controlId="jobtitle">
+                    <Form.Group >
                         <Form.Label>Title*</Form.Label>
                         <Form.Control type="text" id="role" value={this.state.experience.role} onChange={this.handelChange} />
                     </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Group >
                         <Form.Label>Employment type</Form.Label>
                         <Form.Control as="select">
                             <option>-</option>
@@ -42,57 +52,70 @@ class EditModal extends React.Component {
                             <option>Internship</option>
                         </Form.Control>
                     </Form.Group>
-                    <a>Learn more</a>
-                    <Form.Group controlId="company">
+                    <Button variant="link">Learn more</Button>
+                    <Form.Group>
                         <Form.Label>Company*</Form.Label>
                         <Form.Control type="text" id="company" value={this.state.experience.company} onChange={this.handelChange} />
                     </Form.Group>
-                    <Form.Group controlId="Location">
+                    <Form.Group>
                         <Form.Label>Location</Form.Label>
                         <Form.Control type="text" id="area" value={this.state.experience.area} onChange={this.handelChange} />
                     </Form.Group>
-                    <Form.Group controlId="working">
+                    <Form.Group>
                         <Form.Check type="checkbox" label="I am currently working in this role" />
                     </Form.Group>
-                    <Form.Group controlId="date">
+                    <Form.Group>
                         <Form.Label>Start Date*</Form.Label>
-                        <Form.Control type="date" value={this.state.experience.startDate} />
+                        <Form.Control type="date" id="startDate" value={moment(this.state.experience.startDate).format("YYYY-MM-DD")} onChange={this.handelChange} />
                     </Form.Group>
-                    <Form.Group controlId="updateIndustry">
+                    <Form.Group>
+                        <Form.Label>Endart Date*</Form.Label>
+                        <Form.Control type="date" id="endDate" value={moment(this.state.experience.endDate).format("YYYY-MM-DD")} onChange={this.handelChange} />
+                    </Form.Group>
+                    <Form.Group>
                         <Form.Check type="checkbox" label="Update my industry" />
                     </Form.Group>
-                    <Form.Group controlId="updatedeadline">
+                    <Form.Group >
                         <Form.Check type="checkbox" label="Update my headline" />
                     </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Group >
                         <Form.Label>Description</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Control as="textarea" id="description" rows={3} value={this.state.experience.description} onChange={this.handelChange} />
                     </Form.Group>
                     <small>Media</small>
                     <small>Add or link to external documents, photos, sites, videos, and presentations.</small>
-                    <Row>
-                        <Button variant="primary" className="rounded-pill" >
-                            Upload
+                    <Row className=" justify-content-around">
+                        <Col>
+                            <Button variant="primary" className="w-100 rounded-pill">
+                                Upload
                          </Button>
-                        <Button variant="primary-outlined" className="rounded-pill" >
-                            Link
+                        </Col>
+                        <Col>
+                            <Button variant="outline-primary" className="w-100 rounded-pill">
+                                Link
                         </Button>
+                        </Col>
                     </Row>
-                    <a>Supported formats</a>
+                    <Button variant="link">Supported formats</Button>
                 </Form>
+
             </Modal.Body>
-            <Row id="share">
-                <Form.Group controlId="shareWithNetwork">
-                    <Form.Check type="checkbox" label="If enabled, your network may be informed of job changes, education changes, and work anniversaries. Learn how these are shared and when" />
-                </Form.Group>
-            </Row>
+
             <Modal.Footer>
-                <Button variant="outline-secondary" id={this.props.experience._id} className="rounded-pill" onClick={this.props.deleteExperienceDelete}>
-                    Delete
-          </Button>
-                <Button variant="primary" className="rounded-pill" onClick={this.handelSave}>
-                    Save
-          </Button>
+                <Row class="share">
+                    <Form.Group controlId="shareWithNetwork">
+                        <Form.Check type="checkbox" label="If enabled, your network may be informed of job changes, education changes, and work anniversaries. Learn how these are shared and when" />
+                    </Form.Group>
+                </Row>
+                <Col>
+                    <Button variant="outline-secondary" className="rounded-pill w-100" onClick={() => this.props.deleteExperience(this.props.experience._id)}>
+                        Delete </Button>
+                </Col>
+                <Col>
+                    <Button variant="primary" className="rounded-pill w-100" onClick={this.handelSave}>
+                        Save
+                </Button>
+                </Col>
             </Modal.Footer>
         </Modal>;
     }

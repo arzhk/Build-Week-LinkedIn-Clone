@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 import { ListGroup } from 'react-bootstrap';
 
 const ExperienceItem = (props) => {
@@ -9,11 +10,11 @@ const ExperienceItem = (props) => {
             <div className="d-flex flex-column">
                 <h5 className="mb-0 font-weight-normal">{props.experience.role}</h5>
                 <p className="mb-0 ">{props.experience.company}</p>
-                <p className="mb-0 font-weight-light">{props.experience.startDate}</p>
+                <p className="mb-0 font-weight-light"><Moment format="MMM YYYY">{props.experience.startDate}</Moment> - <Moment format="MMM YYYY" >{props.experience.endDate}</Moment></p>
                 <small className="font-weight-light">{props.experience.area}</small>
             </div>
         </div>
-        <a onclick={this.props.editModal}><i className="fas fa-pen "></i></a>
+        <p onClick={() => props.editModal(props.experience)}><i className="fas fa-pen "></i></p>
     </ListGroup.Item>;
 }
 
