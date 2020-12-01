@@ -60,17 +60,19 @@ class NavBar extends React.Component {
                                         <div>
                                             <Row>
                                                 <Image src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg" roundedCircle />
-                                                <h4>User Name</h4>
-                                                <p>Details about user</p>
+                                                <div>
+                                                    <h6>User Name</h6>
+                                                    <p>Details about user</p>
+                                                </div>
                                             </Row>
                                             <Link to="/myprofile">
-                                                <Button variant="outline-primary">
+                                                <Button variant="outline-primary" className="rounded-pill">
                                                     View Profile
                                                 </Button>
                                             </Link>
                                         </div>
                                         <NavDropdown.Divider />
-                                        <h4>Account</h4>
+                                        <h6>Account</h6>
                                         <Link to="/settings">
                                             <div className={pathname === '/settings' ? 'nav-link active' : 'nav-link'}><p>Setting & Privacy</p></div>
                                         </Link>
@@ -81,7 +83,7 @@ class NavBar extends React.Component {
                                             <div className={pathname === '/language' ? 'nav-link active' : 'nav-link'}><p>Language</p></div>
                                         </Link>
                                         <NavDropdown.Divider />
-                                        <h4>Manage</h4>
+                                        <h6>Manage</h6>
                                         <Link to="/posts">
                                             <div className={pathname === '/posts' ? 'nav-link active' : 'nav-link'}><p>Posts & Activity</p></div>
                                         </Link>
