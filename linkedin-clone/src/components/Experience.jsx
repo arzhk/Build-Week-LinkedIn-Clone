@@ -1,53 +1,28 @@
 import React, { Component } from "react";
 import { Container, ListGroup } from "react-bootstrap";
+import ExperienceItem from "./ExperienceItem";
 
 class Experince extends Component {
+  state = {
+    editShow: false,
+    addShow: false,
+    experiences: [],
+  }
+  addModal = () => { }
+  editModal = () => { }
+  getExperienceFetcher = () => { }
+  addExperiencePost = () => { }
+  editExperiencePut = () => { }
   render() {
     return (
       <Container>
-        <div className="experience-contain mb-3">
+        <div id="experience-main-container" className="experience-contain mb-0">
           <div className="d-flex align-items-center justify-content-between">
-            <h3>Experience</h3>
-            <i className="fas fa-plus mr-3 "></i>
+            <h4 className="font-weight-normal">Experience</h4>
+            <a onClick={this.addModal}><i className="fas fa-plus mr-3 "></i></a>
           </div>
-
           <ListGroup>
-            <ListGroup.Item
-              variant="light"
-              className="d-flex align-items-center justify-content-between"
-            >
-              <div className="d-flex align-items-center">
-                <div className="imgPlace mr-2"></div>Experince 1
-              </div>
-              <i className="fas fa-pen "></i>
-            </ListGroup.Item>
-            <ListGroup.Item
-              variant="light"
-              className="d-flex align-items-center justify-content-between"
-            >
-              <div className="d-flex align-items-center">
-                <div className="imgPlace mr-2"></div>Experince 1
-              </div>
-              <i className="fas fa-pen"></i>
-            </ListGroup.Item>
-            <ListGroup.Item
-              variant="light"
-              className="d-flex align-items-center justify-content-between"
-            >
-              <div className="d-flex align-items-center">
-                <div className="imgPlace mr-2"></div>Experince 1
-              </div>
-              <i className="fas fa-pen"></i>
-            </ListGroup.Item>
-            <ListGroup.Item
-              variant="light"
-              className="d-flex align-items-center justify-content-between"
-            >
-              <div className="d-flex align-items-center">
-                <div className="imgPlace mr-2"></div>Experince 1
-              </div>
-              <i className="fas fa-pen"></i>
-            </ListGroup.Item>
+            {this.state.experiences.map((exp) => <ExperienceItem experience={exp} editModal={this.editModal} />)}
           </ListGroup>
         </div>
       </Container>
