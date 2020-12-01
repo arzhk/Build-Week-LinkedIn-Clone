@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Spinner } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "../assets/profilepicture.PNG";
 import ContactInfoPopup from "./ContactInfoPopup";
 import Highlights from "./Highlights";

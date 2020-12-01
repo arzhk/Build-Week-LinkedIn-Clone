@@ -4,6 +4,8 @@ import "./App.css";
 import NavBar from "./componenets/NavBar";
 import Footer from "./componenets/Footer";
 import MainContent from "./components/MainContent";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
 function App() {
