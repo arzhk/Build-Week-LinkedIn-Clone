@@ -37,8 +37,8 @@ function App() {
         <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
+      <Route path='/:id/feed' exact component={FeedMiddle} />
       <Route path='/' component={Footer} />
-      <Route path='/feed' exact componet={FeedMiddle} />
     </Router>
   );
 }
