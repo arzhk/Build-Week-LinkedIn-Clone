@@ -162,16 +162,16 @@ class NavBar extends React.Component {
                     </div>
                   </NavDropdown>
                 </div>
-                <Link to="/">
-                  <div
-                    className={pathname === "/signOut" ? "nav-link active" : "nav-link"}
-                    id="work-modal"
-                    onClick={this.handleShow}
-                  >
-                    <FontAwesomeIcon icon={faTh} size="lg" />
-                    <small>Work</small>
-                  </div>
-                </Link>
+
+                <div
+                  className={pathname === "/signOut" ? "nav-link active" : "nav-link"}
+                  id="work-modal"
+                  onClick={this.handleShow}
+                >
+                  <FontAwesomeIcon icon={faTh} size="lg" />
+                  <small>Work</small>
+                </div>
+
                 <Link to="/learning">
                   <div className={pathname === "/learning" ? "nav-link active p-2" : "nav-link p-2"}>
                     <div id="learning">
