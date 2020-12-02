@@ -11,6 +11,7 @@ class Experience extends Component {
     addShow: false,
     experiences: [],
     currentexperience: {},
+    loaded: false,
   };
 
   getExperienceFetcher = async () => {
@@ -26,12 +27,14 @@ class Experience extends Component {
       );
       if (response.ok) {
         const result = await response.json();
-        this.setState({ experiences: result });
+        this.setState({ experiences: result, loaded: true });
       } else {
         console.log(response);
+        this.setState({ loaded: true });
       }
     } catch (e) {
       console.log(e);
+      this.setState({ loaded: true });
     }
   };
   componentDidMount = () => {
@@ -40,7 +43,7 @@ class Experience extends Component {
     }, 1000);
   };
   componentDidUpdate = (prevProps) => {
-    (prevProps.userID !== this.props.userID) && this.getExperienceFetcher();
+    (prevProps.userID !== this.props.userID) && this.getExperienceFetcher() && this.setState({ loaded: false });;
   }
   editExperiencePut = async (experiences) => {
     this.setState({ editShow: false });
@@ -136,7 +139,8 @@ class Experience extends Component {
             </div>
           </div>
           <ListGroup>
-            {this.state.experiences.length > 0 ?
+            {this.state.loaded ?
+              this.state.experiences.length > 0 &&
               this.state.experiences.map((exp, key) => (
                 <ExperienceItem key={key} experience={exp} editModal={this.editModalToggleHandler} />
               )) : Array.from({ length: 4 }, (_, i) => i + 1).map((n) => <ExpEducationLoaders key={n} />)
