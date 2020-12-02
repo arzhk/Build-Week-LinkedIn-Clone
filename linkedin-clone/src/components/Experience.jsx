@@ -15,16 +15,14 @@ class Experience extends Component {
   };
 
   getExperienceFetcher = async () => {
-    let url = "https://striveschool-api.herokuapp.com/api/profile/" + this.props.userID + "/experiences"
+    let url = "https://striveschool-api.herokuapp.com/api/profile/" + this.props.userID + "/experiences";
     try {
-      const response = await fetch(url,
-        {
-          headers: new Headers({
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
-          }),
-        }
-      );
+      const response = await fetch(url, {
+        headers: new Headers({
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
+        }),
+      });
       if (response.ok) {
         const result = await response.json();
         this.setState({ experiences: result, loaded: true });
@@ -43,8 +41,8 @@ class Experience extends Component {
     }, 1000);
   };
   componentDidUpdate = (prevProps) => {
-    (prevProps.userID !== this.props.userID) && this.getExperienceFetcher() && this.setState({ loaded: false });;
-  }
+    prevProps.userID !== this.props.userID && this.getExperienceFetcher() && this.setState({ loaded: false });
+  };
   editExperiencePut = async (experiences) => {
     this.setState({ editShow: false });
     try {
@@ -139,12 +137,12 @@ class Experience extends Component {
             </div>
           </div>
           <ListGroup>
-            {this.state.loaded ?
-              this.state.experiences.length > 0 &&
-              this.state.experiences.map((exp, key) => (
-                <ExperienceItem key={key} experience={exp} editModal={this.editModalToggleHandler} />
-              )) : Array.from({ length: 4 }, (_, i) => i + 1).map((n) => <ExpEducationLoaders key={n} />)
-            }
+            {this.state.loaded
+              ? this.state.experiences.length > 0 &&
+                this.state.experiences.map((exp, key) => (
+                  <ExperienceItem key={key} experience={exp} editModal={this.editModalToggleHandler} />
+                ))
+              : Array.from({ length: 4 }, (_, i) => i + 1).map((n) => <ExpEducationLoaders key={n} />)}
           </ListGroup>
         </div>
 

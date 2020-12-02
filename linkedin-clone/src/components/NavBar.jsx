@@ -58,7 +58,10 @@ class NavBar extends React.Component {
             <Link to="/">
               <Image src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg" id="logo" rounded />
             </Link>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ position: "fixed", right: "30px", top: "10px" }} />
+            <Navbar.Toggle
+              aria-controls="responsive-navbar-nav"
+              style={{ position: "fixed", right: "30px", top: "10px" }}
+            />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
@@ -106,7 +109,7 @@ class NavBar extends React.Component {
                       <div>
                         <div className="d-flex justify-content-start align-items-center">
                           <Image
-                            style={{ maxWidth: "50px", maxHeight: "50px", }}
+                            style={{ maxWidth: "50px", maxHeight: "50px" }}
                             src={ProfilePicture}
                             roundedCircle
                             className="mr-1"

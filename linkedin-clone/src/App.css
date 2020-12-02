@@ -5,7 +5,7 @@ Body {
 }
 
 .container {
-  min-width: 980px;
+  min-width: 960px;
   max-width: 1400px;
 }
 
@@ -352,6 +352,10 @@ Body {
   margin-bottom: 0 !important;
 }
 
+.brdr-bottom-strict {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
 .see-all-btn {
   width: 100%;
   display: block;
@@ -363,4 +367,172 @@ Body {
 .see-all-btn:hover {
   background-color: rgba(112, 181, 249, 0.15);
   color: rgb(10, 102, 194);
+}
+
+/* Feed left styling */
+
+.feed-left-container,
+.feed-right-container {
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #fff;
+}
+
+.feed-left-container:first-child {
+  border-top: 4px solid #f8c77e;
+}
+
+.feed-left-container .feed-profile-picture-container {
+  height: 60px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.feed-left-container .feed-profile-picture-bg::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 16px;
+  left: 16px;
+  bottom: 94.2%;
+  background: rgb(20, 20, 20);
+  background: linear-gradient(0deg, rgba(20, 20, 20, 0.2) 0%, rgba(20, 20, 20, 0.7) 100%);
+  border-radius: 0.6rem 0.6rem 0rem 0rem;
+}
+
+.feed-left-container .feed-profile-picture-bg {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  height: 100px;
+  border-radius: 0.6rem;
+}
+
+.feed-left-container .feed-profile-premium-tag {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 25px;
+  color: rgb(221, 221, 221);
+  letter-spacing: 3px;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.feed-left-container .feed-profile-picture-photo {
+  margin-top: -34px;
+  margin-bottom: 14px;
+  z-index: 3;
+  position: relative;
+}
+
+.feed-left-container a,
+.feed-right-container a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  font-size: 0.9rem;
+  padding: 4px 0px;
+}
+
+.feed-left-container .profile-link:hover,
+.feed-right-container .profile-link:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.feed-left-container .profile-link-strict {
+  border-radius: 0rem 0rem 0.6rem 0.6rem;
+}
+
+.feed-left-container .profile-link-strict:hover {
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.feed-left-container .grey-text,
+.feed-right-container .grey-text,
+.grey-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.grey-text:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.feed-left-container .black-text,
+.feed-right-container .black-text {
+  color: #000;
+}
+
+.feed-left-container .blue-text,
+.feed-right-container .blue-text {
+  color: rgb(10, 102, 194);
+}
+
+.feed-left-container .black-text:hover,
+.feed-right-container .black-text:hover {
+  color: #000;
+}
+
+.black-text {
+  color: #000;
+}
+
+.feed-left-container i {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.feed-left-container .fa-plus:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.feed-left-container .dicover-more-btn:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  border-radius: 0rem 0rem 0.6rem 0.6rem;
+}
+
+/* Feed right styling */
+
+.feed-right-container .infoicon-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  height: 16px;
+  width: 16px;
+}
+
+.feed-right-container .fa-info {
+  font-size: 0.6rem;
+  color: #fff;
+}
+
+.feed-right-container .smaller {
+  font-size: 0.7rem;
+}
+
+.feed-right-container .profile-link .fa-external-link-alt {
+  opacity: 0;
+  font-size: 0.8rem;
+}
+
+.feed-right-container .profile-link:hover .fa-external-link-alt {
+  opacity: 1;
+}
+
+.feed-right-container button {
+  height: 29px;
+  width: 102px;
+}
+
+.feed-right-container .btn-outline-primary {
+  border: 1px solid rgb(10, 102, 194);
+  color: rgb(7, 91, 175);
+}
+
+.feed-right-container .btn-outline-primary:hover {
+  background-color: rgba(10, 102, 194, 0.13);
+  color: #007bff;
+  border: 2px solid rgb(10, 102, 194);
 }

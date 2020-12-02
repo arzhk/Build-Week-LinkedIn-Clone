@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router } from "react-router-dom";
+import MainFeedContent from "./components/MainFeedContent";
 
 function App() {
   const [currentUserName, setCurrentUserName] = React.useState("");
@@ -26,17 +27,17 @@ function App() {
 
   return (
     <Router>
-      <Route path='/'>
+      <Route path="/">
         <NavBar jobtitle={currentJobTitle} name={currentUserName} userID={currentUserID} />
       </Route>
-      <Route path='/:id'>
-        <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
+      <Route path="/" exact>
+        <MainFeedContent />
       </Route>
-      <Route path='/' exact>
+      <Route path="/:id">
         <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
-      <Route path='/' component={Footer} />
+      <Route path="/" component={Footer} />
     </Router>
   );
 }

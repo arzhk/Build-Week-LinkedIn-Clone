@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "../assets/profilepicture.PNG";
-import ContactInfoPopup from "./ContactInfoPopup";
 import Highlights from "./Highlights";
 import LatestEducation from "./LatestEducation";
 import LatestExperience from "./LatestExperience";

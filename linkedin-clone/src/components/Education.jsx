@@ -7,7 +7,6 @@ export default class Education extends Component {
       <div>
         <div id="education-main-container" className="education-contain mb-3">
           <div className="d-flex align-items-center justify-content-between">
-
             <h4 className="font-weight-normal">Education</h4>
 
             <i className="fas fa-plus mr-3 "></i>

@@ -123,7 +123,7 @@ class EditModal extends React.Component {
         </Modal.Body>
 
         <Modal.Footer>
-          <Row class="share">
+          <Row className="share">
             <Form.Group controlId="shareWithNetwork">
               <Form.Check
                 type="checkbox"

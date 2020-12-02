@@ -78,28 +78,29 @@ class SideBar extends React.Component {
           <div className="side mb-3">
             <div className="pt-3 pb-1 px-4">
               <h4 className="font-weight-normal mb-2">People also viewed</h4>
-              {this.state.connectionsArray.length > 0 ?
-                this.state.connectionsArraySpliced.map((people, index) => (
-                  <div key={index} className="d-flex justify-content-between mb-2 py-3 brdr-bottom">
-                    <div className="d-flex">
-                      <Link to={`/${people._id}`} className="d-flex myLink">
-                        <img className="image mr-3" src={people.image} alt="user-img" />
-                        <div className="d-flex flex-column">
-                          <div className="name">
-                            <p className="font-weight-bold mb-0" style={{ width: "95%" }}>
-                              {people.name} {people.surname}
-                            </p>
+              {this.state.connectionsArray.length > 0
+                ? this.state.connectionsArraySpliced.map((people, index) => (
+                    <div key={index} className="d-flex justify-content-between mb-2 py-3 brdr-bottom">
+                      <div className="d-flex">
+                        <Link to={`/${people._id}`} className="d-flex myLink">
+                          <img className="image mr-3" src={people.image} alt="user-img" />
+                          <div className="d-flex flex-column">
+                            <div className="name">
+                              <p className="font-weight-bold mb-0" style={{ width: "95%" }}>
+                                {people.name} {people.surname}
+                              </p>
+                            </div>
+                            <p className="font-weight-light mb-0">1st</p>
+                            <p className="mb-0">{people.title}</p>
                           </div>
-                          <p className="font-weight-light mb-0">1st</p>
-                          <p className="mb-0">{people.title}</p>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
+                      <button className="d-flex justify-content-center align-items-center">
+                        <i className="fas fa-paper-plane"></i>
+                      </button>
                     </div>
-                    <button className="d-flex justify-content-center align-items-center">
-                      <i className="fas fa-paper-plane"></i>
-                    </button>
-                  </div>
-                )) : Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <PeopleLoaders key={n} />)}
+                  ))
+                : Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <PeopleLoaders key={n} />)}
             </div>
             <div className="text-center">
               <div
@@ -115,28 +116,29 @@ class SideBar extends React.Component {
           <div className="side w-100 mb-3">
             <div className="pt-3 pb-1 px-4">
               <h4 className="font-weight-normal mb-4">People you may know</h4>
-              {this.state.connectionsArray.length > 0 ?
-                this.state.peopleYouMayKnowSpliced.map((people, index) => (
-                  <div key={index} className="d-flex justify-content-between mb-2 pb-3 brdr-bottom">
-                    <div className="d-flex">
-                      <Link to={`/${people._id}`} className="d-flex myLink">
-                        <img className="image mr-3" src={people.image} alt="user-img" />
-                        <div className="d-flex flex-column">
-                          <div className="name">
-                            <p className="font-weight-bold mb-0">
-                              {people.name} {people.surname}
-                            </p>
+              {this.state.connectionsArray.length > 0
+                ? this.state.peopleYouMayKnowSpliced.map((people, index) => (
+                    <div key={index} className="d-flex justify-content-between mb-2 pb-3 brdr-bottom">
+                      <div className="d-flex">
+                        <Link to={`/${people._id}`} className="d-flex myLink">
+                          <img className="image mr-3" src={people.image} alt="user-img" />
+                          <div className="d-flex flex-column">
+                            <div className="name">
+                              <p className="font-weight-bold mb-0">
+                                {people.name} {people.surname}
+                              </p>
+                            </div>
+                            <p className="font-weight-light mb-0">1st</p>
+                            <p className="mb-0">{people.title}</p>
                           </div>
-                          <p className="font-weight-light mb-0">1st</p>
-                          <p className="mb-0">{people.title}</p>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
+                      <button className="d-flex justify-content-center align-items-center">
+                        <i className="fas fa-user-plus"></i>
+                      </button>
                     </div>
-                    <button className="d-flex justify-content-center align-items-center">
-                      <i className="fas fa-user-plus"></i>
-                    </button>
-                  </div>
-                )) : Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <PeopleLoaders key={n} />)}
+                  ))
+                : Array.from({ length: 6 }, (_, i) => i + 1).map((n) => <PeopleLoaders key={n} />)}
             </div>
             <div className="text-center">
               <div
