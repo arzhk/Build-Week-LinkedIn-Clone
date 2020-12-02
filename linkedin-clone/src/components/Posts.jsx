@@ -47,6 +47,9 @@ const Posts = (props) => {
             </Card.Body>
             <Row className="ml-2">
                 <Button variant="light" className="likeBtn" ><FontAwesomeIcon icon={faThumbsUp} /> Like</Button>
+                <Button variant="light" onClick={toggleModal}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
+                <Button variant="light"><FontAwesomeIcon icon={faShare} /> Share</Button>
+                <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> Send</Button>
                 <Row className="like-choice" >
                     <Button variant="link"><FontAwesomeIcon icon={faThumbsUp} /></Button>
                     <Button variant="link"><FontAwesomeIcon icon={faSignLanguage} /></Button>
@@ -55,9 +58,6 @@ const Posts = (props) => {
                     <Button variant="link"><FontAwesomeIcon icon={faLightbulb} /></Button>
                     <Button variant="link"><FontAwesomeIcon icon={faGrinWink} /></Button>
                 </Row>
-                <Button variant="light" onClick={toggleModal}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
-                <Button variant="light"><FontAwesomeIcon icon={faShare} /> Share</Button>
-                <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> Send</Button>
             </Row>
             {comments && <Comments user={props.user} postId={_id} />}
         </Card>
