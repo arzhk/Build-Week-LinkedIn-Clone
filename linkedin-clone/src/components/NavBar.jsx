@@ -55,15 +55,18 @@ class NavBar extends React.Component {
       <div id="navbar">
         <Navbar collapseOnSelect expand="md" bg="light" variant="light">
           <Container>
-            <Link to="/">
+            <Link to="/feed">
               <Image src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg" id="logo" rounded />
             </Link>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ position: "fixed", right: "30px", top: "10px" }} />
+            <Navbar.Toggle
+              aria-controls="responsive-navbar-nav"
+              style={{ position: "fixed", right: "30px", top: "10px" }}
+            />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
               </Nav>
-              <Nav className="ml-auto">
+              <Nav className="ml-auto d-flex align-items-center">
                 <Link to="/home">
                   <div className={pathname === "/home" ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faHome} size="lg" />
@@ -94,7 +97,7 @@ class NavBar extends React.Component {
                     <small>Notifications</small>
                   </div>
                 </Link>
-                <div id="dropdown" className="d-flex flex-column align-items-left ml-3  justify-content-center">
+                <div id="dropdown" className="ml-3 text-center">
                   <Image
                     style={{ width: "20px", height: "25px" }}
                     className="pt-1"
@@ -106,7 +109,7 @@ class NavBar extends React.Component {
                       <div>
                         <div className="d-flex justify-content-start align-items-center">
                           <Image
-                            style={{ maxWidth: "50px", maxHeight: "50px", }}
+                            style={{ maxWidth: "50px", maxHeight: "50px" }}
                             src={ProfilePicture}
                             roundedCircle
                             className="mr-1"
@@ -117,7 +120,7 @@ class NavBar extends React.Component {
                           </div>
                         </div>
                         <div className="mt-3" style={{ height: 28 }}>
-                          <Link to={"/" + `${this.state.userID}`}>
+                          <Link to={"/profile/" + `${this.state.userID}`}>
                             <Button variant="outline-primary" className="rounded-pill">
                               View Profile
                             </Button>

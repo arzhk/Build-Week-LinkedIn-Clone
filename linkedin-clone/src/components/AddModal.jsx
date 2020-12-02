@@ -20,7 +20,8 @@ class AddModal extends React.Component {
     experience[currentId] = e.currentTarget.value;
     this.setState({ experience });
   };
-  handelSave = () => {
+  handelSave = (event) => {
+    event.preventDefault();
     this.props.addExperiencePost(this.state.experience);
   };
   componentDidMount = () => {
@@ -38,7 +39,6 @@ class AddModal extends React.Component {
             <Modal.Title>Add Experience</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-
             <Form.Group>
               <Form.Label>Title*</Form.Label>
               <Form.Control
@@ -139,7 +139,6 @@ class AddModal extends React.Component {
               </Col>
             </Row>
             <a>Supported formats</a>
-
           </Modal.Body>
 
           <Modal.Footer>
@@ -151,9 +150,9 @@ class AddModal extends React.Component {
                 />
               </Form.Group>
             </Row>
-            <Button variant="primary" className="rounded-pill" type="submit" >
+            <Button variant="primary" className="rounded-pill" type="submit">
               Save
-          </Button>
+            </Button>
           </Modal.Footer>
         </Form>
       </Modal>

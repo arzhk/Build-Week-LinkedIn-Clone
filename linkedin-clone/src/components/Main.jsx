@@ -18,18 +18,16 @@ export default class Main extends Component {
       const result = await response.json();
       if (response.ok) {
         this.setState({ profile: result });
-        console.log(result)
+        console.log(result);
       } else {
       }
-    } catch (e) { }
+    } catch (e) {}
   };
   componentDidMount = () => {
     this.fetcher();
   };
 
-
   render() {
-
     return (
       <div>
         <Experience userID={this.props.userID} />

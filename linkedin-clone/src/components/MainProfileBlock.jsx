@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "../assets/profilepicture.PNG";
-import ContactInfoPopup from "./ContactInfoPopup";
 import Highlights from "./Highlights";
 import LatestEducation from "./LatestEducation";
 import LatestExperience from "./LatestExperience";
@@ -12,7 +11,6 @@ function MainProfileBlock(props) {
   const [isMoreClicked, setIsMoreClicked] = React.useState(false);
   const [userData, setUserData] = React.useState({});
   const [currentUserID, setCurrentUserID] = React.useState(props.userID);
-  const { userNameHandler } = props;
   const [fetchIsComplete, setFetchIsComplete] = React.useState(false);
   const [isFinishedLoading, setIsFinishedLoading] = React.useState(false);
 
