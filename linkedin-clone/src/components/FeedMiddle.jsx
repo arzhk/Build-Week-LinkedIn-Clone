@@ -28,7 +28,7 @@ class FeedMiddle extends React.Component {
         this.setState({ currentstate })
     }
     render() {
-        const { photoModal, videoModal, articleModal, startPostModal, eventsModal, loadingPosts, posts } = this.state
+        const { photoModal, user, videoModal, articleModal, startPostModal, eventsModal, loadingPosts, posts } = this.state
         return <div>
             <StartPost controlls={this.toggleModal} />
             {photoModal ? <PhotoModal title="photo" /> : <p>Loading...</p>}

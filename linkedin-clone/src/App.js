@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router } from "react-router-dom";
-import FeedMiddle from "./FeedMiddle";
+import FeedMiddle from "./components/FeedMiddle";
 
 function App() {
   const [currentUserName, setCurrentUserName] = React.useState("");
@@ -30,7 +30,7 @@ function App() {
       <Route path='/'>
         <NavBar jobtitle={currentJobTitle} name={currentUserName} userID={currentUserID} />
       </Route>
-      <Route path='/:id'>
+      <Route path='/:id' exact>
         <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
       </Route>
       <Route path='/' exact>
@@ -38,7 +38,7 @@ function App() {
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
       <Route path='/' component={Footer} />
-      <Route path='/feed' componet={FeedMiddle} />
+      <Route path='/feed' exact componet={FeedMiddle} />
     </Router>
   );
 }
