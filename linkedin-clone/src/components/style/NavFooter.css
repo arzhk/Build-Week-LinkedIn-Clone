@@ -1,0 +1,215 @@
+/************************EXPERIENCE******************************/
+#editModal .modal-content,
+#addModal .modal-content {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.125);
+}
+#editModal .modal-body,
+#addModal .modal-body {
+  height: 50vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 25px;
+}
+.modal {
+  padding-top: 3%;
+}
+
+/********************NAV BAR*****************************/
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.05);
+  font-size: smaller;
+}
+#navbar .navbar-toggler:focus {
+  outline: none;
+}
+#navbar .navbar-toggler {
+  box-shadow: 7px 6px 15px 1px rgba(0, 0, 0, 0.24);
+}
+#navbar .navbar-toggler:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 12px 1px rgba(0, 0, 0, 0.24);
+}
+#navbar .navbar-toggler.collapsed {
+  box-shadow: none;
+}
+#navbar div small {
+  white-space: nowrap;
+}
+#navbar div.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  margin: 0px 15px;
+}
+#navbar .bg-light {
+  background-color: #ffffff !important;
+}
+#navbar .navbar {
+  padding: 0;
+}
+@media (max-width: 992px) {
+  div.nav-link small {
+    display: none;
+  }
+}
+#navbar .navbar-nav > a div.nav-link.active {
+  border-bottom: 3px solid black;
+}
+#navbar .nav-link {
+  color: #535353 !important;
+}
+#navbar .nav-link:active,
+#navbar .nav-link:focus,
+#navbar .nav-link:hover {
+  color: #000000 !important;
+}
+#navbar a:hover,
+#footer a:hover {
+  text-decoration: none;
+}
+
+#learning {
+  padding: 0px 10px;
+  border: 2px solid gray;
+  background-image: url(https://us.123rf.com/450wm/rastudio/rastudio1603/rastudio160304668/53723820-open-book-line-icon-for-web-mobile-and-infographics-vector-dark-grey-icon-isolated-on-white-backgrou.jpg?ver=6);
+  background-size: 80px;
+  background-position: center;
+}
+#navbar .dropdown-item img {
+  height: 50px;
+  padding: 3px;
+}
+#navbar h6 {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+#navbar .dropdown-item p {
+  font-size: 0.8rem;
+}
+#navbar .dropdown-item a > div > p:hover {
+  text-decoration: underline;
+}
+#navbar .dropdown-item div {
+  flex-direction: row;
+}
+
+#navbar #logo {
+  height: 34px;
+  margin: 10px;
+}
+#navbar .dropdown-item {
+  padding: 5px;
+  text-align: left;
+}
+#navbar .dropdown-item .nav-link {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar #basic-nav-dropdown {
+  font-size: 85% !important;
+  padding-top: 0;
+}
+
+#navbar .dropdown-item:active {
+  background-color: initial;
+}
+#navbar p,
+#footer p {
+  margin: 0px;
+}
+#navbar .dropdown-menu {
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.125);
+  border: none;
+  padding: 3px;
+  min-width: 200px;
+}
+#navbar #dropdown {
+  border-right: 1px solid #e6e4e4;
+  padding-right: 10px;
+  font-size: small;
+  margin-top: 5px;
+}
+#navbar .btn-outline-primary {
+  width: 100%;
+  padding: 0;
+  font-size: small;
+  font-weight: 600;
+  padding-bottom: 3px;
+}
+
+#navbar .dropdown-item.active,
+.dropdown-item:active {
+  color: #000;
+}
+
+/**********************END NAV BAR**********************/
+/*********************MODAL******************************/
+.modal-dialog-scrollable {
+  overflow-y: hidden;
+  left: unset !important;
+  right: 0 !important;
+  max-height: 100% !important;
+  width: 25rem;
+  border-color: transparent;
+  padding-bottom: 30px;
+}
+#navmodal .modal-open .modal {
+  overflow: hidden;
+}
+#navmodal .modal-body {
+  padding-bottom: 30px;
+  height: 100%;
+}
+
+/*********************  FOOTER  ***********************/
+#footer {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(80, 78, 102);
+  padding-bottom: 26px;
+  margin-top: 2rem;
+  min-width: 800px;
+}
+#footer a {
+  color: rgb(86, 104, 122);
+}
+
+#footer a:hover {
+  color: rgb(10, 102, 194);
+  text-decoration: underline;
+}
+
+#footer ul {
+  padding: 0;
+}
+
+#footer img {
+  margin-left: -10px;
+}
+
+#footer .container {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+button.dropdown-toggle {
+  font-size: 12px;
+  font-weight: 600;
+}
+.custom-select {
+  font-size: 12px;
+  font-weight: 600;
+  border-color: #535353;
+}
