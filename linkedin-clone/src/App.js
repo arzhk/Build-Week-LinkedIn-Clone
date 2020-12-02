@@ -26,17 +26,17 @@ function App() {
 
   return (
     <Router>
-      <Route path="/">
+      <Route path='/'>
         <NavBar jobtitle={currentJobTitle} name={currentUserName} userID={currentUserID} />
       </Route>
-      <Route path="/:id">
+      <Route path='/:id'>
         <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
       </Route>
-      <Route path="/" exact>
+      <Route path='/' exact>
         <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
-      <Route path="/" component={Footer} />
+      <Route path='/' component={Footer} />
     </Router>
   );
 }

@@ -12,7 +12,6 @@ function MainContent(props) {
   React.useEffect(() => {
     setCurrentUserID(id);
   }, [id]);
-
   return (
     <>
       <Container>

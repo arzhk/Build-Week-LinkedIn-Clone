@@ -13,6 +13,7 @@ import {
   Card,
   ListGroup,
 } from "react-bootstrap";
+import ProfilePicture from "../assets/profilepicture.PNG";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -57,7 +58,7 @@ class NavBar extends React.Component {
             <Link to="/">
               <Image src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg" id="logo" rounded />
             </Link>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" style={{ position: "fixed", right: "30px", top: "10px" }} />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
                 <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
@@ -93,11 +94,11 @@ class NavBar extends React.Component {
                     <small>Notifications</small>
                   </div>
                 </Link>
-                <div id="dropdown" className="d-flex flex-column align-items-center justify-content-center">
+                <div id="dropdown" className="d-flex flex-column align-items-left ml-3  justify-content-center">
                   <Image
-                    style={{ width: "15.54px" }}
+                    style={{ width: "20px", height: "25px" }}
                     className="pt-1"
-                    src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
+                    src={ProfilePicture}
                     roundedCircle
                   />
                   <NavDropdown title="Me" id="basic-nav-dropdown">
@@ -105,7 +106,8 @@ class NavBar extends React.Component {
                       <div>
                         <div className="d-flex justify-content-start align-items-center">
                           <Image
-                            src="https://www.flaticon.com/svg/static/icons/svg/174/174857.svg"
+                            style={{ maxWidth: "50px", maxHeight: "50px", }}
+                            src={ProfilePicture}
                             roundedCircle
                             className="mr-1"
                           />

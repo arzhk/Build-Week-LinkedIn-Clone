@@ -3,6 +3,7 @@ import { ListGroup } from "react-bootstrap";
 import AddModal from "./AddModal";
 import EditModal from "./EditModal";
 import ExperienceItem from "./ExperienceItem";
+import ExpEducationLoaders from "./loaders/ExpEducationLoaders";
 
 class Experience extends Component {
   state = {
@@ -13,13 +14,13 @@ class Experience extends Component {
   };
 
   getExperienceFetcher = async () => {
+    let url = "https://striveschool-api.herokuapp.com/api/profile/" + this.props.userID + "/experiences"
     try {
-      const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/profile/5fc4c5e0ed266800170ea3dc/experiences",
+      const response = await fetch(url,
         {
           headers: new Headers({
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
           }),
         }
       );
@@ -34,9 +35,13 @@ class Experience extends Component {
     }
   };
   componentDidMount = () => {
-    this.getExperienceFetcher();
+    setTimeout(() => {
+      this.getExperienceFetcher();
+    }, 1000);
   };
-
+  componentDidUpdate = (prevProps) => {
+    (prevProps.userID !== this.props.userID) && this.getExperienceFetcher();
+  }
   editExperiencePut = async (experiences) => {
     this.setState({ editShow: false });
     try {
@@ -48,7 +53,7 @@ class Experience extends Component {
           headers: new Headers({
             "Content-Type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
           }),
         }
       );
@@ -74,7 +79,7 @@ class Experience extends Component {
           headers: new Headers({
             "Content-Type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
           }),
         }
       );
@@ -98,7 +103,7 @@ class Experience extends Component {
           method: "DELETE",
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzVlMGVkMjY2ODAwMTcwZWEzZGMiLCJpYXQiOjE2MDY3MzEyMzMsImV4cCI6MTYwNzk0MDgzM30.8dIOQ4c_SEmlt4usGkxACHqgxOYcvoY2KyXESe9vgyM",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
           },
         }
       );
@@ -125,16 +130,17 @@ class Experience extends Component {
       <div>
         <div id="experience-main-container" className="experience-contain mb-0">
           <div className="d-flex align-items-center justify-content-between mr-2">
-            <h3 className="font-weight-normal">Experience</h3>
+            <h4 className="font-weight-normal">Experience</h4>
             <div onClick={() => this.addModalToggleHandler()} style={{ cursor: "pointer" }}>
               <i className="fas fa-plus"></i>
             </div>
           </div>
           <ListGroup>
-            {this.state.experiences.length > 0 &&
+            {this.state.experiences.length > 0 ?
               this.state.experiences.map((exp, key) => (
                 <ExperienceItem key={key} experience={exp} editModal={this.editModalToggleHandler} />
-              ))}
+              )) : Array.from({ length: 4 }, (_, i) => i + 1).map((n) => <ExpEducationLoaders key={n} />)
+            }
           </ListGroup>
         </div>
 
