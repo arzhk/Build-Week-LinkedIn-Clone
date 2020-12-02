@@ -7,7 +7,7 @@ import EventsModal from './EventsModal';
 import PhotoModal from './PhotoModal';
 import Posts from './Posts';
 import StartPost from './StartPost';
-import StartPostModal from './StartPostModal';
+
 
 class FeedMiddle extends React.Component {
     state = {
@@ -22,6 +22,7 @@ class FeedMiddle extends React.Component {
 
     getPosts = async () => {
         let url = "https://striveschool-api.herokuapp.com/api/posts"
+
         try {
             const response = await fetch(url,
                 {
@@ -34,7 +35,6 @@ class FeedMiddle extends React.Component {
             if (response.ok) {
                 const result = await response.json();
                 this.setState({ posts: result, loadingPosts: true });
-                console.log(result[0])
             } else {
                 console.log(response);
                 this.setState({ loadingPosts: true });
@@ -50,8 +50,34 @@ class FeedMiddle extends React.Component {
             this.getPosts();
         }, 1000);
     };
+    postData = async (data) => {
+        let newPost = {
+            text: data
+        }
+        try {
+            const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+                method: 'POST',
+                body: JSON.stringify(newPost),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzEwNmVkMjY2ODAwMTcwZWEzZDAiLCJpYXQiOjE2MDY3MzA2MTYsImV4cCI6MTYwNzk0MDIxNn0.0SA5BuCxgs7H-mWOcIfvvED6ga9_s3jGPIvujZ4KSbA',
+                }
 
-    sendPosts = (file, item) => { this.toggleModal(item) }
+            })
+            if (response.ok) {
+                this.getPosts();
+            } else {
+                console.log(response)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    sendPosts = (file, item) => {
+        this.toggleModal(item)
+        this.postData(file);
+    }
     deletePost = () => { }
     editPost = () => { }
     toggleModal = (item) => {
@@ -76,12 +102,12 @@ class FeedMiddle extends React.Component {
                 </Card>
             </div>
             <StartPost controlls={this.toggleModal} />
-            {photoModal && <PhotoModal title="photo" show={true} onHide={this.toggleModal} sendPosts={this.sendPosts} />}
-            {videoModal && <PhotoModal title="video" show={true} onHide={this.toggleModal} sendPosts={this.sendPosts} />}
+            {photoModal && <PhotoModal title="photo" show={true} onHide={this.toggleModal} />}
+            {videoModal && <PhotoModal title="video" show={true} onHide={this.toggleModal} />}
             {articleModal && <ArticleModal show={true} />}
-            {eventsModal && <EventsModal title="events" show={true} onHide={this.toggleModal} sendPosts={this.sendPosts} />}
-            {startPostModal && <StartPostModal show={true} user={this.props.user} />}
-            {loadingPosts ? posts.length > 0 && posts.map((post, key) => <Posts user={this.props.user} key={key} data={post} />) : <p>Loading...</p>}
+            {eventsModal && <EventsModal title="events" show={true} onHide={this.toggleModal} />}
+            {startPostModal && <StartPost show={true} user={this.props.user} onHide={this.toggleModal} sendPosts={this.sendPosts} />}
+            {loadingPosts ? posts.length > 0 && posts.reverse().map((post, key) => <Posts user={this.props.user} key={key} data={post} />) : <p>Loading...</p>}
 
         </div>;
     }
