@@ -32,11 +32,11 @@ class EditModal extends React.Component {
   render() {
     return (
       <Modal show={this.props.show} id="editModal" onHide={() => this.props.editModalToggleHandler()}>
-        <Modal.Header closeButton onClick={() => this.props.editModalToggleHandler()}>
-          <Modal.Title>Edit Experience</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Form onSubmit={this.handelSave}>
+          <Modal.Header closeButton onClick={() => this.props.editModalToggleHandler()}>
+            <Modal.Title>Edit Experience</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <Form.Group>
               <Form.Label>Title*</Form.Label>
               <Form.Control type="text" id="role" value={this.state.experience.role} onChange={this.handelChange} />
@@ -119,33 +119,32 @@ class EditModal extends React.Component {
               </Col>
             </Row>
             <Button variant="link">Supported formats</Button>
-          </Form>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Row className="share">
-            <Form.Group controlId="shareWithNetwork">
-              <Form.Check
-                type="checkbox"
-                label="If enabled, your network may be informed of job changes, education changes, and work anniversaries. Learn how these are shared and when"
-              />
-            </Form.Group>
-          </Row>
-          <Col>
-            <Button
-              variant="outline-secondary"
-              className="rounded-pill w-100"
-              onClick={() => this.props.deleteExperience(this.props.experience._id)}
-            >
-              Delete{" "}
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="primary" className="rounded-pill w-100" onClick={this.handelSave}>
-              Save
-            </Button>
-          </Col>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Row class="share">
+              <Form.Group controlId="shareWithNetwork">
+                <Form.Check
+                  type="checkbox"
+                  label="If enabled, your network may be informed of job changes, education changes, and work anniversaries. Learn how these are shared and when"
+                />
+              </Form.Group>
+            </Row>
+            <Col>
+              <Button
+                variant="outline-secondary"
+                className="rounded-pill w-100"
+                onClick={() => this.props.deleteExperience(this.props.experience._id)}
+              >
+                Delete{" "}
+              </Button>
+            </Col>
+            <Col>
+              <Button variant="primary" className="rounded-pill w-100" type="submit">
+                Save
+              </Button>
+            </Col>
+          </Modal.Footer>
+        </Form>
       </Modal>
     );
   }
