@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router } from "react-router-dom";
+import FeedMiddle from "./FeedMiddle";
 
 function App() {
   const [currentUserName, setCurrentUserName] = React.useState("");
@@ -35,6 +36,7 @@ function App() {
       <Route path='/' exact>
         <MainContent currentUserNameHandler={currentUserNameHandler} contactInfoHandler={contactInfoHandler} />
       </Route>
+      <Route path='/feed' componet={FeedMiddle} />
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
       <Route path='/' component={Footer} />
     </Router>
