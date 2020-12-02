@@ -33,11 +33,12 @@ class AddModal extends React.Component {
   render() {
     return (
       <Modal show={this.state.show} id="addModal" onHide={() => this.props.addModalToggleHandler()}>
-        <Modal.Header closeButton onClick={() => this.props.addModalToggleHandler()}>
-          <Modal.Title>Add Experience</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Form onSubmit={this.handelSave}>
+          <Modal.Header closeButton onClick={() => this.props.addModalToggleHandler()}>
+            <Modal.Title>Add Experience</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
             <Form.Group>
               <Form.Label>Title*</Form.Label>
               <Form.Control
@@ -104,7 +105,6 @@ class AddModal extends React.Component {
                 id="endDate"
                 value={this.state.experience.endDate}
                 onChange={this.handelChange}
-                required
               />
             </Form.Group>
             <Form.Group>
@@ -139,22 +139,23 @@ class AddModal extends React.Component {
               </Col>
             </Row>
             <a>Supported formats</a>
-          </Form>
-        </Modal.Body>
 
-        <Modal.Footer>
-          <Row className="share">
-            <Form.Group>
-              <Form.Check
-                type="checkbox"
-                label="If enabled, your network may be informed of job changes, education changes, and work anniversaries. Learn how these are shared and when"
-              />
-            </Form.Group>
-          </Row>
-          <Button variant="primary" className="rounded-pill" onClick={this.handelSave}>
-            Save
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Row className="share">
+              <Form.Group>
+                <Form.Check
+                  type="checkbox"
+                  label="If enabled, your network may be informed of job changes, education changes, and work anniversaries. Learn how these are shared and when"
+                />
+              </Form.Group>
+            </Row>
+            <Button variant="primary" className="rounded-pill" type="submit" >
+              Save
           </Button>
-        </Modal.Footer>
+          </Modal.Footer>
+        </Form>
       </Modal>
     );
   }

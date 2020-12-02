@@ -13,7 +13,7 @@ class Comments extends React.Component {
             this.getComments(this.props.postId)
         }, 1000);
     }
-    getComments = (id) => {
+    getComments = async (id) => {
 
     }
     handleChange = (e) => {
