@@ -11,7 +11,6 @@ function MainProfileBlock(props) {
   const [isMoreClicked, setIsMoreClicked] = React.useState(false);
   const [userData, setUserData] = React.useState({});
   const [currentUserID, setCurrentUserID] = React.useState(props.userID);
-  const { userNameHandler } = props;
   const [fetchIsComplete, setFetchIsComplete] = React.useState(false);
   const [isFinishedLoading, setIsFinishedLoading] = React.useState(false);
 

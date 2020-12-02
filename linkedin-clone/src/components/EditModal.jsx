@@ -22,7 +22,8 @@ class EditModal extends React.Component {
     experience[currentId] = e.currentTarget.value;
     this.setState({ experience });
   };
-  handelSave = () => {
+  handelSave = (event) => {
+    event.preventDefault();
     this.props.editExperiencePut(this.state.experience);
   };
   componentDidUpdate = (prevProps) => {
@@ -121,7 +122,7 @@ class EditModal extends React.Component {
             <Button variant="link">Supported formats</Button>
           </Modal.Body>
           <Modal.Footer>
-            <Row class="share">
+            <Row className="share">
               <Form.Group controlId="shareWithNetwork">
                 <Form.Check
                   type="checkbox"

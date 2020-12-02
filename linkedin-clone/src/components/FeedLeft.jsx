@@ -2,7 +2,8 @@ import React from "react";
 import ProfilePicture from "../assets/profilepicture.PNG";
 import { Link } from "react-router-dom";
 
-function FeedLeft() {
+function FeedLeft(props) {
+  console.log(props);
   return (
     <>
       <div className="feed-left-container mb-3">
@@ -16,8 +17,8 @@ function FeedLeft() {
             style={{ height: 72, width: 72, borderRadius: 36, backgroundColor: "black", border: "3px solid #fff" }}
           ></div>
           <div className="brdr-bottom-strict pb-3">
-            <h6 className="mb-0">Name</h6>
-            <p className="mb-0">Job Title</p>
+            <h6 className="mb-0">{props.name}</h6>
+            <p className="mb-0">{props.jobTitle}</p>
           </div>
         </div>
         <div className="brdr-bottom-strict py-3">
@@ -60,7 +61,7 @@ function FeedLeft() {
       <div className="feed-left-container">
         <div>
           <div className="px-3 py-2">
-            <p class="mb-0">Recent</p>
+            <p className="mb-0">Recent</p>
           </div>
           <Link to="/" className="profile-link d-flex align-items-center px-3 mb-2">
             <i className="fas fa-users mr-2"></i>

@@ -82,7 +82,7 @@ class SideBar extends React.Component {
                 ? this.state.connectionsArraySpliced.map((people, index) => (
                     <div key={index} className="d-flex justify-content-between mb-2 py-3 brdr-bottom">
                       <div className="d-flex">
-                        <Link to={`/${people._id}`} className="d-flex myLink">
+                        <Link to={`/profile/${people._id}`} className="d-flex myLink">
                           <img className="image mr-3" src={people.image} alt="user-img" />
                           <div className="d-flex flex-column">
                             <div className="name">
@@ -120,7 +120,7 @@ class SideBar extends React.Component {
                 ? this.state.peopleYouMayKnowSpliced.map((people, index) => (
                     <div key={index} className="d-flex justify-content-between mb-2 pb-3 brdr-bottom">
                       <div className="d-flex">
-                        <Link to={`/${people._id}`} className="d-flex myLink">
+                        <Link to={`/profile/${people._id}`} className="d-flex myLink">
                           <img className="image mr-3" src={people.image} alt="user-img" />
                           <div className="d-flex flex-column">
                             <div className="name">

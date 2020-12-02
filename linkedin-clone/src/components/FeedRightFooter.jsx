@@ -45,7 +45,7 @@ function FeedRightFooter() {
             <small className="font-weight-bold" style={{ marginRight: 1, color: "rgb(10, 102, 194)" }}>
               Linked
             </small>
-            <i class="fab fa-linkedin mr-2" style={{ color: "rgb(10, 102, 194)" }}></i>
+            <i className="fab fa-linkedin mr-2" style={{ color: "rgb(10, 102, 194)" }}></i>
           </div>
           <small className="black-text">LinkedIn Corporation © 2020</small>
         </div>
