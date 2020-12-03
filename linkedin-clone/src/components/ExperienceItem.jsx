@@ -1,20 +1,27 @@
-import React from 'react';
-import { ListGroup } from 'react-bootstrap';
+import React from "react";
+import Moment from "react-moment";
+import { ListGroup } from "react-bootstrap";
 
 const ExperienceItem = (props) => {
-
-    return <ListGroup.Item variant="light" className="d-flex align-items-center justify-content-between">
-        <div className="d-flex align-items-start">
-            <div className="imgPlace mr-4"></div>
-            <div className="d-flex flex-column">
-                <h5 className="mb-0 font-weight-normal">{props.experience.role}</h5>
-                <p className="mb-0 ">{props.experience.company}</p>
-                <p className="mb-0 font-weight-light">{props.experience.startDate}</p>
-                <small className="font-weight-light">{props.experience.area}</small>
-            </div>
+  return (
+    <ListGroup.Item variant="light" className="d-flex align-items-center justify-content-between brdr-bottom">
+      <div className="d-flex align-items-start">
+        <div className="imgPlace mr-4"></div>
+        <div className="d-flex flex-column">
+          <h5 className="mb-0 font-weight-normal">{props.experience.role}</h5>
+          <p className="mb-0 ">{props.experience.company}</p>
+          <p className="mb-0 font-weight-light">
+            <Moment format="MMM YYYY">{props.experience.startDate}</Moment> -{" "}
+            <Moment format="MMM YYYY">{props.experience.endDate}</Moment>
+          </p>
+          <small className="font-weight-light">{props.experience.area}</small>
         </div>
-        <a onclick={this.props.editModal}><i className="fas fa-pen "></i></a>
-    </ListGroup.Item>;
-}
+      </div>
+      <div onClick={() => props.editModal(props.experience)} style={{ cursor: "pointer" }}>
+        <i className="fas fa-pen "></i>
+      </div>
+    </ListGroup.Item>
+  );
+};
 
 export default ExperienceItem;

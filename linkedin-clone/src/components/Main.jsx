@@ -18,7 +18,7 @@ export default class Main extends Component {
       const result = await response.json();
       if (response.ok) {
         this.setState({ profile: result });
-        console.log(this.state.profile);
+        console.log(result);
       } else {
       }
     } catch (e) {}
@@ -30,7 +30,7 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-        <Experience name={this.state.profile.name} />
+        <Experience userID={this.props.userID} />
         <Education />
         <Skills />
         <Interests />

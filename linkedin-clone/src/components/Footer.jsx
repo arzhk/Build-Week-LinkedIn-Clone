@@ -7,7 +7,9 @@ import { faCog, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Footer extends React.Component {
   render() {
+
     return (
+      this.props.location.pathname !== "/feed" &&
       <div id="footer">
         <footer>
           <Container>
@@ -122,8 +124,8 @@ class Footer extends React.Component {
               <Col>
                 <ul>
                   <small>Select Language</small>
-                  <select class="custom-select">
-                    <option selected>English (English)</option>
+                  <select className="custom-select" defaultValue="0">
+                    <option value="0">English (English)</option>
                     <option value="1">Italian</option>
                     <option value="2">French</option>
                     <option value="3">German</option>

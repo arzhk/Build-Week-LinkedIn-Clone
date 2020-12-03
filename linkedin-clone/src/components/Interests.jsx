@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 export default class Interests extends Component {
   render() {
     return (
-      <Container>
+      <div>
         <div id="interests-main-container" className="interests-contain mb-3">
           <div className="py-3 px-4">
             <h4 className="font-weight-normal mb-3">Interests</h4>
@@ -57,15 +57,15 @@ export default class Interests extends Component {
               </Col>
             </Row>
           </div>
-          <Row className="mt-4">
+          <Row className="mt-2">
             <Col xs={12} className="text-center">
-              <a href="#!" className="see-all-btn py-2 font-weight-bold text-center brdr-top">
+              <div className="see-all-btn py-2 font-weight-bold text-center brdr-top" style={{ cursor: "pointer" }}>
                 See All
-              </a>
+              </div>
             </Col>
           </Row>
         </div>
-      </Container>
+      </div>
     );
   }
 }
