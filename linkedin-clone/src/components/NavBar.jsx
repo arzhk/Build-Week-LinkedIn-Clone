@@ -31,6 +31,7 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import "./style/NavFooter.css";
+import SearchItem from "./SearchItem";
 
 class NavBar extends React.Component {
   state = {
@@ -39,6 +40,9 @@ class NavBar extends React.Component {
     jobTitle: this.props.jobTitle,
     profilePicture: this.props.profilePicture,
     userID: this.props.userID,
+    searchInput: "",
+    searchResults: [],
+    showSearchResults: false,
   };
   handleClose = () => this.setState({ show: false });
   handleShow = () => this.setState({ show: true });
@@ -51,6 +55,36 @@ class NavBar extends React.Component {
     if (this.props.profilePicture !== prevState.profilePicture) {
       this.setState({ profilePicture: this.props.profilePicture });
     }
+
+    if (this.state.searchInput.length !== prevState.searchInput.length) {
+      this.state.searchInput.length !== 0
+        ? this.setState({ showSearchResults: true })
+        : this.setState({ showSearchResults: false });
+    }
+  };
+
+  componentDidMount = () => {
+    this.fetchSearchResultsHandler();
+  };
+
+  fetchSearchResultsHandler = async () => {
+    try {
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/profile`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
+        },
+      });
+      let data = await response.json();
+      this.setState({ searchResults: data });
+      console.log(this.state.searchResults);
+    } catch (er) {
+      console.log(er);
+    }
+  };
+
+  searchInputTextHandler = (event) => {
+    this.setState({ searchInput: event.target.value });
   };
 
   render() {
@@ -68,7 +102,34 @@ class NavBar extends React.Component {
             />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav>
-                <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
+                <div className="nav-search-bar d-flex align-items-center">
+                  <i className="fas fa-search"></i>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="mr-2"
+                    onChange={this.searchInputTextHandler}
+                    value={this.state.searchInput}
+                  ></input>
+                  {this.state.showSearchResults && (
+                    <div className="search-results-container swing-in-top-fwd">
+                      {this.state.searchResults.length > 0 &&
+                        this.state.searchResults
+                          .filter((e) => e.name !== undefined)
+                          .filter((e) => e.name.toLowerCase().includes(this.state.searchInput))
+                          .map((e, index) => {
+                            return <SearchItem key={index} data={e} />;
+                          })}
+                      {this.state.searchResults.length > 0 &&
+                        this.state.searchResults
+                          .filter((e) => e.surname !== undefined)
+                          .filter((e) => e.surname.toLowerCase().includes(this.state.searchInput))
+                          .map((e, index) => {
+                            return <SearchItem key={index} data={e} />;
+                          })}
+                    </div>
+                  )}
+                </div>
               </Nav>
               <Nav className="ml-auto d-flex align-items-center">
                 <Link to="/feed">

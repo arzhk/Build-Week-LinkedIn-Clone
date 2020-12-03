@@ -703,3 +703,60 @@ Body {
     opacity: 1;
   }
 }
+
+#navbar .nav-search-bar {
+  position: relative;
+}
+
+#navbar .nav-search-bar input {
+  padding: 6px 12px 6px 36px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(238, 243, 248);
+  transition: padding 0.25s ease;
+  font-size: 1.1rem;
+  font-weight: lighter;
+}
+
+#navbar .nav-search-bar input:focus {
+  outline: none;
+  padding: 6px 12px 6px 50px;
+}
+
+#navbar .nav-search-bar i {
+  position: absolute;
+  left: 15px;
+}
+
+#navbar .search-results-container {
+  position: absolute;
+  z-index: 999;
+  width: 600px;
+  max-height: 300px;
+  overflow: hidden scroll;
+  background-color: #fff;
+  border-radius: 0rem 0rem 0.6rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.125);
+  padding: 0px 0px;
+  top: 40px;
+}
+
+#navbar .search-image {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+#navbar .search-item {
+  color: #000;
+  padding: 14px 20px;
+}
+
+#navbar .search-item:hover {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.05);
+}
