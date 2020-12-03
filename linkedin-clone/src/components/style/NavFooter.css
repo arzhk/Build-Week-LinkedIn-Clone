@@ -245,42 +245,54 @@ button.dropdown-toggle {
   top: -50px;
 }
 /**********************  REACTION LIKE FOR POST   *****************************/
-#feedMiddle .like-choice {
+.reactions {
   position: relative;
-  bottom: 40px;
-  left: -350px;
+}
+#feedMiddle .like-choice {
+  position: absolute;
+  bottom: 30px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   background-color: #ffffff;
   box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.05);
   opacity: 0;
-  z-index: 5;
 }
+
 #feedMiddle .likeBtn:hover ~ .like-choice,
 #feedMiddle .like-choice:hover {
   opacity: 1;
+  transform: scale(1);
+  transition: transform 0.25s ease 1s, opacity 0.25s ease 1s;
+  display: flex;
 }
-
+#feedMiddle .likeBtn:hover ~ .like-choice {
+  -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+  animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+}
 #feedMiddle .like-choice button:hover {
   transform: scale(1.5);
   color: #535353;
 }
 
 #feedMiddle .like-choice button {
-  color: #363636;
+  color: #5c5c5c;
+  transition: transform 0.25s ease;
 }
+
 .posts .dropdown-toggle::after {
   display: none;
 }
 .posts .dropdown {
   position: absolute;
-  right: 30px;
+  right: 15px;
   z-index: 2;
+  top: 5px;
 }
 .posts,
 #cardPost {
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.125);
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  white-space: break-spaces;
 }
 #feedMiddle .btn {
   background-color: transparent;
@@ -288,7 +300,7 @@ button.dropdown-toggle {
 }
 #feedMiddle .btn-light:hover,
 #feedMiddle .btn-light:active {
-  background-color: #e6e6e6fd;
+  background-color: rgba(0, 0, 0, 0.06);
   border: transparent;
 }
 #cardPost .btn {
@@ -302,4 +314,9 @@ button.dropdown-toggle {
 #cardPost div > .rounded-pill:hover,
 #cardPost div > .rounded-pill:active {
   border: 1px solid #b4b4b4;
+}
+
+.posts .post-name-clickable:hover {
+  color: rgb(10, 102, 194);
+  text-decoration: underline;
 }

@@ -19,6 +19,7 @@ import Comments from "./PostComments";
 
 const Posts = (props) => {
     let { user, text, createdAt, updatedAt, _id } = props.data;
+    let { deletePost, editPost, userID } = props
     let users = {};
     if (user !== null) {
         users = { ...user };
@@ -48,6 +49,13 @@ const Posts = (props) => {
                         <Dropdown.Item href="#/action-3">
                             <i className="fas fa-eye-slash mr-4" style={{ height: 16, width: 16 }}></i>Hide this post
             </Dropdown.Item>
+                        {users._id === userID && <>
+                            <Dropdown.Item onClick={() => deletePost(_id, text)}>
+                                <i className="fas fa-trash-alt mr-4" style={{ height: 16, width: 16 }}></i>Delete this post
+      </Dropdown.Item>
+                            <Dropdown.Item onClick={() => editPost(_id, text)}>
+                                <i className="fas fa-edit mr-4" style={{ height: 16, width: 16 }}></i>Edit this post
+            </Dropdown.Item></>}
                     </Dropdown.Menu>
                 </Dropdown>
 
@@ -65,7 +73,7 @@ const Posts = (props) => {
                     <small className="text-muted  m-0 p-0">{title}</small>
                     <small className="text-muted  m-0 p-0">
                         {" "}
-                        {updatedAt !== "" ? (
+                        {updatedAt === createdAt ? (
                             <Moment fromNow>{createdAt}</Moment>
                         ) : (
                                 <span>
@@ -78,29 +86,23 @@ const Posts = (props) => {
             </Row>
 
             <Card.Body className="d-flex justify-content-between border-bottom mb-2 ">{text}</Card.Body>
-            <div className="d-flex flex-column ml-2">
-                <div className="like-choice align-items-center swing-in-top-fwd">
-                    <Row className="ml-2">
-                        <Button variant="light" className="likeBtn" ><FontAwesomeIcon icon={faThumbsUp} /> Like</Button>
-                        <Button variant="light" onClick={toggleModal}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
-                        <Button variant="light"><FontAwesomeIcon icon={faShare} /> Share</Button>
-                        <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> Send</Button>
-                        <Row className="like-choice" >
-                            <Button variant="link"><FontAwesomeIcon icon={faThumbsUp} /></Button>
-                            <Button variant="link"><FontAwesomeIcon icon={faSignLanguage} /></Button>
-                            <Button variant="link"><FontAwesomeIcon icon={faHandHoldingHeart} /></Button>
-                            <Button variant="link"><FontAwesomeIcon icon={faHeart} /></Button>
-                            <Button variant="link"><FontAwesomeIcon icon={faLightbulb} /></Button>
-                            <Button variant="link"><FontAwesomeIcon icon={faGrinWink} /></Button>
-                        </Row>
-
-                    </Row>
-                </div>
-            </div>
+            <Row className="ml-2 reactions">
+                <Button variant="light" className="likeBtn" ><FontAwesomeIcon icon={faThumbsUp} /> Like</Button>
+                <Button variant="light" onClick={toggleModal}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
+                <Button variant="light"><FontAwesomeIcon icon={faShare} /> Share</Button>
+                <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> Send</Button>
+                <Row className="like-choice" >
+                    <Button variant="link"><FontAwesomeIcon icon={faThumbsUp} /></Button>
+                    <Button variant="link"><FontAwesomeIcon icon={faSignLanguage} /></Button>
+                    <Button variant="link"><FontAwesomeIcon icon={faHandHoldingHeart} /></Button>
+                    <Button variant="link"><FontAwesomeIcon icon={faHeart} /></Button>
+                    <Button variant="link"><FontAwesomeIcon icon={faLightbulb} /></Button>
+                    <Button variant="link"><FontAwesomeIcon icon={faGrinWink} /></Button>
+                </Row>
+            </Row>
             {comments && <Comments user={props.user} postId={_id} />}
         </Card>
-
-    )
-}
+    );
+};
 
 export default Posts;

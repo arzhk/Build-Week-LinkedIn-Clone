@@ -67,8 +67,8 @@ class NavBar extends React.Component {
                 <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
               </Nav>
               <Nav className="ml-auto d-flex align-items-center">
-                <Link to="/home">
-                  <div className={pathname === "/home" ? "nav-link active" : "nav-link"}>
+                <Link to="/feed">
+                  <div className={pathname === "/feed" ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faHome} size="lg" />
                     <small>Home</small>
                   </div>
