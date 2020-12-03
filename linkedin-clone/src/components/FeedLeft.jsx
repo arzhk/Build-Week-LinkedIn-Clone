@@ -3,7 +3,7 @@ import ProfilePicture from "../assets/profilepicture.PNG";
 import { Link } from "react-router-dom";
 
 function FeedLeft(props) {
-  console.log(props);
+
   return (
     <>
       <div className="feed-left-container mb-3">

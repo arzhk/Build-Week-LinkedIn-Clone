@@ -12,7 +12,7 @@ function MainFeedContent({ jobTitle, name, userID }) {
           <FeedLeft jobTitle={jobTitle} name={name} userID={userID} />
         </Col>
         <Col xs={5}>
-          <FeedMiddle userID={userID} />
+          <FeedMiddle jobTitle={jobTitle} name={name} userID={userID} />
         </Col>
         <Col xs={4}>
           <FeedRight />

@@ -26,12 +26,12 @@ class Comments extends React.Component {
             <Col>
                 <div className="row">
                     <Col sm={1}>
-                        <Image style={{ width: "30px", height: "30px" }} />
+                        <Image src="https://mpng.subpng.com/20180802/icj/kisspng-user-profile-default-computer-icons-network-video-the-foot-problems-of-the-disinall-foot-care-founde-5b6346121ec769.0929994515332326581261.jpg" style={{ width: "40px", height: "40px" }} roundedCircle />
                     </Col>
                     <Col sm={10} className="p-0">
                         <Form >
                             <Form.Group>
-                                <Form.Control type="text" className="rounded-pill w-100  p-3" id={addComment} value={addComment} onChange={this.handleChange} placeholder="Add a comment..." />
+                                <Form.Control type="text" className="rounded-pill w-100 ml-3 p-3" id={addComment} value={addComment} onChange={this.handleChange} placeholder="Add a comment..." />
                             </Form.Group>
                         </Form>
                     </Col>

@@ -245,32 +245,32 @@ button.dropdown-toggle {
   top: -50px;
 }
 /**********************  REACTION LIKE FOR POST   *****************************/
+.reactions {
+  position: relative;
+}
 #feedMiddle .like-choice {
-  opacity: 1;
-  transform: scale(1);
-  transition: transform 0.25s ease 1s, opacity 0.25s ease 1s;
-  display: none;
+  position: absolute;
+  bottom: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #ffffff;
+  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.05);
+  opacity: 0;
 }
 
-#feedMiddle .reaction-button-container {
-  height: 28px;
-  width: 28px;
-  border-radius: 14px;
-  background-color: rgb(231, 231, 231);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#feedMiddle .card:hover .like-choice {
+#feedMiddle .likeBtn:hover ~ .like-choice,
+#feedMiddle .like-choice:hover {
   opacity: 1;
   transform: scale(1);
   transition: transform 0.25s ease 1s, opacity 0.25s ease 1s;
   display: flex;
 }
-
+#feedMiddle .likeBtn:hover ~ .like-choice {
+  -webkit-animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+  animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+}
 #feedMiddle .like-choice button:hover {
-  transform: scale(1.2);
+  transform: scale(1.5);
   color: #535353;
 }
 
