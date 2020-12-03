@@ -25,10 +25,70 @@ const Posts = (props) => {
         users = { ...user };
     }
     let { image, name, surname, title } = users;
+
+
+
     const [comments, setComments] = React.useState(false);
     const [deletePosts, setDeletePosts] = React.useState(false);
+
+
+
+
     const toggleComments = () => setComments(!comments)
     const toggleDeletePosts = () => setDeletePosts(!deletePosts)
+
+    /*****************REACTIONS************************/
+    /******STATES FOR REACTION*******/
+    let [reaction, setReaction] = React.useState("0");
+    let [icon, setIcon] = React.useState(faThumbsUp);
+    let [color, setColor] = React.useState("gray");
+    let [word, setWord] = React.useState("Like");
+    /******FUNCTIONS FOR REACTION*******/
+    const getReactions = async () => { }
+
+    const postReactions = async () => { }
+
+    const handleChange = (rate) => {
+        setReaction(rate);
+        likeButton(rate);
+    }
+
+    const likeButton = (rate) => {
+
+        switch (rate) {
+            case 1:
+                setIcon(faThumbsUp)
+                setColor("blue")
+                setWord("Like")
+                break;
+            case 2:
+                setIcon(faSignLanguage)
+                setColor("green")
+                setWord("Celebrate")
+                break;
+            case 3:
+                setIcon(faHandHoldingHeart)
+                setColor("pink")
+                setWord("Support")
+                break;
+            case 4:
+                setIcon(faHeart)
+                setColor("red")
+                setWord("Love")
+                break;
+            case 5:
+                setIcon(faLightbulb)
+                setColor("yellow")
+                setWord("Insightful")
+                break;
+
+            default:
+                setIcon(faThumbsUp)
+                setColor("gray")
+                setWord("Like")
+                break;
+        }
+    }
     return (
         <Card className="mt-2 p-2 posts">
             <Row className="justify-content-start m-2">
@@ -93,17 +153,18 @@ const Posts = (props) => {
                     <Row>{props.data.image !== undefined && props.data.image !== null && !props.data.image.startsWith("file") && !props.data.image.startsWith("blob") && <Image src={props.data.image} fluid />}</Row>
                 </Col>
             </Card.Body>
-            <Row className="ml-2 reactions">
-                <Button variant="light" className="likeBtn" ><FontAwesomeIcon icon={faThumbsUp} /> Like</Button>
-                <Button variant="light" onClick={toggleComments}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
-                <Button variant="light"><FontAwesomeIcon icon={faShare} /> Share</Button>
-                <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> Send</Button>
+            <Row className="mx-2 reactions d-flex justify-content-around">
+                <Button variant="light" className="likeBtn" onClick={() => handleChange(1)} style={{ color: color }} ><FontAwesomeIcon
+                    icon={icon} /><span className="d-sm-none d-lg-inline-block"> {word}</span> </Button>
+                <Button variant="light" onClick={toggleComments}><FontAwesomeIcon icon={faCommentDots} /><pan className="d-sm-none d-lg-inline-block">Comment</pan> </Button>
+                <Button variant="light"><FontAwesomeIcon icon={faShare} /> <span className="d-sm-none d-lg-inline-block">Share</span> </Button>
+                <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> <span className="d-sm-none d-lg-inline-block">Send</span></Button>
                 <Row className="like-choice" >
-                    <Button variant="link"><FontAwesomeIcon icon={faThumbsUp} /></Button>
-                    <Button variant="link"><FontAwesomeIcon icon={faSignLanguage} /></Button>
-                    <Button variant="link"><FontAwesomeIcon icon={faHandHoldingHeart} /></Button>
-                    <Button variant="link"><FontAwesomeIcon icon={faHeart} /></Button>
-                    <Button variant="link"><FontAwesomeIcon icon={faLightbulb} /></Button>
+                    <Button variant="link"><FontAwesomeIcon onClick={() => handleChange(1)} icon={faThumbsUp} /></Button>
+                    <Button variant="link"><FontAwesomeIcon onClick={() => handleChange(2)} icon={faSignLanguage} /></Button>
+                    <Button variant="link"><FontAwesomeIcon onClick={() => handleChange(3)} icon={faHandHoldingHeart} /></Button>
+                    <Button variant="link"><FontAwesomeIcon onClick={() => handleChange(4)} icon={faHeart} /></Button>
+                    <Button variant="link"><FontAwesomeIcon onClick={() => handleChange(5)} icon={faLightbulb} /></Button>
                     <Button variant="link"><FontAwesomeIcon icon={faGrinWink} /></Button>
                 </Row>
             </Row>
