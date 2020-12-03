@@ -1,18 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  Image,
-  NavDropdown,
-  Row,
-  Button,
-  Container,
-  FormControl,
-  Col,
-  Modal,
-  Card,
-  ListGroup,
-} from "react-bootstrap";
+import { Navbar, Nav, Image, NavDropdown, Row, Button, Container, Col, Modal, Card, ListGroup } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
