@@ -1,6 +1,6 @@
 import React from "react";
 import Moment from "react-moment";
-import { Card, Image, Row, Col, Button, Dropdown } from "react-bootstrap";
+import { Card, Image, Row, Col, Button, Dropdown, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,7 +26,9 @@ const Posts = (props) => {
     }
     let { image, name, surname, title } = users;
     const [comments, setComments] = React.useState(false);
-    const toggleModal = () => setComments(!comments);
+    const [deletePosts, setDeletePosts] = React.useState(false);
+    const toggleComments = () => setComments(!comments)
+    const toggleDeletePosts = () => setDeletePosts(!deletePosts)
     return (
         <Card className="mt-2 p-2 posts">
             <Row className="justify-content-start m-2">
@@ -50,11 +52,11 @@ const Posts = (props) => {
                             <i className="fas fa-eye-slash mr-4" style={{ height: 16, width: 16 }}></i>Hide this post
             </Dropdown.Item>
                         {users._id === userID && <>
-                            <Dropdown.Item onClick={() => deletePost(_id, text)}>
-                                <i className="fas fa-trash-alt mr-4" style={{ height: 16, width: 16 }}></i>Delete this post
-      </Dropdown.Item>
                             <Dropdown.Item onClick={() => editPost(_id, text)}>
                                 <i className="fas fa-edit mr-4" style={{ height: 16, width: 16 }}></i>Edit this post
+            </Dropdown.Item>
+                            <Dropdown.Item onClick={toggleDeletePosts}>
+                                <i className="fas fa-trash-alt mr-4 text-danger" style={{ height: 16, width: 16 }}></i>Delete this post
             </Dropdown.Item></>}
                     </Dropdown.Menu>
                 </Dropdown>
@@ -85,10 +87,15 @@ const Posts = (props) => {
                 </Col>
             </Row>
 
-            <Card.Body className="d-flex justify-content-between border-bottom mb-2 ">{text}</Card.Body>
+            <Card.Body className="d-flex justify-content-between border-bottom mb-2 ">
+                <Col>
+                    <Row><p>{text}</p></Row>
+                    <Row>{props.data.image !== undefined && props.data.image !== null && !props.data.image.startsWith("file") && !props.data.image.startsWith("blob") && <Image src={props.data.image} fluid />}</Row>
+                </Col>
+            </Card.Body>
             <Row className="ml-2 reactions">
                 <Button variant="light" className="likeBtn" ><FontAwesomeIcon icon={faThumbsUp} /> Like</Button>
-                <Button variant="light" onClick={toggleModal}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
+                <Button variant="light" onClick={toggleComments}><FontAwesomeIcon icon={faCommentDots} /> Comment</Button>
                 <Button variant="light"><FontAwesomeIcon icon={faShare} /> Share</Button>
                 <Button variant="light"><FontAwesomeIcon icon={faPaperPlane} /> Send</Button>
                 <Row className="like-choice" >
@@ -101,6 +108,27 @@ const Posts = (props) => {
                 </Row>
             </Row>
             {comments && <Comments user={props.user} postId={_id} />}
+            {deletePosts &&
+                <Modal show={true} onHide={toggleDeletePosts}>
+                    <Modal.Header closeButton onClick={toggleDeletePosts}>
+                        <Modal.Title>Delete Post</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4>Are you sure you want to delete this Post?</h4>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="success" className="px-5" onClick={toggleDeletePosts}>No</Button>
+                        <Button variant="danger"
+                            className="px-5"
+                            onClick={() => {
+                                deletePost(_id)
+                                setTimeout(() => {
+                                    toggleDeletePosts()
+                                }, 500);
+                            }}
+                        >Yes</Button>
+                    </Modal.Footer>
+                </Modal>}
         </Card>
     );
 };

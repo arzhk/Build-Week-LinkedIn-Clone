@@ -12,10 +12,10 @@ class PhotoModal extends React.Component {
         let file = this.state.file
         file.push(e.target.files[0])
         console.log(input, file)
-        this.setState({ input, file });
+        this.setState({ input, file: e.target.files[0] });
     };
     handelSave = () => {
-        this.props.sendPosts(this.state.file, this.props.title);
+        this.props.sendPosts(this.state.file, this.state.input, this.props.title);
     }
     render() {
         return <div>
