@@ -3,7 +3,6 @@ import ProfilePicture from "../assets/profilepicture.PNG";
 import { Link } from "react-router-dom";
 
 function FeedLeft(props) {
-
   return (
     <>
       <div className="feed-left-container mb-3">
@@ -11,16 +10,26 @@ function FeedLeft(props) {
           <div className="feed-profile-picture-bg" style={{ background: `url(${ProfilePicture})` }}></div>
           <p className="feed-profile-premium-tag">PREMIUM</p>
         </div>
+
         <div className="text-center">
-          <div
+          <Link
+            to={`/profile/${props.userID}`}
             className="feed-profile-picture-photo mx-auto"
-            style={{ height: 72, width: 72, borderRadius: 36, backgroundColor: "black", border: "3px solid #fff" }}
-          ></div>
-          <div className="brdr-bottom-strict pb-3">
+            style={{
+              height: 72,
+              width: 72,
+              borderRadius: 36,
+              background: `url(${props.profilePicture})`,
+              border: "3px solid #fff",
+            }}
+          ></Link>
+
+          <Link to={`/profile/${props.userID}`} className="feed-profile-link brdr-bottom-strict pb-3">
             <h6 className="mb-0">{props.name}</h6>
             <p className="mb-0">{props.jobTitle}</p>
-          </div>
+          </Link>
         </div>
+
         <div className="brdr-bottom-strict py-3">
           <Link to="/" className="profile-link d-flex flex-column justify-content-center px-3">
             <div className="d-flex justify-content-between align-items-center">
@@ -58,6 +67,7 @@ function FeedLeft(props) {
           </Link>
         </div>
       </div>
+
       <div className="feed-left-container">
         <div>
           <div className="px-3 py-2">

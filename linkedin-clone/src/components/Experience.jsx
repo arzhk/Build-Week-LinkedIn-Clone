@@ -25,6 +25,7 @@ class Experience extends Component {
       });
       if (response.ok) {
         const result = await response.json();
+        console.log(result);
         this.setState({ experiences: result, loaded: true });
       } else {
         console.log(response);
@@ -140,7 +141,12 @@ class Experience extends Component {
             {this.state.loaded
               ? this.state.experiences.length > 0 &&
                 this.state.experiences.map((exp, key) => (
-                  <ExperienceItem key={key} experience={exp} editModal={this.editModalToggleHandler} />
+                  <ExperienceItem
+                    key={key}
+                    experience={exp}
+                    editModal={this.editModalToggleHandler}
+                    userID={this.props.userID}
+                  />
                 ))
               : Array.from({ length: 4 }, (_, i) => i + 1).map((n) => <ExpEducationLoaders key={n} />)}
           </ListGroup>

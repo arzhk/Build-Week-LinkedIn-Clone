@@ -1,18 +1,21 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Spinner } from "react-bootstrap";
 import ProfilePicture from "../assets/profilepicture.PNG";
 import Highlights from "./Highlights";
 import LatestEducation from "./LatestEducation";
 import LatestExperience from "./LatestExperience";
 import About from "./About";
 import MyLoader from "./ContentLoader";
+import ImageUploader from "react-images-upload";
 
 function MainProfileBlock(props) {
   const [isMoreClicked, setIsMoreClicked] = React.useState(false);
   const [userData, setUserData] = React.useState({});
   const [currentUserID, setCurrentUserID] = React.useState(props.userID);
-  const [fetchIsComplete, setFetchIsComplete] = React.useState(false);
   const [isFinishedLoading, setIsFinishedLoading] = React.useState(false);
+  const [showProfilePictureUpload, setShowProfilePictureUpload] = React.useState(false);
+  const [profilePictureUploadImg, setProfilePictureUploadImg] = React.useState([]);
+  const [isImageUploading, setIsImageUploading] = React.useState(false);
 
   const fetchUserDataHandler = async (id) => {
     try {
@@ -23,10 +26,36 @@ function MainProfileBlock(props) {
         },
       });
       let data = await response.json();
-      setFetchIsComplete(true);
       setUserData(data);
       setTimeout(() => {
         setIsFinishedLoading(true);
+      }, 1000);
+    } catch (er) {
+      console.log(er);
+    }
+  };
+
+  const postProfilePictureHandler = async () => {
+    setIsImageUploading(true);
+
+    let formData = new FormData();
+    let blob = new Blob([profilePictureUploadImg.pictures[0]], { type: "img/jpeg" });
+    formData.append("profile", blob);
+
+    try {
+      let response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${props.loggedInUserID}/picture`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
+        },
+      });
+      setTimeout(() => {
+        setIsImageUploading(false);
+        setShowProfilePictureUpload(!showProfilePictureUpload);
+        fetchUserDataHandler(currentUserID);
+        window.location.reload();
       }, 1000);
     } catch (er) {
       console.log(er);
@@ -37,11 +66,17 @@ function MainProfileBlock(props) {
     setIsMoreClicked(!isMoreClicked);
   };
 
+  const showProfilePictureUploadHandler = () => {
+    setShowProfilePictureUpload(!showProfilePictureUpload);
+  };
+
+  const profilePictureUploadHandler = (picture) => {
+    setProfilePictureUploadImg({ pictures: picture });
+  };
+
   React.useEffect(() => {
     setCurrentUserID(props.userID);
-
     fetchUserDataHandler(currentUserID);
-
     setIsFinishedLoading(true);
   }, []);
 
@@ -68,15 +103,62 @@ function MainProfileBlock(props) {
               }}
             ></div>
           </div>
-
+          {showProfilePictureUpload && (
+            <div className="profile-picture-upload-container swing-in-top-fwd">
+              <h4 className="font-weight-normal">Upload Image</h4>
+              {isImageUploading ? (
+                <div className="w-100 py-5 d-flex flex-column align-items-center justify-content-center">
+                  <p className="font-weight-bold mr-2 mb-3">Uploading...</p>
+                  <Spinner variant="primary" animation="border" role="status" />
+                </div>
+              ) : (
+                <>
+                  <ImageUploader
+                    withIcon={true}
+                    buttonText="Upload image"
+                    imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                    maxFileSize={5242880}
+                    singleImage={true}
+                    withPreview={true}
+                    withLabel={false}
+                    onChange={profilePictureUploadHandler}
+                  />
+                  <div className="d-flex justify-content-end align-items-center" style={{ height: 40 }}>
+                    <Button
+                      variant="outline-secondary"
+                      className="rounded-pill mr-2"
+                      onClick={showProfilePictureUploadHandler}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="primary"
+                      className="rounded-pill"
+                      style={{ width: 160 }}
+                      onClick={postProfilePictureHandler}
+                    >
+                      Save Changes
+                    </Button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
           <Card.Body className="d-flex justify-content-between px-4 py-3 mb-3">
             {isFinishedLoading ? (
               <>
-                <div className="profile-left w-50">
+                <div className="profile-left w-75">
                   <div
                     className="profile-photo d-flex align-items-end justify-content-center"
                     style={{ background: `url(${userData.image})` }}
-                  ></div>
+                  >
+                    {props.loggedInUserID === currentUserID && (
+                      <div className="profile-picture-edit-btn" onClick={showProfilePictureUploadHandler}>
+                        <i className="fas fa-pen"></i>
+                      </div>
+                    )}
+                  </div>
+
                   <h3 className="d-inline-block mr-2">
                     {userData.name} {userData.surname}
                   </h3>

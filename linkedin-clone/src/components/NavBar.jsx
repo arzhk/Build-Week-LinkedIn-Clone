@@ -13,7 +13,6 @@ import {
   Card,
   ListGroup,
 } from "react-bootstrap";
-import ProfilePicture from "../assets/profilepicture.PNG";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -36,16 +35,21 @@ import "./style/NavFooter.css";
 class NavBar extends React.Component {
   state = {
     show: false,
-    name: "Aaron Rizhik",
-    jobTitle: "React Developer",
-    userID: "5fc4c48fed266800170ea3d8",
+    name: this.props.name,
+    jobTitle: this.props.jobTitle,
+    profilePicture: this.props.profilePicture,
+    userID: this.props.userID,
   };
   handleClose = () => this.setState({ show: false });
   handleShow = () => this.setState({ show: true });
 
-  componentDidUpdate = (prevProps) => {
+  componentDidUpdate = (prevProps, prevState) => {
     if (this.props.name !== prevProps.name) {
-      this.setState({ name: this.props.name, jobTitle: this.props.jobtitle, userID: this.props.userID });
+      this.setState({ name: this.props.name, jobTitle: this.props.jobTitle, userID: this.props.userID });
+    }
+
+    if (this.props.profilePicture !== prevState.profilePicture) {
+      this.setState({ profilePicture: this.props.profilePicture });
     }
   };
 
@@ -101,7 +105,7 @@ class NavBar extends React.Component {
                   <Image
                     style={{ width: "20px", height: "25px" }}
                     className="pt-1"
-                    src={ProfilePicture}
+                    src={this.state.profilePicture}
                     roundedCircle
                   />
                   <NavDropdown title="Me" id="basic-nav-dropdown">
@@ -110,7 +114,7 @@ class NavBar extends React.Component {
                         <div className="d-flex justify-content-start align-items-center">
                           <Image
                             style={{ maxWidth: "50px", maxHeight: "50px" }}
-                            src={ProfilePicture}
+                            src={this.state.profilePicture}
                             roundedCircle
                             className="mr-1"
                           />

@@ -17,7 +17,11 @@ function MainContent(props) {
       <Container>
         <Row>
           <Col xs={8}>
-            <MainProfileBlock userID={currentUserID} contactInfoHandler={props.contactInfoHandler} />
+            <MainProfileBlock
+              userID={currentUserID}
+              loggedInUserID={props.loggedInUserID}
+              contactInfoHandler={props.contactInfoHandler}
+            />
             <Main userID={currentUserID} />
           </Col>
           <Col xs={4}>
