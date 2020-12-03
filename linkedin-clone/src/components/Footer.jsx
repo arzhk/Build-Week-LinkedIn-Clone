@@ -7,7 +7,9 @@ import { faCog, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 class Footer extends React.Component {
   render() {
+
     return (
+      this.props.location.pathname !== "/feed" &&
       <div id="footer">
         <footer>
           <Container>
