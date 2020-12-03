@@ -8,6 +8,8 @@ import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import MainFeedContent from "./components/MainFeedContent";
 
+import MyNetwork from "./components/MyNetwork";
+
 function App() {
   const [currentUserName, setCurrentUserName] = React.useState("Aaron Rizhik");
   const [currentJobTitle, setCurrentJobTitle] = React.useState("React Developer");
@@ -20,18 +22,21 @@ function App() {
 
   return (
     <Router>
-      <Redirect to="/feed" />
-      <Route path="/">
+      <Redirect to='/feed' />
+      <Route path='/'>
         <NavBar jobtitle={currentJobTitle} name={currentUserName} userID={currentUserID} />
       </Route>
-      <Route path="/feed" exact>
+      <Route path='/feed' exact>
         <MainFeedContent jobTitle={currentJobTitle} name={currentUserName} userID={currentUserID} />
       </Route>
-      <Route path="/profile/:id" exact>
+      <Route path='/profile/:id' exact>
         <MainContent contactInfoHandler={contactInfoHandler} />
       </Route>
+      <Route path='/network' exact>
+        <MyNetwork />
+      </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
-      <Route path="/" component={Footer} />
+      <Route path='/' component={Footer} />
     </Router>
   );
 }
