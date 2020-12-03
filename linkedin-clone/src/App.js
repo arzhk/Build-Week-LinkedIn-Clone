@@ -8,6 +8,8 @@ import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import MainFeedContent from "./components/MainFeedContent";
 
+import MyNetwork from "./components/MyNetwork";
+
 function App() {
   const currentUserID = "5fc4c48fed266800170ea3d8";
   const [userData, setUserData] = React.useState({});
@@ -64,6 +66,9 @@ function App() {
       </Route>
       <Route path="/profile/:id" exact>
         <MainContent contactInfoHandler={contactInfoHandler} loggedInUserID={currentUserID} />
+      </Route>
+      <Route path="/network" exact>
+        <MyNetwork />
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
       <Route path="/" component={Footer} />

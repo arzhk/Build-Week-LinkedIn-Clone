@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Image } from "react-bootstrap";
 
 import "./StartPost.css";
 
@@ -16,11 +16,11 @@ class StartPost extends React.Component {
         });
     };
     handlePost = () => {
-        this.props.sendPosts(this.state.myPost);
+        this.props.sendPosts(this.state.myPost, "", "startPost");
         this.setState({ myPost: "" });
     };
     render() {
-        const { show, name, onHide } = this.props;
+        const { show, name, onHide, inputImage } = this.props;
         return (
             <div className="mt-4">
                 <Modal id="startPost" show={show} onHide={() => onHide("startPost")} dialogClassName="custom-dialog">
@@ -53,7 +53,7 @@ class StartPost extends React.Component {
                                 placeholder={"What do you want to talk about?"}
                                 onChange={(evt) => this.updateInputValue(evt)}
                             />
-
+                            {inputImage != null && <div><Image src={inputImage} fluid /></div>}
                             <div className="d-flex align-items-center">
                                 <Button className="hashtag-button shadow-none">Add hashtag</Button>
                                 <p className="m-0 p-0" id="myP">
@@ -65,9 +65,9 @@ class StartPost extends React.Component {
                                     <Link to="/" className="d-flex align-items-center justify-content-center" id="plus">
                                         <i className="fas fa-plus text-primary"></i>
                                     </Link>
-                                    <Link to="/" className="d-flex align-items-center justify-content-center">
+                                    <Button variant="link" className="d-flex align-items-center justify-content-center" onClick={() => onHide("photo", true)}>
                                         <i className="far fa-image"></i>
-                                    </Link>
+                                    </Button>
                                     <Link to="/" className="d-flex align-items-center justify-content-center">
                                         <i className="fab fa-youtube"></i>
                                     </Link>
