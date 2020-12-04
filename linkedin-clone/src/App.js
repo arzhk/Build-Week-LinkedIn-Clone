@@ -9,6 +9,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import MainFeedContent from "./components/MainFeedContent";
 
 import MyNetwork from "./components/MyNetwork";
+import FullPageLoader from "./components/loaders/FullPageLoader";
 
 function App() {
   const currentUserID = "5fc4c48fed266800170ea3d8";
@@ -45,30 +46,21 @@ function App() {
 
   return (
     <Router>
-      <Route path="/">
-        <NavBar
-          jobTitle={currentJobTitle}
-          name={currentUserName}
-          userID={currentUserID}
-          profilePicture={currentProfilePicture}
-        />
+      <Route path='/'>
+        <NavBar jobTitle={currentJobTitle} name={currentUserName} userID={currentUserID} profilePicture={currentProfilePicture} />
       </Route>
-      <Route path="/feed" exact>
-        <MainFeedContent
-          jobTitle={currentJobTitle}
-          name={currentUserName}
-          userID={currentUserID}
-          profilePicture={currentProfilePicture}
-        />
+      <Route path='/feed' exact>
+        <MainFeedContent jobTitle={currentJobTitle} name={currentUserName} userID={currentUserID} profilePicture={currentProfilePicture} />
       </Route>
-      <Route path="/profile/:id" exact>
+      <Route path='/profile/:id' exact>
         <MainContent contactInfoHandler={contactInfoHandler} loggedInUserID={currentUserID} />
       </Route>
-      <Route path="/network" exact>
+      <Route path='/network' exact>
         <MyNetwork />
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
-      <Route path="/" component={Footer} />
+      <Route path='/' component={Footer} />
+      <FullPageLoader />
     </Router>
   );
 }
