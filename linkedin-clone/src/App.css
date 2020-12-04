@@ -263,7 +263,20 @@ Body {
 }
 
 /* Yazid piece styling */
-
+.reactPlayer-conatin {
+  background-color: lightyellow;
+}
+.banner-learning-contain {
+  background-color: red;
+  height: 400px;
+  width: 100%;
+}
+.img-card-jobs {
+  height: 56px;
+  width: 56px;
+  background-color: rgb(9, 71, 17);
+  border: 1px solid rgba(0, 0, 0, 0.068);
+}
 .imgPlace {
   height: 56px;
   width: 56px;
@@ -401,7 +414,11 @@ Body {
   left: 16px;
   height: 61px;
   background: rgb(20, 20, 20);
-  background: linear-gradient(0deg, rgba(20, 20, 20, 0.2) 0%, rgba(20, 20, 20, 0.7) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(20, 20, 20, 0.2) 0%,
+    rgba(20, 20, 20, 0.7) 100%
+  );
   border-radius: 0.6rem 0.6rem 0rem 0rem;
 }
 
@@ -543,8 +560,10 @@ Body {
 }
 
 .swing-in-top-fwd {
-  -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
-  animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+  -webkit-animation: swing-in-top-fwd 0.5s
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+  animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s
+    both;
 }
 
 /* ----------------------------------------------
