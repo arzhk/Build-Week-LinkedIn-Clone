@@ -15,7 +15,7 @@ export default class Jobs extends Component {
   render() {
     return (
       <Container id="jobs-main-container" className="mt-5 pt-5">
-        <div className="jobs-container mb-2 bg-white text-secondary d-flex justify-content-between align-items-center py-2 px-4">
+        <div className="jobs-container mb-3 bg-white text-secondary d-flex justify-content-between align-items-center py-2 px-4">
           <div className="d-flex align-items-center">
             <p className="jobs-link font-weight-bold mr-3 mb-0 pl-2 pr-3 py-1 brdr-right">
               <i class="fas fa-bookmark pr-2"></i>My Jobs
