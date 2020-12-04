@@ -9,7 +9,6 @@ import Posts from "./Posts";
 import StartPost from "./StartPost";
 
 class FeedMiddle extends React.Component {
-
   state = {
     openPhotoFromPost: false,
     photoModal: false,
@@ -20,12 +19,12 @@ class FeedMiddle extends React.Component {
     editModal: false,
     currentPostId: "",
     currentPost: {
-      text: " "
+      text: " ",
     },
     loadingPosts: false,
     posts: [],
     inputImage: [],
-    postImage: ""
+    postImage: "",
   };
 
   componentDidMount = () => {
@@ -34,7 +33,6 @@ class FeedMiddle extends React.Component {
 
   // --------------------GET THE POSTS FROM API
   getPosts = async (id) => {
-
     let url = "https://striveschool-api.herokuapp.com/api/posts/";
 
     try {
@@ -46,8 +44,7 @@ class FeedMiddle extends React.Component {
       });
       if (response.ok) {
         let result = await response.json();
-
-        console.log(result)
+        result = result.reverse();
         this.setState({ posts: result, loadingPosts: true });
       } else {
         console.log(response);
@@ -62,7 +59,7 @@ class FeedMiddle extends React.Component {
   //-------------------POST TEXT DATA TO API
   postData = async () => {
     let data = this.state.currentPost;
-    let url = "https://striveschool-api.herokuapp.com/api/posts/"
+    let url = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -75,8 +72,10 @@ class FeedMiddle extends React.Component {
       });
       if (response.ok) {
         const data = await response.json();
-        this.state.currentPost.text === " " ? this.setState({ currentPostId: data._id, postImage: { post: "" }, inputImage: [] }) : this.setState({ currentPost: { text: " " }, currentPostId: "" })
-        this.state.currentPost.text === " " && this.state.startPostModal && this.setState({ openPhotoFromPost: true })
+        this.state.currentPost.text === " "
+          ? this.setState({ currentPostId: data._id, postImage: { post: "" }, inputImage: [] })
+          : this.setState({ currentPost: { text: " " }, currentPostId: "" });
+        this.state.currentPost.text === " " && this.state.startPostModal && this.setState({ openPhotoFromPost: true });
         setTimeout(() => {
           this.getPosts();
         }, 1000);
@@ -92,7 +91,7 @@ class FeedMiddle extends React.Component {
   imagePost = async (id, file) => {
     let formData = new FormData();
     formData.append("post", file);
-    let url = "https://striveschool-api.herokuapp.com/api/posts/" + id
+    let url = "https://striveschool-api.herokuapp.com/api/posts/" + id;
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -103,8 +102,10 @@ class FeedMiddle extends React.Component {
         },
       });
       if (response.ok) {
-        const data = await response.json()
-        this.state.currentPost.text === " " ? this.setState({ openPhotoFromPost: true, currentPostId: data._id, postImage: { post: "" }, inputImage: [] }) : this.setState({ currentPost: { text: " " }, postingCurrentId: "" })
+        const data = await response.json();
+        this.state.currentPost.text === " "
+          ? this.setState({ openPhotoFromPost: true, currentPostId: data._id, postImage: { post: "" }, inputImage: [] })
+          : this.setState({ currentPost: { text: " " }, postingCurrentId: "" });
         setTimeout(() => {
           this.getPosts();
         }, 1000);
@@ -114,12 +115,11 @@ class FeedMiddle extends React.Component {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
   //-----------------------------EDIT EXSISTING POST
   putData = async (event) => {
-
     event !== undefined && event.preventDefault();
-    let { currentPost, currentPostId } = this.state
+    let { currentPost, currentPostId } = this.state;
 
     let editPost = {
       text: currentPost.text + " ",
@@ -137,20 +137,20 @@ class FeedMiddle extends React.Component {
         },
       });
       if (response.ok) {
-        const data = await response.json()
+        const data = await response.json();
         setTimeout(() => {
           // this.getPosts();
         }, 1000);
-        currentPost.text = " "
-        currentPostId = ""
-        this.setState({ currentPost, currentPostId, editModal: false })
+        currentPost.text = " ";
+        currentPostId = "";
+        this.setState({ currentPost, currentPostId, editModal: false });
       } else {
         console.log(response);
       }
     } catch (e) {
       console.log(e);
     }
-  }
+  };
   //--------------------------------DELETE POST----------------
   deletePost = async (id) => {
     let url = "https://striveschool-api.herokuapp.com/api/posts/";
@@ -163,56 +163,50 @@ class FeedMiddle extends React.Component {
         }),
       });
       if (response.ok) {
-
         this.getPosts();
-
       } else {
         console.log(response);
       }
     } catch (e) {
       console.log(e);
     }
-  }
+  };
   //---------------------HANDEL CHANGE FOR EDITING POSTS
   handelChange = (e) => {
     let { currentPost } = this.state;
-    currentPost.text = e.target.value
+    currentPost.text = e.target.value;
     this.setState({ currentPost });
-  }
+  };
   //----------------------HANDEL DATA FROM COMPONENETS AND CALL FUNCTIONS
   sendPosts = async (data, inputImage, item) => {
-    this.state.photoModal && await this.postData();
-    this.toggleModal(item)
+    this.state.photoModal && (await this.postData());
+    this.toggleModal(item);
     let { currentPost } = this.state;
-    if (this.state.openPhotoFromPost && item === 'photo') {
+    if (this.state.openPhotoFromPost && item === "photo") {
       let postImage = data;
-      this.setState({ inputImage })
-      this.setState({ postImage })
-    }
-    else if (this.state.openPhotoFromPost && item === 'startPost') {
-      currentPost.text = data
-      this.setState({ currentPost })
+      this.setState({ inputImage });
+      this.setState({ postImage });
+    } else if (this.state.openPhotoFromPost && item === "startPost") {
+      currentPost.text = data;
+      this.setState({ currentPost });
       let { currentPostId, postImage } = this.state;
       this.putData();
       this.imagePost(currentPostId, postImage);
-    }
-    else if (!this.state.openPhotoFromPost && item === 'photo') {
+    } else if (!this.state.openPhotoFromPost && item === "photo") {
       let postImage = data;
       let { currentPostId } = this.state;
       this.imagePost(currentPostId, postImage);
-    }
-    else {
-      currentPost.text = data
-      this.setState({ currentPost })
+    } else {
+      currentPost.text = data;
+      this.setState({ currentPost });
       this.postData();
     }
-
   };
 
   //-----------------HANDELE EDIT POST MODAL
   editPost = (id, post) => {
     this.toggleModal("edit");
-    const { currentPost } = this.state
+    const { currentPost } = this.state;
     currentPost.text = post;
     this.setState({ currentPostId: id, currentPost });
   };
@@ -223,12 +217,23 @@ class FeedMiddle extends React.Component {
     this.setState(currentstate);
   };
   render() {
-    const { photoModal, videoModal, articleModal, inputImage, startPostModal, eventsModal, loadingPosts, posts, editModal, currentPost, currentPostId } = this.state;
+    const {
+      photoModal,
+      videoModal,
+      articleModal,
+      inputImage,
+      startPostModal,
+      eventsModal,
+      loadingPosts,
+      posts,
+      editModal,
+      currentPost,
+      currentPostId,
+    } = this.state;
     const { jobTitle, name, userID, profilePicture } = this.props;
-    posts.length > 0 && console.log(posts.length)
     return (
       <div id="feedMiddle">
-        <div className="brdr-bottom pb-4">
+        <div className="brdr-bottom mb-4 pb-4">
           {/*----------------------------- ADD POST -------------------------------- */}
 
           <Card className="px-4 pt-3 pb-2" id="cardPost">
@@ -270,42 +275,64 @@ class FeedMiddle extends React.Component {
         {articleModal && <ArticleModal show={true} />}
         {eventsModal && <EventsModal title="events" show={true} onHide={this.toggleModal} />}
         {startPostModal && (
-          <StartPost show={true} name={name} userID={userID} onHide={this.toggleModal} sendPosts={this.sendPosts} inputImage={inputImage != null && inputImage} />
+          <StartPost
+            show={true}
+            name={name}
+            userID={userID}
+            onHide={this.toggleModal}
+            sendPosts={this.sendPosts}
+            inputImage={inputImage != null && inputImage}
+          />
         )}
         {loadingPosts ? (
-          posts.length > 0 && posts.map((post, key) => key < 50 && <Posts name={name} userID={userID} profilePicture={profilePicture} key={key} data={post} deletePost={this.deletePost} editPost={this.editPost} />)
+          posts.length > 0 &&
+          posts.map(
+            (post, key) =>
+              key < 50 && (
+                <Posts
+                  name={name}
+                  userID={userID}
+                  profilePicture={profilePicture}
+                  key={key}
+                  data={post}
+                  deletePost={this.deletePost}
+                  editPost={this.editPost}
+                />
+              )
+          )
         ) : (
-            <p>Loading...</p>
-          )}
+          <p>Loading...</p>
+        )}
 
         {/*----------------------------- EDIT MODAL -------------------------------- */}
-        {editModal && <div>
-          <Modal show={editModal} id="editModal" onHide={() => this.toggleModal("edit")}>
-            <Form onSubmit={this.putData}>
-              <Modal.Header closeButton onClick={() => this.toggleModal("edit")}>
-                <Modal.Title>Edit Post</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-
-                <Form.Group>
-                  <Form.Label>Edit your post</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    id="description"
-                    rows={3}
-                    value={currentPost.text}
-                    onChange={this.handelChange}
-                  />
-                </Form.Group>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="primary" className="rounded-pill" type="submit">
-                  Save
-                        </Button>
-              </Modal.Footer>
-            </Form>
-          </Modal>
-        </div>}
+        {editModal && (
+          <div>
+            <Modal show={editModal} id="editModal" onHide={() => this.toggleModal("edit")}>
+              <Form onSubmit={this.putData}>
+                <Modal.Header closeButton onClick={() => this.toggleModal("edit")}>
+                  <Modal.Title>Edit Post</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Form.Group>
+                    <Form.Label>Edit your post</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      id="description"
+                      rows={3}
+                      value={currentPost.text}
+                      onChange={this.handelChange}
+                    />
+                  </Form.Group>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="primary" className="rounded-pill" type="submit">
+                    Save
+                  </Button>
+                </Modal.Footer>
+              </Form>
+            </Modal>
+          </div>
+        )}
       </div>
     );
   }
