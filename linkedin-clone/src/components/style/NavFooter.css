@@ -257,12 +257,12 @@ button.dropdown-toggle {
   background-color: #ffffff;
   box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.05);
   opacity: 0;
+  display: none;
 }
 
 #feedMiddle .likeBtn:hover ~ .like-choice,
 #feedMiddle .like-choice:hover {
   opacity: 1;
-  transform: scale(1);
   transition: transform 0.25s ease 1s, opacity 0.25s ease 1s;
   display: flex;
 }
@@ -271,8 +271,10 @@ button.dropdown-toggle {
   animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
 }
 #feedMiddle .like-choice button:hover {
-  transform: scale(1.5);
+  transform: scale(1.6);
   color: #535353;
+  position: relative;
+  bottom: 5px;
 }
 
 #feedMiddle .like-choice button {
@@ -320,4 +322,18 @@ button.dropdown-toggle {
 .posts .post-name-clickable:hover {
   color: rgb(10, 102, 194);
   text-decoration: underline;
+}
+.comments {
+  background-color: rgb(231, 230, 230);
+  width: 100%;
+  border-radius: 10px;
+}
+#reactionsModal svg {
+  height: 30px;
+  color: rgb(172, 162, 162);
+}
+button.btn-primary.rounded-pill:disabled {
+  background-color: #d8d8d8;
+  border: none;
+  color: #5c5c5c;
 }

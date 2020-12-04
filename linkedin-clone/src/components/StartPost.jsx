@@ -75,7 +75,7 @@ class StartPost extends React.Component {
                                         <i className="fas fa-sticky-note"></i>
                                     </Link>
                                 </div>
-                                <Button variant="primary" onClick={this.handlePost} className="post-button py-3">
+                                <Button variant="primary" onClick={this.handlePost} disabled={this.state.myPost.length < 1} className="rounded-pill px-4" >
                                     Post
                 </Button>
                             </div>

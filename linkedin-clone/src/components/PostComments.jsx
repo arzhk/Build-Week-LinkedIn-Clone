@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Image, Form, Col } from 'react-bootstrap';
+import { Row, Image, Form, Col, Container, Button } from 'react-bootstrap';
 import Moment from 'react-moment';
 
 class Comments extends React.Component {
@@ -8,43 +8,74 @@ class Comments extends React.Component {
         loaded: false,
         addComment: "",
     }
-    componentDidMount = () => {
-        setTimeout(() => {
-            this.getComments(this.props.postId)
-        }, 1000);
-    }
-    getComments = async (id) => {
-
-    }
+    url = "https://striveschool-api.herokuapp.com/api/comments/"
     handleChange = (e) => {
+        let { addComment } = this.state
+        addComment = e.currentTarget.value;
+        console.log(addComment)
+        this.setState({ addComment })
+    }
+    postComments = async (e) => {
+        e.preventDefault()
+        let commentReaction = {
+            elementId: this.props.postId,
+            rate: 1,
+            comment: this.state.addComment,
+        }
+        try {
+            let response = await fetch(this.url, {
+                method: 'POST',
+                body: JSON.stringify(commentReaction),
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization:
+                        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU",
+                }),
+            });
+            if (response.ok) {
+                console.log(await response.json())
+                this.props.getComments()
+            } else {
+                console.log(response)
+            }
+        } catch (error) {
+            console.log(error)
+        }
 
     }
     render() {
-        const { user, postId } = this.props
-        const { comments, loaded, addComment } = this.state
+        let { profilePicture, comments, getComments } = this.props
+        const { loaded, addComment } = this.state
         return <div className="mt-2 pt-2" >
             <Col>
                 <div className="row">
-                    <Col sm={1}>
-                        <Image src="https://mpng.subpng.com/20180802/icj/kisspng-user-profile-default-computer-icons-network-video-the-foot-problems-of-the-disinall-foot-care-founde-5b6346121ec769.0929994515332326581261.jpg" style={{ width: "40px", height: "40px" }} roundedCircle />
+                    <Col sm={1} className="d-sm-none d-md-inline mr-2">
+                        <Image src={profilePicture} style={{ width: "40px", height: "40px" }} roundedCircle />
                     </Col>
                     <Col sm={10} className="p-0">
-                        <Form >
+                        <Form onSubmit={this.postComments} >
                             <Form.Group>
                                 <Form.Control type="text" className="rounded-pill w-100 ml-3 p-3" id={addComment} value={addComment} onChange={this.handleChange} placeholder="Add a comment..." />
                             </Form.Group>
                         </Form>
                     </Col>
                 </div>
-                <Row>
-                    {loaded ? comments.length > 0 && comments.map((comment) =>
-                        <Col>
-                            <h6>{comment.user}</h6>
-                            <small className="text-muted"><Moment fromNow>{comment.createdAt}</Moment> </small>
-                            <p>{comment.text}</p>
-                        </Col>
-                    ) : <p>Loading...</p>}
-                </Row>
+                <div>
+                    {comments.length > 0 && comments.map((comment, i) =>
+                        <>
+                            <div key={i} className="comments w-100 d-flex">
+                                <Col className="m-0 p-2 pl-3">
+                                    <div className="m-0 p-0 d-flex">
+                                        <h6 className="m-0 p-0">{comment.author}</h6> ~
+                                    <small className="text-muted m-0 p-0 font-weight-lighter"> <Moment fromNow>{comment.createdAt}</Moment> </small>
+                                    </div>
+                                    <p className="m-0 p-0">{comment.comment}</p>
+                                </Col>
+                            </div>
+                            <small > <Button className="m-0 p-0 text-muted" variant="link">Like</Button> | <Button className="m-0 p-0 text-muted" variant="link">Reply</Button></small>
+                        </>
+                    )}
+                </div>
             </Col>
         </div>;
     }

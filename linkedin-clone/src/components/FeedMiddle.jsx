@@ -29,15 +29,13 @@ class FeedMiddle extends React.Component {
   };
 
   componentDidMount = () => {
-    setTimeout(() => {
-      this.getPosts();
-    }, 1000);
+    this.getPosts();
   };
 
   // --------------------GET THE POSTS FROM API
   getPosts = async (id) => {
 
-    let url = "https://striveschool-api.herokuapp.com/api/posts";
+    let url = "https://striveschool-api.herokuapp.com/api/posts/";
 
     try {
       const response = await fetch(url, {
@@ -47,8 +45,10 @@ class FeedMiddle extends React.Component {
         }),
       });
       if (response.ok) {
-        const result = await response.json();
-        this.setState({ posts: result.reverse(), loadingPosts: true });
+        let result = await response.json();
+
+        console.log(result)
+        this.setState({ posts: result, loadingPosts: true });
       } else {
         console.log(response);
         this.setState({ loadingPosts: true });
@@ -139,7 +139,7 @@ class FeedMiddle extends React.Component {
       if (response.ok) {
         const data = await response.json()
         setTimeout(() => {
-          this.getPosts();
+          // this.getPosts();
         }, 1000);
         currentPost.text = " "
         currentPostId = ""
@@ -224,7 +224,8 @@ class FeedMiddle extends React.Component {
   };
   render() {
     const { photoModal, videoModal, articleModal, inputImage, startPostModal, eventsModal, loadingPosts, posts, editModal, currentPost, currentPostId } = this.state;
-    const { jobTitle, name, userID } = this.props;
+    const { jobTitle, name, userID, profilePicture } = this.props;
+    posts.length > 0 && console.log(posts.length)
     return (
       <div id="feedMiddle">
         <div className="brdr-bottom pb-4">
@@ -272,7 +273,7 @@ class FeedMiddle extends React.Component {
           <StartPost show={true} name={name} userID={userID} onHide={this.toggleModal} sendPosts={this.sendPosts} inputImage={inputImage != null && inputImage} />
         )}
         {loadingPosts ? (
-          posts.length > 0 && posts.map((post, key) => <Posts name={name} userID={userID} key={key} data={post} deletePost={this.deletePost} editPost={this.editPost} />)
+          posts.length > 0 && posts.map((post, key) => key < 50 && <Posts name={name} userID={userID} profilePicture={profilePicture} key={key} data={post} deletePost={this.deletePost} editPost={this.editPost} />)
         ) : (
             <p>Loading...</p>
           )}

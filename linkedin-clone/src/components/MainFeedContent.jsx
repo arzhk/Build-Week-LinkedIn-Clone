@@ -15,7 +15,7 @@ function MainFeedContent({ jobTitle, name, userID, profilePicture }) {
           </StickyBox>
         </Col>
         <Col xs={5}>
-          <FeedMiddle jobTitle={jobTitle} name={name} userID={userID} />
+          <FeedMiddle jobTitle={jobTitle} name={name} userID={userID} profilePicture={profilePicture} />
         </Col>
         <Col xs={4}>
           <StickyBox offsetTop={65} offsetBottom={20}>
