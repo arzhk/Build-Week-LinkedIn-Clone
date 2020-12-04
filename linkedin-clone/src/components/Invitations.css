@@ -1,7 +1,7 @@
-.invitations {
-    width: 60%;
+#invitations {
     background-color: white;
     border-radius: 8px;
+    height: fit-content;
 }
 #profile-img{
     width: 4rem; 
@@ -50,4 +50,11 @@
 .name p:hover{
     color: black;
     text-decoration: underline black;
+}
+
+#see-all-btn:active, #see-all-btn:visited, #see-all-btn:focus{
+    border: none;
+    outline: 0;
+    background-color: white;
+    cursor: auto;
 }
