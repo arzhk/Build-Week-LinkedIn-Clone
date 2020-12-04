@@ -335,11 +335,11 @@ Body {
 }
 
 .reactPlayer-conatin {
-  background-color: lightyellow;
+  background-color: white;
 }
 .banner-learning-contain {
-  background-color: red;
-  height: 400px;
+  background-image: linear-gradient(rgb(27, 34, 143), rgb(8, 74, 112));
+  height: 200px;
   width: 100%;
 }
 
@@ -388,7 +388,10 @@ Body {
 
 #jobs-main-container .btn-secondary:not(:disabled):not(.disabled).active,
 #jobs-main-container .btn-secondary:not(:disabled):not(.disabled):active,
-#jobs-main-container .show > .btn-secondary.dropdown-toggle .post-btn-container {
+#jobs-main-container
+  .show
+  > .btn-secondary.dropdown-toggle
+  .post-btn-container {
   background-color: rgba(0, 0, 0, 0.075) !important;
   color: rgba(0, 0, 0, 0.6) !important;
 }
@@ -730,7 +733,11 @@ Body {
   left: 0;
   height: 61px;
   background: rgb(20, 20, 20);
-  background: linear-gradient(0deg, rgba(20, 20, 20, 0.2) 0%, rgba(20, 20, 20, 0.7) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(20, 20, 20, 0.2) 0%,
+    rgba(20, 20, 20, 0.7) 100%
+  );
   border-radius: 0.6rem 0.6rem 0rem 0rem;
 }
 
@@ -879,8 +886,10 @@ Body {
 }
 
 .swing-in-top-fwd {
-  -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
-  animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+  -webkit-animation: swing-in-top-fwd 0.5s
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+  animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s
+    both;
 }
 
 /* ----------------------------------------------
