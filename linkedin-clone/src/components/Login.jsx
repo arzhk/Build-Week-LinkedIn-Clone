@@ -5,7 +5,6 @@ function Login() {
   const [emailInput, setEmailInput] = React.useState("");
   const [passwordInput, setPasswordInput] = React.useState("");
   const [showInputError, setShowInputError] = React.useState(false);
-  const pageUrl = useHistory();
 
   const loginHandler = () => {
     let counter = 0;
@@ -15,7 +14,7 @@ function Login() {
   };
 
   const loginSuccessHandler = () => {
-    pageUrl.push("/feed");
+    window.location.replace("/feed");
   };
 
   return (

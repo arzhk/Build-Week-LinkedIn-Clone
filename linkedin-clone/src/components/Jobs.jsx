@@ -157,7 +157,7 @@ export default class Jobs extends Component {
                         <div className="show-applicant-container swing-in-top-fwd">
                           <div className="d-flex align-items-center">
                             <img src={Picture} className="applicant-picture mr-2"></img>
-                            <p className="font-weight-bold mb-0">Stefano Casasola has applied to this job.</p>
+                            <p className="font-weight-bold mb-0">Stefano Casasola has applied for this job.</p>
                           </div>
                         </div>
                       )}
