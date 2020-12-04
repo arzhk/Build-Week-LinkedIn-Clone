@@ -9,6 +9,7 @@ import MainContent from "./components/MainContent";
 import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import MainFeedContent from "./components/MainFeedContent";
+import Login from "./components/Login";
 
 import MyNetwork from "./components/MyNetwork";
 
@@ -47,6 +48,9 @@ function App() {
 
   return (
     <Router>
+      <Route path="/login" exact>
+        <Login />
+      </Route>
       <Route path="/">
         <NavBar
           jobTitle={currentJobTitle}
