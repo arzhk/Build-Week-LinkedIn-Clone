@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Invitations.css';
 import InvitationsLoader from './loaders/InvitationsLoader';
 
@@ -13,42 +13,42 @@ export default class Invitations extends Component {
 
   getInfo = async () => {
     try {
-      const res = await fetch (
+      const res = await fetch(
         'https://striveschool-api.herokuapp.com/api/profile/ ',
         {
           method: 'GET',
-          headers: new Headers ({
+          headers: new Headers({
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmM0YzQ4ZmVkMjY2ODAwMTcwZWEzZDgiLCJpYXQiOjE2MDY3MzA4OTUsImV4cCI6MTYwNzk0MDQ5NX0.Qzj6OQCKSyxDgEgIadVbBI70XPPAgDlcGoWJEKyM6cU',
           }),
         }
       );
       if (res.ok) {
-        const info = await res.json ();
-        this.setState ({
+        const info = await res.json();
+        this.setState({
           myInfo: info,
-          myInfoSpliced: info.splice (0, 6),
+          myInfoSpliced: info.splice(0, 6),
         });
       } else {
-        console.log ('error occured');
+        console.log('error occured');
       }
     } catch (e) {
-      console.log (e);
+      console.log(e);
     }
   };
 
   componentDidMount = () => {
-    setTimeout (() => {
-      this.getInfo ();
+    setTimeout(() => {
+      this.getInfo();
     }, 1000);
   };
   showMoreHandler = () => {
     this.state.showMore
-      ? this.setState ({showMore: false, myShow: true})
-      : this.setState ({showMore: true, myShow: false});
+      ? this.setState({ showMore: false, myShow: true })
+      : this.setState({ showMore: true, myShow: false });
   };
 
-  render () {
-    const {myInfo, myInfoSpliced} = this.state;
+  render() {
+    const { myInfo, myInfoSpliced } = this.state;
     return (
       <div className="p-0 border mt-5" id="invitations">
         {/* {Array.from({ length: 1 }, (_, i) => i + 1).map((e, index) => <InvitationsLoader key={index}/>)} */}
@@ -56,8 +56,8 @@ export default class Invitations extends Component {
           <h5>Invitations</h5>
           <button
             className="ignore d-flex justify-content-center align-items-center mr-2"
-            style={{width: '6rem'}}
-            onClick={() => this.showMoreHandler ()}
+            style={{ width: '6rem' }}
+            onClick={() => this.showMoreHandler()}
             id="see-all-btn"
           >
             {this.state.myShow ? 'See all 6' : ''}
@@ -66,9 +66,9 @@ export default class Invitations extends Component {
 
         <div className="info">
           {this.state.myInfo.length > 0 ?
-            myInfoSpliced.map ((personIMayKnow, index) => {
+            myInfoSpliced.map((personIMayKnow, index) => {
               if (index < 3) {
-                console.log ('a');
+                console.log('a');
 
                 return (
                   <div
@@ -113,7 +113,7 @@ export default class Invitations extends Component {
                   </div>
                 );
               } else {
-                console.log ('b');
+                console.log('b');
                 return (
                   <div
                     key={index}
@@ -161,14 +161,14 @@ export default class Invitations extends Component {
                   </div>
                 );
               }
-            }) : Array.from({ length: 3 }, (_, i) => i + 1).map((e, index) => <InvitationsLoader key={index}/>)}
+            }) : Array.from({ length: 3 }, (_, i) => i + 1).map((e, index) => <InvitationsLoader class="w-100 ml-3" key={index} />)}
         </div>
         <div className="text-center brdr-top">
           <div
             to="/"
             className="see-all-btn font-weight-bold d-block py-2"
-            style={{cursor: 'pointer'}}
-            onClick={() => this.showMoreHandler ()}
+            style={{ cursor: 'pointer' }}
+            onClick={() => this.showMoreHandler()}
           >
             {this.state.myShow ? 'Show more' : 'Show less'}
           </div>

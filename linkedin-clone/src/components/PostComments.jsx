@@ -32,8 +32,8 @@ class Comments extends React.Component {
         }),
       });
       if (response.ok) {
-        console.log(await response.json());
         this.props.getComments();
+        this.setState({ addComment: "" })
       } else {
         console.log(response);
       }

@@ -34,7 +34,7 @@ const FullPageLoader = () => {
         <Container >
             <Row className="justify-content-center align-content-center mt-5">
                 <div className="m-auto">
-                    <Image src={logo} fluid style={{ height: "220px" }} />
+                    <Image src={logo} fluid style={{ height: "220px", marginBottom: "-50px" }} />
                     <div className={classNameLoading}>
                         <span className={classNameShape}></span>
                     </div>
