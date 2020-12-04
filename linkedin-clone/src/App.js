@@ -5,14 +5,13 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import ContactInfoPopup from "./components/ContactInfoPopup";
-import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import MainFeedContent from "./components/MainFeedContent";
 
 import MyNetwork from "./components/MyNetwork";
 
 function App() {
   const currentUserID = "5fc4c48fed266800170ea3d8";
-  const [userData, setUserData] = React.useState({});
   const [currentUserName, setCurrentUserName] = React.useState("");
   const [currentJobTitle, setCurrentJobTitle] = React.useState("");
   const [currentProfilePicture, setCurrentProfilePicture] = React.useState("");
@@ -32,8 +31,6 @@ function App() {
         },
       });
       let data = await response.json();
-      console.log(data);
-      setUserData(data);
       setCurrentUserName(`${data.name} ${data.surname}`);
       setCurrentJobTitle(data.title);
       setCurrentProfilePicture(data.image);

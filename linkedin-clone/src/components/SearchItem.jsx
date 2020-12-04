@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function SearchItem(props) {
-  console.log(props);
   return (
     <Link to={`/profile/${props.data._id}`}>
       <div className="search-item d-flex align-items-center">

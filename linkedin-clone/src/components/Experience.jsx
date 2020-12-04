@@ -25,7 +25,6 @@ class Experience extends Component {
       });
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
         this.setState({ experiences: result, loaded: true });
       } else {
         console.log(response);
@@ -60,7 +59,6 @@ class Experience extends Component {
         }
       );
       if (response.ok) {
-        console.log("ok");
         this.getExperienceFetcher();
       } else {
         console.log(response);
@@ -85,9 +83,7 @@ class Experience extends Component {
           }),
         }
       );
-      console.log(response);
       if (response.ok) {
-        console.log("ok", response);
         this.getExperienceFetcher();
       } else {
         console.log(response);
@@ -110,7 +106,6 @@ class Experience extends Component {
         }
       );
       if (response.ok) {
-        console.log("ok");
         this.getExperienceFetcher();
       } else {
         console.log(response);

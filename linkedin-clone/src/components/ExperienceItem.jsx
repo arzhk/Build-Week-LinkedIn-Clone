@@ -21,7 +21,6 @@ const ExperienceItem = (props) => {
         }
       );
       let data = await response.json();
-      console.log(data);
       setExperienceImage(data.image);
     } catch (er) {
       console.log(er);

@@ -64,7 +64,6 @@ class NavBar extends React.Component {
       });
       let data = await response.json();
       this.setState({ searchResults: data });
-      console.log(this.state.searchResults);
     } catch (er) {
       console.log(er);
     }
