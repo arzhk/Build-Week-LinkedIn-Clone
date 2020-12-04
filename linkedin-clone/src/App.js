@@ -12,6 +12,7 @@ import MainFeedContent from "./components/MainFeedContent";
 import Login from "./components/Login";
 
 import MyNetwork from "./components/MyNetwork";
+import FullPageLoader from "./components/loaders/FullPageLoader";
 
 function App() {
   const currentUserID = "5fc4c48fed266800170ea3d8";
@@ -78,6 +79,7 @@ function App() {
       <Route path="/jobs" exact component={Jobs} />
 
       <Route path="/" component={Footer} />
+      <FullPageLoader />
     </Router>
   );
 }

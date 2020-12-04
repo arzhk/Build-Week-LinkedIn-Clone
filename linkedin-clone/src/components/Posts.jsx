@@ -48,7 +48,14 @@ class Posts extends React.Component {
   componentDidMount = () => {
     this.getReactions();
   };
-
+  isLiked = () => {
+    if (this.state.liked[0]) {
+      this.deletePost(this.state.liked[1]);
+      this.setState({ liked: [!this.state.liked[0], ""], color: "rgba(0,0,0,0.6)" });
+    } else {
+      this.handleChange(1);
+    }
+  };
   getReactions = async () => {
     try {
       let response = await fetch(this.url + this.props.data._id, {
@@ -67,6 +74,7 @@ class Posts extends React.Component {
         currentState.numberLikes = currentState.AllReactions.length;
         let userReaction = currentState.AllReactions.filter((comment) => comment.author === "arzhk");
         currentState.liked = userReaction.length > 0 && [true, userReaction[0]._id];
+        currentState.liked[0] && this.likeButton(userReaction[0].rate);
         this.setState(currentState);
       } else {
         console.log(response);
@@ -113,6 +121,7 @@ class Posts extends React.Component {
         }),
       });
       if (response.ok) {
+        this.getReactions();
       } else {
         console.log(response);
       }
@@ -202,9 +211,10 @@ class Posts extends React.Component {
       icon,
       word,
       CommentsPost,
+      liked,
     } = this.state;
     return (
-      <Card className="mt-2 p-2 posts">
+      <Card className="mt-2 posts">
         <Row className="justify-content-start m-2">
           <Dropdown>
             <Dropdown.Toggle
@@ -264,10 +274,10 @@ class Posts extends React.Component {
           </Col>
         </Row>
 
-        <Card.Body className="d-flex justify-content-between mb-2 ">
+        <Card.Body className="d-flex justify-content-between text-wrap pb-0">
           <Col>
             <Row>
-              <p>{text}</p>
+              <p className=" text-wrap text-break ">{text}</p>
             </Row>
             <Row>
               {image !== undefined && image !== null && !image.startsWith("file") && !image.startsWith("blob") && (
@@ -276,7 +286,7 @@ class Posts extends React.Component {
             </Row>
           </Col>
         </Card.Body>
-        <p className="border-bottom mb-2 pb-3" onClick={this.toggleReactions}>
+        <p className="border-bottom mb-2 mx-3 pb-3" onClick={this.toggleReactions}>
           {numberLikes > 0 && (
             <>
               <FontAwesomeIcon icon={faThumbsUp} style={{ color: "5894f5" }} /> {numberLikes}
@@ -285,20 +295,24 @@ class Posts extends React.Component {
           {numberComments > 0 && <> - {numberComments} Comments</>}{" "}
         </p>
 
-        <Row className="mx-2 reactions d-flex justify-content-around">
-          <Button variant="light" className="likeBtn" onClick={() => this.handleChange(1)} style={{ color: color }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              data-supported-dps="24x24"
-              fill="#5894f5"
-              width="24"
-              height="24"
-              focusable="false"
-              className="mr-1"
-            >
-              <path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.86V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"></path>
-            </svg>
+        <Row className="mx-2 reactions d-flex justify-content-around ">
+          <Button variant="light" className="likeBtn" onClick={() => this.isLiked()} style={{ color: color }}>
+            {liked[0] ? (
+              <FontAwesomeIcon icon={icon} style={{ color: color, fontSize: "23px" }} />
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                data-supported-dps="24x24"
+                fill="currentColor"
+                width="24"
+                height="24"
+                focusable="false"
+                className="mr-1"
+              >
+                <path d="M19.46 11l-3.91-3.91a7 7 0 01-1.69-2.74l-.49-1.47A2.76 2.76 0 0010.76 1 2.75 2.75 0 008 3.74v1.12a9.19 9.19 0 00.46 2.85L8.89 9H4.12A2.12 2.12 0 002 11.12a2.16 2.16 0 00.92 1.76A2.11 2.11 0 002 14.62a2.14 2.14 0 001.28 2 2 2 0 00-.28 1 2.12 2.12 0 002 2.12v.14A2.12 2.12 0 007.12 22h7.49a8.08 8.08 0 003.58-.84l.31-.16H21V11zM19 19h-1l-.73.37a6.14 6.14 0 01-2.69.63H7.72a1 1 0 01-1-.72l-.25-.87-.85-.41A1 1 0 015 17l.17-1-.76-.74A1 1 0 014.27 14l.66-1.09-.73-1.1a.49.49 0 01.08-.7.48.48 0 01.34-.11h7.05l-1.31-3.92A7 7 0 0110 4.86V3.75a.77.77 0 01.75-.75.75.75 0 01.71.51L12 5a9 9 0 002.13 3.5l4.5 4.5H19z"></path>
+              </svg>
+            )}
             <span className="d-sm-none d-lg-inline-block"> {word}</span>{" "}
           </Button>
           <Button variant="light" onClick={this.toggleComments}>
@@ -416,7 +430,7 @@ class Posts extends React.Component {
                   <p>Reaction</p>
                 </Row>
                 {AllReactions.map((reaction) => (
-                  <Row className="justify-content-around mb-3 ml-0 pb-2 border-bottom">
+                  <Row className="justify-content-around m-2 ml-0 pb-2 border-bottom">
                     <div>{reaction.author}</div>{" "}
                     <FontAwesomeIcon
                       size="4x"
@@ -450,6 +464,7 @@ class Posts extends React.Component {
             </Modal.Body>
           </Modal>
         )}
+        {numberComments === 0 && <Card.Footer className="py-1 border-0"> Be the first to comment on this </Card.Footer>}
       </Card>
     );
   }

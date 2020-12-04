@@ -4,6 +4,7 @@ import React from "react";
 import { Button, Card, Form, Modal, Row } from "react-bootstrap";
 import ArticleModal from "./ArticleModal";
 import EventsModal from "./EventsModal";
+import PostLoader from "./loaders/PostLoader";
 import PhotoModal from "./PhotoModal";
 import Posts from "./Posts";
 import StartPost from "./StartPost";
@@ -137,9 +138,8 @@ class FeedMiddle extends React.Component {
         },
       });
       if (response.ok) {
-        const data = await response.json();
         setTimeout(() => {
-          // this.getPosts();
+          this.getPosts();
         }, 1000);
         currentPost.text = " ";
         currentPostId = "";
@@ -228,9 +228,8 @@ class FeedMiddle extends React.Component {
       posts,
       editModal,
       currentPost,
-      currentPostId,
     } = this.state;
-    const { jobTitle, name, userID, profilePicture } = this.props;
+    const { name, userID, profilePicture } = this.props;
     return (
       <div id="feedMiddle">
         <div className="brdr-bottom mb-4 pb-4">
@@ -301,8 +300,11 @@ class FeedMiddle extends React.Component {
               )
           )
         ) : (
-          <p>Loading...</p>
-        )}
+            Array.from({ length: 2 }, (_, i) => i + 1).map((i) =>
+              <Card key={i} className="d-flex justify-content-center mt-2 align-content-center">
+                <PostLoader className="w-100 h-100 p-4" />
+              </Card>)
+          )}
 
         {/*----------------------------- EDIT MODAL -------------------------------- */}
         {editModal && (
