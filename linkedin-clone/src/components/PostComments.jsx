@@ -70,7 +70,7 @@ class Comments extends React.Component {
           <div>
             {comments.length > 0 &&
               comments.map((comment, index) => (
-                <>
+                <div className="mb-3">
                   <div key={index} className="comments w-100 d-flex">
                     <Col className="m-0 p-2 pl-3">
                       <div className="m-0 p-0 d-flex">
@@ -93,7 +93,7 @@ class Comments extends React.Component {
                       Reply
                     </Button>
                   </small>
-                </>
+                </div>
               ))}
           </div>
         </Col>

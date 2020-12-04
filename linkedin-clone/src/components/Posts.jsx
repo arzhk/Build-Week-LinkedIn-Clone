@@ -416,7 +416,7 @@ class Posts extends React.Component {
                   <p>Reaction</p>
                 </Row>
                 {AllReactions.map((reaction) => (
-                  <Row className="justify-content-around m-2 ml-0 pb-2 border-bottom">
+                  <Row className="justify-content-around mb-3 ml-0 pb-2 border-bottom">
                     <div>{reaction.author}</div>{" "}
                     <FontAwesomeIcon
                       size="4x"

@@ -324,9 +324,10 @@ button.dropdown-toggle {
   text-decoration: underline;
 }
 .comments {
-  background-color: rgb(231, 230, 230);
+  background-color: rgb(243, 243, 243);
   width: 100%;
-  border-radius: 10px;
+  border-radius: 16px;
+  padding: 8px 4px;
 }
 #reactionsModal svg {
   height: 30px;
