@@ -130,7 +130,7 @@ class NavBar extends React.Component {
                     <small>My Network</small>
                   </div>
                 </Link>
-                <Link to="/jobs">
+                <Link to="./jobs">
                   <div className={pathname === "/jobs" ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faBriefcase} size="lg" />
                     <small>Jobs</small>

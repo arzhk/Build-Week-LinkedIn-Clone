@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Jobs from "./components/Jobs";
+import Learning from "./components/Learning";
 import MainContent from "./components/MainContent";
 import ContactInfoPopup from "./components/ContactInfoPopup";
 import { Route, BrowserRouter as Router } from "react-router-dom";
@@ -68,6 +70,9 @@ function App() {
         <MyNetwork />
       </Route>
       {isContactInfoOpen && <ContactInfoPopup contactInfoHandler={contactInfoHandler} />}
+      <Route path="/learning" exact component={Learning} />
+      <Route path="/jobs" exact component={Jobs} />
+
       <Route path="/" component={Footer} />
     </Router>
   );
