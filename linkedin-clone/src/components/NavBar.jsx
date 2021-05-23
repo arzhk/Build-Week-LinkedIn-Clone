@@ -167,7 +167,7 @@ class NavBar extends React.Component {
                           />
                           <div className="d-flex flex-column align-items-start justify-content-start">
                             <h6 className="mb-0">{this.state.name}</h6>
-                            <small className="mt-0">{this.state.jobTitle}</small>
+                            <small className="mt-0">React Developer</small>
                           </div>
                         </div>
                         <div className="mt-3" style={{ height: 28 }}>
